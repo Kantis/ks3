@@ -1,6 +1,6 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-   id("ks3-jvm-library-conventions")
+   id("ks3-multiplatform-library-conventions")
    alias(libs.plugins.kotest.multiplatform)
    alias(libs.plugins.kotlin.plugin.serialization)
 }
