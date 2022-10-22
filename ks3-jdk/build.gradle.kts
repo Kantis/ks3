@@ -1,5 +1,7 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
    id("ks3-jvm-library-conventions")
+   alias(libs.plugins.kotlin.plugin.serialization)
 }
 
 dependencies {

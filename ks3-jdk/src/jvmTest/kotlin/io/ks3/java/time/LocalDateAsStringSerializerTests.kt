@@ -11,13 +11,10 @@ import java.time.format.DateTimeParseException
 
 class LocalDateAsStringSerializerTests : FunSpec(
    {
-      val json = Json {
-         ignoreUnknownKeys = true
-         coerceInputValues = true
-      }
+      val format = Json
 
       test("handles timestamps with time included if it contains no information") {
-         json.decodeFromString<Sample>(
+         format.decodeFromString<Sample>(
             """
                {
                  "date": "2021-01-01T00:00:00"
@@ -28,12 +25,12 @@ class LocalDateAsStringSerializerTests : FunSpec(
 
       test("timestamps cause error") {
          shouldThrow<DateTimeParseException> {
-            json.decodeFromString(LocalDateAsStringSerializer(), "\"2021-01-01T12:30:45.000Z\"")
+            format.decodeFromString(LocalDateAsStringSerializer, "\"2021-01-01T12:30:45.000Z\"")
          }
       }
 
       test("Just date is fine as well") {
-         json.decodeFromString(LocalDateAsStringSerializer(), "\"2021-01-01\"") shouldBe LocalDate.of(2021, 1, 1)
+         format.decodeFromString(LocalDateAsStringSerializer, "\"2021-01-01\"") shouldBe LocalDate.of(2021, 1, 1)
       }
    },
 )
