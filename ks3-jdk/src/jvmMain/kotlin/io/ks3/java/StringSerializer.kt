@@ -1,4 +1,4 @@
-package io.ks3.java.time
+package io.ks3.java
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind
