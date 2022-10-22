@@ -1,4 +1,4 @@
-package io.ks3.java
+package io.ks3.java.time
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
@@ -39,7 +39,7 @@ class LocalDateAsStringSerializerTests : FunSpec(
 )
 
 @Serializable
-data class Sample(
+private data class Sample(
    @Serializable(with = LocalDateAsStringSerializer::class)
    val date: LocalDate? = null,
 )
