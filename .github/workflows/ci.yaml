@@ -1,6 +1,7 @@
 name: build
 
 on:
+   pull_request:
    push:
       paths-ignore:
          - 'doc/**'
@@ -8,6 +9,7 @@ on:
          - '*.md'
          - '*.yml'
       branches:
+         - main
          - release/*
 
 permissions:
