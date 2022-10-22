@@ -1,0 +1,13 @@
+[versions]
+kotest = "5.5.1"
+
+
+[libraries]
+kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+
+
+[bundles]
+
+
+[plugins]
