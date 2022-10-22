@@ -1,10 +1,22 @@
 [versions]
+kotlin = "1.7.20"
 kotest = "5.5.1"
+kotlinx-serialization = "1.4.1"
 
 
 [libraries]
+
+# KotlinX Serialization
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
+# Kotest
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+
+# Gradle plugins, for build-logic
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+testlogger-gradle-plugin = { module = "com.adarshr:gradle-test-logger-plugin", version = "3.2.0" }
 
 
 [bundles]
