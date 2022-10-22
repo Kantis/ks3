@@ -2,3 +2,9 @@ on:
    push:
       tags:
          - v**
+
+jobs:
+   release:
+      steps:
+         - name: Release
+           run: echo "Releasing ${{ }}"

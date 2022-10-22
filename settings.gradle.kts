@@ -1,4 +1,4 @@
 includeBuild("build-logic")
 
-include("java")
-include("core")
+include("ks3-jdk")
+include("ks3-standard")
