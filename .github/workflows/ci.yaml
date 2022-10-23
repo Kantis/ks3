@@ -159,4 +159,4 @@ env:
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJvm: true
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: true
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: true
-   KONAN_DATA_DIR: /home/runner/.cache/konan
+   KONAN_DATA_DIR: ${{ env.HOME }}/.cache/konan
