@@ -44,6 +44,13 @@ jobs:
 
          -  uses: gradle/gradle-build-action@v2
 
+         - id: cache-kotlin-konan
+           uses: actions/cache@v3
+           with:
+              path: ~/.cache/konan
+              key: ${{ runner.os }}-kotlin-konan
+              restore-keys: ${{ runner.os }}-
+
          -  name: Run tests
             run: ./gradlew ${{ matrix.target }} --scan
 
@@ -90,6 +97,13 @@ jobs:
 
          -  uses: gradle/gradle-build-action@v2
 
+         - id: cache-kotlin-konan
+           uses: actions/cache@v3
+           with:
+              path: ~/.cache/konan
+              key: ${{ runner.os }}-kotlin-konan
+              restore-keys: ${{ runner.os }}-
+
          -  name: Run tests
             run: ./gradlew ${{ matrix.target }} --scan
 
@@ -121,6 +135,13 @@ jobs:
 
          -  uses: gradle/gradle-build-action@v2
 
+         - id: cache-kotlin-konan
+           uses: actions/cache@v3
+           with:
+              path: ~/.cache/konan
+              key: ${{ runner.os }}-kotlin-konan
+              restore-keys: ${{ runner.os }}-
+
          -  name: Run tests
             run: ./gradlew mingwX64Test --scan
 
@@ -141,3 +162,4 @@ env:
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJvm: true
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: true
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: true
+   KONAN_DATA_DIR: ~/.cache/konan
