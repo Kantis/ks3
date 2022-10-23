@@ -21,6 +21,8 @@ kotlin {
             implementation(platform(libs.kotest.bom))
 
             implementation(libs.kotest.frameworkEngine)
+            implementation(libs.kotest.assertionsCore)
+            implementation(libs.kotest.assertionsJson)
 
             implementation(libs.kotlinxSerialization.json)
          }
