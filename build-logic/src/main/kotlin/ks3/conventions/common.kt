@@ -9,7 +9,7 @@ import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootExtension
  * lockfile. That's a bit annoying. It's a little neater if it's in the Gradle dir, next to the
  * version catalog.
  */
-fun Project.relocateKotlinJsStore() {
+internal fun Project.relocateKotlinJsStore() {
    afterEvaluate {
       rootProject.extensions.configure<YarnRootExtension> {
          lockFileDirectory = project.rootDir.resolve("gradle/kotlin-js-store")
