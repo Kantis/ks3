@@ -49,7 +49,7 @@ jobs:
          -  id: cache-kotlin-konan
             uses: actions/cache@v3
             with:
-               path: ${{ env.KONAN_DATA_DIR }}
+               path: ~/.konan
                key: ${{ runner.os }}-kotlin-konan
 
          -  name: Run tests
@@ -103,7 +103,7 @@ jobs:
          -  id: cache-kotlin-konan
             uses: actions/cache@v3
             with:
-               path: ${{ env.KONAN_DATA_DIR }}
+               path: ~/.konan
                key: ${{ runner.os }}-kotlin-konan
 
          -  name: Run tests
@@ -142,7 +142,7 @@ jobs:
          -  id: cache-kotlin-konan
             uses: actions/cache@v3
             with:
-               path: ${{ env.KONAN_DATA_DIR }}
+               path: ~/.konan
                key: ${{ runner.os }}-kotlin-konan
 
          -  name: Run tests
@@ -165,4 +165,3 @@ env:
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJvm: true
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: true
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: true
-   KONAN_DATA_DIR: ${{ HOME }}/.cache/konan
