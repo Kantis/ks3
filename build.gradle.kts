@@ -1,5 +1,5 @@
 plugins {
-   base
+   id("ks3.conventions.base")
    idea
 }
 
