@@ -40,8 +40,7 @@ dependencyResolutionManagement {
                "windows-x86_64",
             ).forEach { os ->
                listOf("dev", "releases").forEach { stage ->
-                  artifact("$stage/[revision]/$os/[artifact]-[revision].tar.gz")
-                  artifact("$stage/[revision]/$os/[artifact]-[revision].zip")
+                  artifact("$stage/[revision]/$os/[artifact]-[revision].[ext]")
                }
             }
          }
