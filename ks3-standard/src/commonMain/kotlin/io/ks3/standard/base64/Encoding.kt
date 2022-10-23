@@ -23,7 +23,7 @@ package io.ks3.standard.base64
  */
 
 internal const val BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-internal val BASE64 = BASE64_CHARS.toByteArray(Charsets.UTF_8)
+internal val BASE64 = BASE64_CHARS.encodeToByteArray()
 
 internal fun String.decodeBase64ToArray(): ByteArray {
    // Ignore trailing '=' padding and whitespace from the input.
@@ -144,5 +144,5 @@ internal fun ByteArray.encodeBase64(): String {
          out[index] = '='.code.toByte()
       }
    }
-   return out.toString(Charsets.UTF_8)
+   return out.decodeToString()
 }
