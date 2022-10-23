@@ -23,6 +23,7 @@ dependencyResolutionManagement {
          content { includeModule("com.yarnpkg", "yarn") }
       }
 
+      // workaround for https://youtrack.jetbrains.com/issue/KT-51379
       ivy("https://download.jetbrains.com/kotlin/native/builds") {
          name = "Kotlin Native"
          patternLayout {
