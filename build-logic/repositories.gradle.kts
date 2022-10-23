@@ -24,6 +24,8 @@ dependencyResolutionManagement {
       }
 
       listOf(
+         "macos-x86_64",
+         "macos-aarch64",
          "osx-x86_64",
          "osx-aarch64",
          "linux-x86_64",

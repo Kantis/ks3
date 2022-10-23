@@ -44,15 +44,15 @@ jobs:
 
          -  uses: gradle/gradle-build-action@v2
 
-         - id: cache-kotlin-konan
-           uses: actions/cache@v3
-           with:
-              path: ~/.cache/konan
-              key: ${{ runner.os }}-kotlin-konan
-              restore-keys: ${{ runner.os }}-
+         -  id: cache-kotlin-konan
+            uses: actions/cache@v3
+            with:
+               path: ~/.cache/konan
+               key: ${{ runner.os }}-kotlin-konan
+               restore-keys: ${{ runner.os }}-
 
          -  name: Run tests
-            run: ./gradlew ${{ matrix.target }} --scan
+            run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
 
          -  name: Bundle the build report
             if: failure()
@@ -97,15 +97,15 @@ jobs:
 
          -  uses: gradle/gradle-build-action@v2
 
-         - id: cache-kotlin-konan
-           uses: actions/cache@v3
-           with:
-              path: ~/.cache/konan
-              key: ${{ runner.os }}-kotlin-konan
-              restore-keys: ${{ runner.os }}-
+         -  id: cache-kotlin-konan
+            uses: actions/cache@v3
+            with:
+               path: ~/.cache/konan
+               key: ${{ runner.os }}-kotlin-konan
+               restore-keys: ${{ runner.os }}-
 
          -  name: Run tests
-            run: ./gradlew ${{ matrix.target }} --scan
+            run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
 
          -  name: Bundle the build report
             if: failure()
@@ -135,15 +135,15 @@ jobs:
 
          -  uses: gradle/gradle-build-action@v2
 
-         - id: cache-kotlin-konan
-           uses: actions/cache@v3
-           with:
-              path: ~/.cache/konan
-              key: ${{ runner.os }}-kotlin-konan
-              restore-keys: ${{ runner.os }}-
+         -  id: cache-kotlin-konan
+            uses: actions/cache@v3
+            with:
+               path: ~/.cache/konan
+               key: ${{ runner.os }}-kotlin-konan
+               restore-keys: ${{ runner.os }}-
 
          -  name: Run tests
-            run: ./gradlew mingwX64Test --scan
+            run: ./gradlew mingwX64Test --scan --stacktrace --info
 
          -  name: Bundle the build report
             if: failure()
@@ -158,7 +158,7 @@ jobs:
 
 
 env:
-#   GRADLE_OPTS: -Dorg.gradle.configureondemand=false -Dorg.gradle.parallel=false -Dkotlin.incremental=false -Dorg.gradle.jvmargs="-Xmx3g -XX:MaxMetaspaceSize=756m -XX:MaxPermSize=2048m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8"
+   #   GRADLE_OPTS: -Dorg.gradle.configureondemand=false -Dorg.gradle.parallel=false -Dkotlin.incremental=false -Dorg.gradle.jvmargs="-Xmx3g -XX:MaxMetaspaceSize=756m -XX:MaxPermSize=2048m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8"
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJvm: true
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: true
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: true
