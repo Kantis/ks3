@@ -1,28 +1,64 @@
 [versions]
 kotlin = "1.7.20"
-kotest = "5.5.1"
 kotlinx-serialization = "1.4.1"
+
+kotest = "5.5.1"
+kotest-propertyArbsExtension = "2.1.2"
+kotest-springExtension = "1.1.1"
+kotest-wiremockExtension = "1.0.3"
+
+gradlePlugin-testlogger = "3.2.0"
 
 
 [libraries]
 
-# KotlinX Serialization
-kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+## Kotlin stdlib ##
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
 
-# Kotest
-kotest-assertions-json = { module = "io.kotest:kotest-assertions-json", version.ref = "kotest" }
-kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
-kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+## KotlinX Serialization ##
+kotlinxSerialization-bom = { module = "org.jetbrains.kotlinx:kotlinx-serialization-bom", version.ref = "kotlinx-serialization" }
+kotlinxSerialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core" }
+kotlinxSerialization-cbor = { module = "org.jetbrains.kotlinx:kotlinx-serialization-cbor" }
+kotlinxSerialization-hocon = { module = "org.jetbrains.kotlinx:kotlinx-serialization-hocon" }
+kotlinxSerialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json" }
+kotlinxSerialization-properties = { module = "org.jetbrains.kotlinx:kotlinx-serialization-properties" }
+kotlinxSerialization-protobuf = { module = "org.jetbrains.kotlinx:kotlinx-serialization-protobuf" }
+kotlinxSerialization-jsonOkio = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json-okio" }
 
-# Gradle plugins, for build-logic
-kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-testlogger-gradle-plugin = { module = "com.adarshr:gradle-test-logger-plugin", version = "3.2.0" }
 
+## Kotest ##
+kotest-bom = { module = "io.kotest:kotest-bom", version.ref = "kotest" }
+kotest-assertionsCore = { module = "io.kotest:kotest-assertions-core" }
+kotest-assertionsJson = { module = "io.kotest:kotest-assertions-json" }
+kotest-datatest = { module = "io.kotest:kotest-framework-datatest" }
+kotest-property = { module = "io.kotest:kotest-property" }
+kotest-frameworkEngine = { module = "io.kotest:kotest-framework-engine" }
+kotest-frameworkDatatest = { module = "io.kotest:kotest-framework-datatest" }
+kotest-runnerJunit5 = { module = "io.kotest:kotest-runner-junit5" }
+
+kotest-propertyArbsExtension = { module = "io.kotest.extensions:kotest-property-arbs", version.ref = "kotest-propertyArbsExtension" }
+kotest-springExtension = { module = "io.kotest.extensions:kotest-extensions-spring", version.ref = "kotest-springExtension" }
+kotest-wiremockExtension = { module = "io.kotest.extensions:kotest-extensions-wiremock", version.ref = "kotest-wiremockExtension" }
+
+kotestPlugin-embeddedCompiler = { module = "io.kotest:kotest-framework-multiplatform-plugin-embeddable-compiler" }
+kotestPlugin-multiplatform = { module = "io.kotest:kotest-framework-multiplatform-plugin-gradle" }
+
+
+### Gradle plugins ###
+# Maven coordinates of Gradle plugins. Used in ./build-logic/build.gradle.kts.
+gradlePlugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+gradlePlugin-kotlinAllOpen = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin" }
+gradlePlugin-kotlinNoArg = { module = "org.jetbrains.kotlin:kotlin-noarg", version.ref = "kotlin" }
+gradlePlugin-kotlinSerialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+
+gradlePlugin-testlogger = { module = "com.adarshr:gradle-test-logger-plugin", version.ref = "gradlePlugin-testlogger" }
+
+gradlePlugin-kotest = { module = "io.kotest:kotest-framework-multiplatform-plugin-gradle", version.ref = "kotest" }
 
 [bundles]
 
 
 [plugins]
-kotest-multiplatform = { id = "io.kotest.multiplatform", version.ref = "kotest" }
-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+# define plugins in ./build-logic/build.gradle.kts to avoid error:
+# The Kotlin Gradle plugin was loaded multiple times in different subprojects, which is not supported and may break the build.

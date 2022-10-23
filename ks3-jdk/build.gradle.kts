@@ -1,11 +1,36 @@
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-   id("ks3-jvm-library-conventions")
-   alias(libs.plugins.kotlin.plugin.serialization)
+   id("ks3.conventions.lang.kotlin-multiplatform")
+   id("ks3.conventions.publishing.maven-publish")
 }
 
-dependencies {
-   implementation(libs.kotlinx.serialization.core)
-   testImplementation(libs.kotest.runner.junit5)
-   testImplementation(libs.kotlinx.serialization.json)
+kotlin {
+   sourceSets {
+      val commonMain by getting {
+         dependencies {
+            implementation(platform(libs.kotlin.bom))
+            implementation(platform(libs.kotlinxSerialization.bom))
+
+            implementation(libs.kotlinxSerialization.core)
+         }
+      }
+
+      val commonTest by getting {
+         dependencies {
+            implementation(kotlin("test"))
+            implementation(platform(libs.kotest.bom))
+
+            implementation(libs.kotest.frameworkEngine)
+            implementation(libs.kotest.assertionsCore)
+            implementation(libs.kotest.assertionsJson)
+
+            implementation(libs.kotlinxSerialization.json)
+         }
+      }
+
+      val jvmTest by getting {
+         dependencies {
+            implementation(libs.kotest.runnerJunit5)
+         }
+      }
+   }
 }
