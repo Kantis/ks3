@@ -20,11 +20,11 @@ include(
 gradleEnterprise {
 
    buildScan {
-      val isCI = providers.systemProperty("CI").get().toBoolean()
+      val isCI = providers.environmentVariable("CI").orNull.toBoolean()
 
       tag(if (isCI) "CI" else "local")
-      tag(System.getProperty("os.name"))
-      tag(System.getProperty("os.arch"))
+      tag(providers.systemProperty("os.name").orNull)
+      tag(providers.systemProperty("os.arch").orNull)
 
       if (isCI) {
          // only automatically enable build scan on CI
@@ -34,12 +34,13 @@ gradleEnterprise {
          tag("CI")
          isUploadInBackground = false
 
-         tag(System.getenv("GITHUB_ACTION")) // name of the action currently running, or step ID
-         tag(System.getenv("GITHUB_REF")) // fully-formed ref of the branch or tag that triggered the workflow run
 
-         val ghServer = System.getenv("GITHUB_SERVER_URL")
-         val ghRepo = System.getenv("GITHUB_REPOSITORY")
-         val giRunId = System.getenv("GITHUB_RUN_ID")
+         tag(providers.environmentVariable("GITHUB_ACTION").orNull) // name of the action currently running, or step ID
+         tag(providers.environmentVariable("GITHUB_REF").orNull) // fully-formed ref of the branch or tag that triggered the workflow run
+
+         val ghServer = providers.environmentVariable("GITHUB_SERVER_URL").orNull
+         val ghRepo = providers.environmentVariable("GITHUB_REPOSITORY").orNull
+         val giRunId = providers.environmentVariable("GITHUB_RUN_ID").orNull
          link("GitHub Workflow run", "$ghServer/$ghRepo/actions/runs/$giRunId")
       }
    }
