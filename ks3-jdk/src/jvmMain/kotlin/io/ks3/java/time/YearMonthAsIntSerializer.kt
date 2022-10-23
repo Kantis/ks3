@@ -11,5 +11,8 @@ typealias YearMonthAsInt = @Serializable(with = YearMonthAsIntSerializer::class)
 object YearMonthAsIntSerializer : KSerializer<YearMonth> by intSerializer(
    YearMonthAsIntSerializer::class.qualifiedName!!,
    { YearMonth.of(it / 100, abs(it % 100)) },
-   { it.year * 100 + (Integer.signum(it.year) * it.monthValue) },
+   {
+      if (it.year == 0) it.monthValue
+      else it.year * 100 + (Integer.signum(it.year) * it.monthValue)
+   },
 )

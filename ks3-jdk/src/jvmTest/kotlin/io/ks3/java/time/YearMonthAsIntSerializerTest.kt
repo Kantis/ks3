@@ -33,5 +33,17 @@ class YearMonthAsIntSerializerTest : FunSpec(
             "-812".decode() shouldBe yearMonth
          }
       }
+
+      context("Year zero") {
+         val yearMonth = YearMonth.of(0, 12)
+
+         test("Encode") {
+            yearMonth.encode() shouldBe "12"
+         }
+
+         test("Decode") {
+            "12".decode() shouldBe yearMonth
+         }
+      }
    },
 )
