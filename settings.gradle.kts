@@ -31,12 +31,7 @@ gradleEnterprise {
          termsOfServiceUrl = "https://gradle.com/terms-of-service"
          termsOfServiceAgree = "yes"
          publishAlways()
-         tag("CI")
          isUploadInBackground = false
-
-
-         tag(providers.environmentVariable("GITHUB_ACTION").orNull) // name of the action currently running, or step ID
-         tag(providers.environmentVariable("GITHUB_REF").orNull) // fully-formed ref of the branch or tag that triggered the workflow run
 
          val ghServer = providers.environmentVariable("GITHUB_SERVER_URL").orNull
          val ghRepo = providers.environmentVariable("GITHUB_REPOSITORY").orNull
