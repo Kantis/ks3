@@ -47,9 +47,8 @@ jobs:
          -  id: cache-kotlin-konan
             uses: actions/cache@v3
             with:
-               path: ~/.cache/konan
+               path: ${{ env.KONAN_DATA_DIR }}
                key: ${{ runner.os }}-kotlin-konan
-               restore-keys: ${{ runner.os }}-
 
          -  name: Run tests
             run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
@@ -100,9 +99,8 @@ jobs:
          -  id: cache-kotlin-konan
             uses: actions/cache@v3
             with:
-               path: ~/.cache/konan
+               path: ${{ env.KONAN_DATA_DIR }}
                key: ${{ runner.os }}-kotlin-konan
-               restore-keys: ${{ runner.os }}-
 
          -  name: Run tests
             run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
@@ -138,9 +136,8 @@ jobs:
          -  id: cache-kotlin-konan
             uses: actions/cache@v3
             with:
-               path: ~/.cache/konan
+               path: ${{ env.KONAN_DATA_DIR }}
                key: ${{ runner.os }}-kotlin-konan
-               restore-keys: ${{ runner.os }}-
 
          -  name: Run tests
             run: ./gradlew mingwX64Test --scan --stacktrace --info
