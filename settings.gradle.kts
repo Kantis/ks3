@@ -34,8 +34,13 @@ gradleEnterprise {
          tag("CI")
          isUploadInBackground = false
 
-         tag(System.getProperty("GITHUB_ACTION")) // name of the action currently running, or step ID
-         tag(System.getProperty("GITHUB_REF")) // fully-formed ref of the branch or tag that triggered the workflow run
+         tag(System.getenv("GITHUB_ACTION")) // name of the action currently running, or step ID
+         tag(System.getenv("GITHUB_REF")) // fully-formed ref of the branch or tag that triggered the workflow run
+
+         val ghServer = System.getenv("GITHUB_SERVER_URL")
+         val ghRepo = System.getenv("GITHUB_REPOSITORY")
+         val giRunId = System.getenv("GITHUB_RUN_ID")
+         link("GitHub Workflow run", "$ghServer/$ghRepo/actions/runs/$giRunId")
       }
    }
 }
