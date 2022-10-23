@@ -17,6 +17,8 @@ kotlin {
          dependencies {
             implementation(dependencies.platform(libs.kotest.bom))
 
+            implementation(libs.kotest.frameworkEngine)
+
             implementation(libs.kotlinxSerialization.json)
          }
       }
