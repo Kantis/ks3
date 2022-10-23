@@ -3,7 +3,6 @@ package ks3.conventions.lang
 import ks3.conventions.Ks3BuildLogicSettings
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 import org.jetbrains.kotlin.gradle.targets.jvm.KotlinJvmTarget
-import java.awt.GridBagConstraints.BOTH
 
 plugins {
    id("ks3.conventions.base")
@@ -16,8 +15,11 @@ plugins {
 val ks3BuildLogicSettings = extensions.getByType<Ks3BuildLogicSettings>()
 
 
-extensions.configure<KotlinMultiplatformExtension> {
-//kotlin {
+// quick hack because IntelliJ is refusing to load accessors
+fun kotlin(configure: KotlinMultiplatformExtension.() -> Unit) = extensions.configure(configure)
+
+
+kotlin {
    targets.configureEach {
       compilations.configureEach {
          kotlinOptions {

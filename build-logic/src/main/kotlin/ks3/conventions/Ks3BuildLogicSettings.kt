@@ -30,4 +30,8 @@ abstract class Ks3BuildLogicSettings @Inject constructor(
 
    private fun ks3Flag(name: String, default: Boolean) =
       providers.gradleProperty("ks3_$name").map { it.toBoolean() }.orElse(default)
+
+   companion object {
+      const val EXTENSION_NAME = "ks3BuildLogicSettings"
+   }
 }
