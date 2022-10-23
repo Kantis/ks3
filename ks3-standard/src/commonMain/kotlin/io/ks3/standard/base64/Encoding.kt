@@ -19,7 +19,7 @@ package io.ks3.standard.base64
 
 /**
  * @author Alexander Y. Kleymenov
- * @author Emil Kantis
+ * https://github.com/square/okio/blob/master/okio/src/commonMain/kotlin/okio/-Base64.kt
  */
 
 internal const val BASE64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"

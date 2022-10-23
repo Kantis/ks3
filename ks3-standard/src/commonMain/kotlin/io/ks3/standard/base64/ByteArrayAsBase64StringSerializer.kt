@@ -1,11 +1,14 @@
 package io.ks3.standard.base64
 
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+
+typealias ByteArrayAsBase64String = @Serializable(with = ByteArrayAsBase64StringSerializer::class) ByteArray
 
 object ByteArrayAsBase64StringSerializer : KSerializer<ByteArray> {
    override val descriptor: SerialDescriptor = PrimitiveSerialDescriptor(
