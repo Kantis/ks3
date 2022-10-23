@@ -3,6 +3,9 @@ plugins {
 }
 
 dependencies {
-   implementation(libs.kotlin.gradle.plugin)
-   implementation(libs.testlogger.gradle.plugin)
+   implementation(platform(libs.kotlin.bom))
+   implementation(libs.gradlePlugin.kotlin)
+   implementation(libs.gradlePlugin.kotlinSerialization)
+   implementation(libs.gradlePlugin.testlogger)
+   implementation(libs.gradlePlugin.kotest)
 }
