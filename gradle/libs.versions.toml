@@ -4,7 +4,7 @@ kotlinx-serialization = "1.4.1"
 
 kotest = "5.5.1"
 kotest-propertyArbsExtension = "2.1.2"
-kotest-springExtension = "1.1.1"
+kotest-springExtension = "1.1.2"
 kotest-wiremockExtension = "1.0.3"
 
 gradlePlugin-testlogger = "3.2.0"
