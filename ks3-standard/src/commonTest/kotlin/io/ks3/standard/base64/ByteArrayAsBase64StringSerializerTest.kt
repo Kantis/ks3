@@ -1,10 +1,10 @@
 package io.ks3.standard.base64
 
 import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.assertions.throwables.shouldThrowWithMessage
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
 import kotlinx.serialization.json.Json
-import kotlin.text.Charsets.UTF_8
 
 class ByteArrayAsBase64StringSerializerTest : FreeSpec(
    {
@@ -14,11 +14,11 @@ class ByteArrayAsBase64StringSerializerTest : FreeSpec(
       fun String.deserializeBase64() = format.decodeFromString(ByteArrayAsBase64StringSerializer, this)
 
       "Encode to base64 string" {
-         "test".toByteArray(UTF_8).serializeBase64() shouldBe "\"dGVzdA==\""
+         "test".encodeToByteArray().serializeBase64() shouldBe "\"dGVzdA==\""
       }
 
       "Decode from base64 string" {
-         "\"dGVzdA==\"".deserializeBase64() shouldBe "test".toByteArray(UTF_8)
+         "\"dGVzdA==\"".deserializeBase64() shouldBe "test".encodeToByteArray()
       }
 
       "Non-base64 content" {
@@ -28,9 +28,9 @@ class ByteArrayAsBase64StringSerializerTest : FreeSpec(
       }
 
       "Invalid base64" {
-         shouldThrow<Base64DecodingException> {
+         shouldThrowWithMessage<Base64DecodingException>("Invalid Base64 input: A===") {
             "\"A===\"".deserializeBase64()
-         }.message shouldBe "Invalid Base64 input: A==="
+         }
       }
    },
 )
