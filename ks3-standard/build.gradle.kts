@@ -23,6 +23,7 @@ kotlin {
             implementation(libs.kotest.frameworkEngine)
             implementation(libs.kotest.assertionsCore)
             implementation(libs.kotest.assertionsJson)
+            implementation(libs.kotest.property)
 
             implementation(libs.kotlinxSerialization.json)
          }
