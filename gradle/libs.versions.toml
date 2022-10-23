@@ -2,7 +2,7 @@
 kotlin = "1.7.20"
 kotlinx-serialization = "1.4.1"
 
-kotest = "5.5.1"
+kotest = "5.5.2"
 kotest-propertyArbsExtension = "2.1.2"
 kotest-springExtension = "1.1.2"
 kotest-wiremockExtension = "1.0.3"
