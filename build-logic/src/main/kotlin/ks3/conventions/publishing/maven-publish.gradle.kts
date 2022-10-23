@@ -1,7 +1,8 @@
+package ks3.conventions.publishing
+
 plugins {
    signing
    `maven-publish`
-   id("ks3-base-conventions")
 }
 
 val javadocJarStub by tasks.registering(Jar::class) {
@@ -10,16 +11,16 @@ val javadocJarStub by tasks.registering(Jar::class) {
    archiveClassifier.set("javadoc")
 }
 
-// it would be nicer to change the environment variables to be ORG_GRADLE_PROJECT_ossrhUsername and ORG_GRADLE_PROJECT_ossrhPassword
-val ossrhUsername = providers.environmentVariable("OSSRH_USERNAME").orElse(providers.gradleProperty("ossrhUsername"))
-val ossrhPassword = providers.environmentVariable("OSSRH_PASSWORD").orElse(providers.gradleProperty("ossrhPassword"))
+// can be set with environment variables: ORG_GRADLE_PROJECT_ossrhUsername and ORG_GRADLE_PROJECT_ossrhPassword
+val ossrhUsername: Provider<String> = providers.gradleProperty("ossrhUsername")
+val ossrhPassword: Provider<String> = providers.gradleProperty("ossrhPassword")
 val signingKey: String? by project
 val signingPassword: String? by project
 
 
 val isSnapshotVersion = provider { version.toString().endsWith("SNAPSHOT") }
 
-val sonatypeReleaseUrl = isSnapshotVersion.map { isSnapshot ->
+val sonatypeReleaseUrl: Provider<String> = isSnapshotVersion.map { isSnapshot ->
    if (isSnapshot) {
       "https://s01.oss.sonatype.org/content/repositories/snapshots/"
    } else {
@@ -61,7 +62,6 @@ publishing {
 
       artifact(javadocJarStub)
 
-      // if (Ci.isRelease)
       pom {
          name.set("Ks3")
          description.set("KotlinX Serialization standard serializers")

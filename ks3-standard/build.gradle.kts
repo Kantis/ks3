@@ -1,13 +1,14 @@
 plugins {
-   id("ks3-multiplatform-library-conventions")
+   id("ks3.conventions.lang.kotlin-multiplatform")
+   id("ks3.conventions.publishing.maven-publish")
 }
 
 kotlin {
    sourceSets {
       val commonMain by getting {
          dependencies {
-            implementation(dependencies.platform(libs.kotlin.bom))
-            implementation(dependencies.platform(libs.kotlinxSerialization.bom))
+            implementation(platform(libs.kotlin.bom))
+            implementation(platform(libs.kotlinxSerialization.bom))
 
             implementation(libs.kotlinxSerialization.core)
          }
@@ -15,7 +16,9 @@ kotlin {
 
       val commonTest by getting {
          dependencies {
-            implementation(dependencies.platform(libs.kotest.bom))
+            implementation(kotlin("test"))
+
+            implementation(platform(libs.kotest.bom))
 
             implementation(libs.kotest.frameworkEngine)
 

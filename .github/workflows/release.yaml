@@ -6,5 +6,10 @@ on:
 jobs:
    release:
       steps:
-         - name: Release
-           run: echo "Releasing ${{ }}"
+         -  name: Release
+            run: echo "Releasing ${{ }}"
+
+env:
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJvm: true
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: true
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: true
