@@ -120,7 +120,7 @@ if (ks3BuildLogicSettings.enableKotlinMultiplatformNative.get()) {
          val tvosSimulatorArm64Main by getting { dependsOn(desktopMain) }
 
          // Test source sets
-         val commonTest by getting
+         val commonTest by getting {}
 
          val nativeTest by creating { dependsOn(commonTest) }
 
