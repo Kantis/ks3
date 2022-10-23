@@ -2,6 +2,7 @@
 
 plugins {
    id("ks3-kotlin-conventions")
+   id("ks3-base-conventions")
 }
 
 kotlin {

@@ -3,4 +3,5 @@ plugins {
    id("ks3-js-conventions")
    id("ks3-native-conventions")
    id("ks3-publishing-conventions")
+   id("ks3-base-conventions")
 }

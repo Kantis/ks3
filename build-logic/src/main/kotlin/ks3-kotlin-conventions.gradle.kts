@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
    kotlin("multiplatform")
    id("com.adarshr.test-logger")
+   id("ks3-base-conventions")
 }
 
 testlogger {

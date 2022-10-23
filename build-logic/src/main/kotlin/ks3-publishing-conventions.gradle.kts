@@ -2,6 +2,7 @@ plugins {
    signing
    `java-library`
    `maven-publish`
+   id("ks3-base-conventions")
 }
 
 val publications: PublicationContainer = (extensions.getByName("publishing") as PublishingExtension).publications
