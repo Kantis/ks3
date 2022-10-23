@@ -34,9 +34,7 @@ kotlin {
       // Main source sets
       val commonMain by getting {}
 
-      val desktopMain by creating {
-         dependsOn(commonMain)
-      }
+      val desktopMain by creating { dependsOn(commonMain) }
 
       val macosX64Main by getting { dependsOn(desktopMain) }
       val macosArm64Main by getting { dependsOn(desktopMain) }
