@@ -33,7 +33,7 @@ dependencyResolutionManagement {
          // https://download.jetbrains.com/kotlin/native/builds/releases/1.7.20/windows-x86_64/kotlin-native-prebuilt-windows-x86_64-1.7.20.zip
          ivy("https://download.jetbrains.com/kotlin/native/builds/releases") {
             name = "Kotlin Native - $os"
-            patternLayout { artifact("[revision]/$os/[artifact]-[os].[ext]") }
+            patternLayout { artifact("[revision]/$os/[artifact]-$os.[ext]") }
             metadataSources { artifact() }
          }
       }
