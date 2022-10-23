@@ -2,9 +2,11 @@
 
 This project aims to provide a set of serializers for common types.
 
+> ⚠️ Consider this project to be [Alpha](https://kotlinlang.org/docs/components-stability.html) for the time being. We would be happy for you to use it, and appreciate your feedback, but things may be re-written. We hope to reach [Beta](https://kotlinlang.org/docs/components-stability.html) relatively quick.
+
 ## Getting started
 
-> ⚠️This library is currently being built and not published anywhere yet.
+> ⚠️ This library is currently being built and not published anywhere yet.
 
 Add the dependency. With gradle:
 
