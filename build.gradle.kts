@@ -13,6 +13,7 @@ idea {
       isDownloadJavadoc = false
       excludeDirs = excludeDirs + layout.files(
          ".idea",
+         "gradle/kotlin-js-store", // location of the lock file, overridden by Kotlin/JS convention
          "gradle/wrapper",
       )
 
