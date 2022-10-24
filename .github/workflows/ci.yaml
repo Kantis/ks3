@@ -56,7 +56,7 @@ jobs:
 #            if: failure()
             uses: actions/upload-artifact@v3
             with:
-               name: error-report
+               name: error-report-${{ runner.os }}-${{ matrix.target }}
                path: "**/build/reports/"
                if-no-files-found: ignore
 
@@ -104,13 +104,17 @@ jobs:
 #            if: failure()
             uses: actions/upload-artifact@v3
             with:
-               name: error-report
+               name: error-report-${{ runner.os }}-${{ matrix.target }}
                path: "**/build/reports/"
                if-no-files-found: ignore
 
    windows:
       if: github.repository == 'Kantis/ks3'
       runs-on: windows-latest
+      strategy:
+         matrix:
+            target:
+               - mingwX64Test
       steps:
          -  name: Checkout the repo
             uses: actions/checkout@v3
@@ -130,13 +134,13 @@ jobs:
                key: ${{ runner.os }}-kotlin-konan
 
          -  name: Run tests
-            run: ./gradlew mingwX64Test --scan --stacktrace --info
+            run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
 
          -  name: Upload build reports
 #            if: failure()
             uses: actions/upload-artifact@v3
             with:
-               name: error-report
+               name: error-report-${{ runner.os }}-${{ matrix.target }}
                path: "**/build/reports/"
                if-no-files-found: ignore
 
