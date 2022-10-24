@@ -21,7 +21,7 @@ jobs:
 
          -  name: Calculate version
             id: semver
-            uses: paulhatch/semantic-version@v4.0.2
+            uses: paulhatch/semantic-version@v4
             with:
                format: "${major}.${minor}.${patch}-SNAPSHOT"
 
