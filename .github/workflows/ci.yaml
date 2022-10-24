@@ -52,16 +52,14 @@ jobs:
          -  name: Run tests
             run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
 
-         -  name: Bundle the build report
-            if: failure()
-            run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
-
-         -  name: Upload the build report
-            if: failure()
+         -  name: Upload build reports
+#            if: failure()
             uses: actions/upload-artifact@v3
             with:
                name: error-report
-               path: build-reports.zip
+               path: "**/build/reports/"
+               if-no-files-found: ignore
+
 
    macos:
       if: github.repository == 'Kantis/ks3'
@@ -102,16 +100,13 @@ jobs:
          -  name: Run tests
             run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
 
-         -  name: Bundle the build report
-            if: failure()
-            run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
-
-         -  name: Upload the build report
-            if: failure()
+         -  name: Upload build reports
+#            if: failure()
             uses: actions/upload-artifact@v3
             with:
                name: error-report
-               path: build-reports.zip
+               path: "**/build/reports/"
+               if-no-files-found: ignore
 
    windows:
       if: github.repository == 'Kantis/ks3'
@@ -137,16 +132,13 @@ jobs:
          -  name: Run tests
             run: ./gradlew mingwX64Test --scan --stacktrace --info
 
-         -  name: Bundle the build report
-            if: failure()
-            run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
-
-         -  name: Upload the build report
-            if: failure()
+         -  name: Upload build reports
+#            if: failure()
             uses: actions/upload-artifact@v3
             with:
                name: error-report
-               path: build-reports.zip
+               path: "**/build/reports/"
+               if-no-files-found: ignore
 
 
 env:
