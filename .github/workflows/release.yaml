@@ -2,9 +2,61 @@ on:
    push:
       tags:
          - v**
+      branches:
+         - main
+         - release/*
+   workflow_dispatch:
+
 
 jobs:
+   version:
+      runs-on: ubuntu-latest
+      outputs:
+         version: ${{ steps.semver.outputs.version }}
+      steps:
+         -  name: Checkout the repo
+            uses: actions/checkout@v3
+            with:
+               fetch-depth: 0
+
+         -  name: Calculate version
+            id: semver
+            uses: paulhatch/semantic-version@v4.0.2
+            with:
+               format: "${major}.${minor}.${patch}-SNAPSHOT"
+
    release:
+      needs: version
       steps:
          -  name: Release
             run: echo "Releasing ${{ }}"
+
+         -  name: Checkout the repo
+            uses: actions/checkout@v3
+
+         -  name: Setup JDK
+            uses: actions/setup-java@v3
+            with:
+               distribution: 'temurin'
+               java-version: '11'
+
+         -  uses: gradle/gradle-build-action@v2
+
+         -  id: cache-kotlin-konan
+            uses: actions/cache@v3
+            with:
+               path: ~/.konan
+               key: ${{ runner.os }}-kotlin-konan
+
+         -  name: Publish Sonatype
+            run: ./gradlew -Pversion=${{ needs.version.outputs.version }} publishAllPublicationsToSonatypeReleaseRepository
+
+
+env:
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJvm: true
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: true
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: true
+   ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
+   ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
+   ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
+   ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
