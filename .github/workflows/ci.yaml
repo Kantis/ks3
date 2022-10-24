@@ -64,7 +64,6 @@ jobs:
                path: build-reports.zip
 
    macos:
-      needs: version
       if: github.repository == 'Kantis/ks3'
       runs-on: macos-11
       strategy:
@@ -115,7 +114,6 @@ jobs:
                path: build-reports.zip
 
    windows:
-      needs: version
       if: github.repository == 'Kantis/ks3'
       runs-on: windows-latest
       steps:
