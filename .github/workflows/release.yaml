@@ -1,16 +1,17 @@
 name: release
 
 on:
-   push:
-      tags:
-         - v**
-      branches:
-         - main
-         - release/*
    workflow_dispatch:
+
+   workflow_run:
+      workflows: [ "build" ]
+      branches: [ main ]
+      types:
+         - completed
 
 
 jobs:
+
    version:
       runs-on: ubuntu-latest
       outputs:
@@ -55,8 +56,9 @@ jobs:
 
 env:
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJvm: true
-   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: true
-   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: true
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: false
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: false
+
    ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
    ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
    ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}

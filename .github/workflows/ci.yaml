@@ -11,13 +11,17 @@ on:
       branches:
          - main
          - release/*
+   workflow_dispatch:
+
 
 concurrency:
    group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
    cancel-in-progress: true
 
+
 permissions:
    contents: read
+
 
 jobs:
 
