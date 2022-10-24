@@ -21,6 +21,7 @@ permissions:
 
 jobs:
    version:
+      runs-on: ubuntu-latest
       outputs:
          version: ${{ steps.semver.outputs.version }}
       steps:
