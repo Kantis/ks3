@@ -28,8 +28,6 @@ jobs:
    release:
       needs: version
       steps:
-         -  name: Release
-            run: echo "Releasing ${{ }}"
 
          -  name: Checkout the repo
             uses: actions/checkout@v3
