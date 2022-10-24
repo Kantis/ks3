@@ -10,6 +10,7 @@ dependencies {
    implementation(libs.gradlePlugin.kotlin)
    implementation(libs.gradlePlugin.kotlinSerialization)
    implementation(libs.gradlePlugin.testlogger)
+   implementation(libs.gradlePlugin.gitVersioning)
    implementation(libs.gradlePlugin.kotest)
 }
 

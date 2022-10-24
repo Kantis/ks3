@@ -2,14 +2,15 @@
 kotlin = "1.7.20"
 kotlinx-serialization = "1.4.1"
 
-kotest = "5.5.1"
+kotest = "5.5.2"
 kotest-propertyArbsExtension = "2.1.2"
-kotest-springExtension = "1.1.1"
+kotest-springExtension = "1.1.2"
 kotest-wiremockExtension = "1.0.3"
 
 okio = "3.2.0"
 
 gradlePlugin-testlogger = "3.2.0"
+gradlePlugin-gitVersioning = "6.3.4"
 
 
 [libraries]
@@ -58,6 +59,8 @@ gradlePlugin-kotlinSerialization = { module = "org.jetbrains.kotlin:kotlin-seria
 gradlePlugin-testlogger = { module = "com.adarshr:gradle-test-logger-plugin", version.ref = "gradlePlugin-testlogger" }
 
 gradlePlugin-kotest = { module = "io.kotest:kotest-framework-multiplatform-plugin-gradle", version.ref = "kotest" }
+
+gradlePlugin-gitVersioning = { module = "me.qoomon:gradle-git-versioning-plugin", version.ref = "gradlePlugin-gitVersioning" }
 
 [bundles]
 

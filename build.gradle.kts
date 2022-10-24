@@ -1,11 +1,20 @@
 plugins {
    id("ks3.conventions.base")
+   id("ks3.conventions.git-versioning")
    idea
 }
 
 group = "io.ks3"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.0-SNAPSHOT"
+gitVersioning.apply {
+   refs {
+      branch(".+") { version = "\${ref}-SNAPSHOT" }
+      tag("v(?<version>.*)") { version = "\${ref.version}" }
+   }
 
+   // optional fallback configuration in case of no matching ref configuration
+   rev { version = "\${commit}" }
+}
 
 idea {
    module {

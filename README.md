@@ -8,7 +8,7 @@ This project aims to provide a set of serializers for common types.
 
 > ⚠️ This library is currently being built and not published anywhere yet.
 
-Add the dependency. With gradle:
+Add the dependency. With Gradle:
 
 ```kotlin
 dependencies {
@@ -35,7 +35,7 @@ Now you can start using the provided serializers. There's several possible ways 
 * [Specifying serializer using a typealias](https://github.com/Kotlin/kotlinx.serialization/blob/1.4.1-release/docs/serializers.md#specifying-serializer-globally-using-typealias)
 
 
-### Using typealias
+### Using `typealias`
 
 ```kotlin
 typealias LocalDateTimeAsString = @Serializable(LocalDateTimeAsStringSerializer::class) LocalDateTime

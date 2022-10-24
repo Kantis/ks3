@@ -1,10 +1,48 @@
+name: release
+
 on:
-   push:
-      tags:
-         - v**
+   workflow_dispatch:
+
+   workflow_run:
+      workflows: [ "build" ]
+      branches: [ main ]
+      types:
+         - completed
+
 
 jobs:
+
    release:
+      runs-on: ubuntu-latest
       steps:
-         -  name: Release
-            run: echo "Releasing ${{ }}"
+
+         -  name: Checkout the repo
+            uses: actions/checkout@v3
+
+         -  name: Setup JDK
+            uses: actions/setup-java@v3
+            with:
+               distribution: 'temurin'
+               java-version: '11'
+
+         -  uses: gradle/gradle-build-action@v2
+
+         -  id: cache-kotlin-konan
+            uses: actions/cache@v3
+            with:
+               path: ~/.konan
+               key: ${{ runner.os }}-kotlin-konan
+
+         -  name: Publish Sonatype
+            run: ./gradlew publishAllPublicationsToSonatypeReleaseRepository -Pversion=${{ needs.version.outputs.version }} --stacktrace --info
+
+
+env:
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJvm: true
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: false
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: false
+
+   ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
+   ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
+   ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
+   ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}

@@ -46,6 +46,7 @@ dependencyResolutionManagement {
             }
          }
          metadataSources { artifact() }
+         content { includeModuleByRegex(".*", "kotlin-native-prebuilt") }
       }
 
       sonatypeSnapshots()
