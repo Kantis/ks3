@@ -12,24 +12,7 @@ on:
 
 jobs:
 
-   version:
-      runs-on: ubuntu-latest
-      outputs:
-         version: ${{ steps.semver.outputs.version }}
-      steps:
-         -  name: Checkout the repo
-            uses: actions/checkout@v3
-            with:
-               fetch-depth: 0
-
-         -  name: Calculate version
-            id: semver
-            uses: paulhatch/semantic-version@v4
-            with:
-               format: "${major}.${minor}.${patch}-SNAPSHOT"
-
    release:
-      needs: version
       runs-on: ubuntu-latest
       steps:
 
