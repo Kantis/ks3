@@ -1,5 +1,6 @@
 plugins {
    id("ks3.conventions.lang.kotlin-multiplatform")
+   id("ks3.conventions.publishing.maven-publish")
 }
 
 kotlin {
