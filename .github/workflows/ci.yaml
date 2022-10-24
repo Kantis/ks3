@@ -20,7 +20,21 @@ permissions:
    contents: read
 
 jobs:
+   version:
+      outputs:
+         version: ${{ steps.semver.outputs.version }}
+      steps:
+         -  name: Checkout the repo
+            uses: actions/checkout@v3
+            with:
+               fetch-depth: 0
+
+         -  name: Calculate version
+            id: semver
+            uses: paulhatch/semantic-version@v4.0.2
+
    linux:
+      needs: version
       if: github.repository == 'Kantis/ks3'
       runs-on: ubuntu-latest
       strategy:
@@ -33,8 +47,6 @@ jobs:
       steps:
          -  name: Checkout the repo
             uses: actions/checkout@v3
-            with:
-               fetch-depth: 0
 
          -  name: Setup JDK
             uses: actions/setup-java@v3
@@ -53,6 +65,9 @@ jobs:
          -  name: Run tests
             run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
 
+         -  name: Publish
+            run: ./gradlew -Pversion=${{ needs.version.outputs.version }} publish
+
          -  name: Bundle the build report
             if: failure()
             run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
@@ -65,6 +80,7 @@ jobs:
                path: build-reports.zip
 
    macos:
+      needs: version
       if: github.repository == 'Kantis/ks3'
       runs-on: macos-11
       strategy:
@@ -85,8 +101,6 @@ jobs:
       steps:
          -  name: Checkout the repo
             uses: actions/checkout@v3
-            with:
-               fetch-depth: 0
 
          -  name: Setup JDK
             uses: actions/setup-java@v3
@@ -105,6 +119,9 @@ jobs:
          -  name: Run tests
             run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
 
+         -  name: Publish
+            run: ./gradlew -Pversion=${{ needs.version.outputs.version }} publish
+
          -  name: Bundle the build report
             if: failure()
             run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
@@ -117,13 +134,12 @@ jobs:
                path: build-reports.zip
 
    windows:
+      needs: version
       if: github.repository == 'Kantis/ks3'
       runs-on: windows-latest
       steps:
          -  name: Checkout the repo
             uses: actions/checkout@v3
-            with:
-               fetch-depth: 0
 
          -  name: Setup JDK
             uses: actions/setup-java@v3
@@ -142,6 +158,9 @@ jobs:
          -  name: Run tests
             run: ./gradlew mingwX64Test --scan --stacktrace --info
 
+         -  name: Publish
+            run: ./gradlew -Pversion=${{ needs.version.outputs.version }} publish
+
          -  name: Bundle the build report
             if: failure()
             run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
@@ -158,3 +177,7 @@ env:
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJvm: true
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: true
    ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: true
+   ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
+   ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
+   OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+   OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
