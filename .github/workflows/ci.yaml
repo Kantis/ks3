@@ -52,16 +52,14 @@ jobs:
          -  name: Run tests
             run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
 
-         -  name: Bundle the build report
-            if: failure()
-            run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
-
-         -  name: Upload the build report
+         -  name: Upload build reports
             if: failure()
             uses: actions/upload-artifact@v3
             with:
-               name: error-report
-               path: build-reports.zip
+               name: build-report-${{ runner.os }}-${{ matrix.target }}
+               path: "**/build/reports/"
+               if-no-files-found: ignore
+
 
    macos:
       if: github.repository == 'Kantis/ks3'
@@ -102,20 +100,21 @@ jobs:
          -  name: Run tests
             run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
 
-         -  name: Bundle the build report
-            if: failure()
-            run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
-
-         -  name: Upload the build report
+         -  name: Upload build reports
             if: failure()
             uses: actions/upload-artifact@v3
             with:
-               name: error-report
-               path: build-reports.zip
+               name: build-report-${{ runner.os }}-${{ matrix.target }}
+               path: "**/build/reports/"
+               if-no-files-found: ignore
 
    windows:
       if: github.repository == 'Kantis/ks3'
       runs-on: windows-latest
+      strategy:
+         matrix:
+            target:
+               - mingwX64Test
       steps:
          -  name: Checkout the repo
             uses: actions/checkout@v3
@@ -135,18 +134,15 @@ jobs:
                key: ${{ runner.os }}-kotlin-konan
 
          -  name: Run tests
-            run: ./gradlew mingwX64Test --scan --stacktrace --info
+            run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
 
-         -  name: Bundle the build report
-            if: failure()
-            run: find . -type d -name 'reports' | zip -@ -r build-reports.zip
-
-         -  name: Upload the build report
+         -  name: Upload build reports
             if: failure()
             uses: actions/upload-artifact@v3
             with:
-               name: error-report
-               path: build-reports.zip
+               name: build-report-${{ runner.os }}-${{ matrix.target }}
+               path: "**/build/reports/"
+               if-no-files-found: ignore
 
 
 env:
