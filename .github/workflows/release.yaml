@@ -47,7 +47,7 @@ jobs:
                key: ${{ runner.os }}-kotlin-konan
 
          -  name: Publish Sonatype
-            run: ./gradlew -Pversion=${{ needs.version.outputs.version }} publishAllPublicationsToSonatypeReleaseRepository
+            run: ./gradlew publishAllPublicationsToSonatypeReleaseRepository -Pversion=${{ needs.version.outputs.version }} --stacktrace --info
 
 
 env:
