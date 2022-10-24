@@ -11,6 +11,8 @@ kotlin {
 
             implementation(libs.kotlinxSerialization.core)
             implementation(libs.kotlinxSerialization.json)
+            implementation(libs.kotlinxSerialization.jsonOkio)
+            implementation(libs.okio)
          }
       }
    }
