@@ -29,6 +29,7 @@ jobs:
 
    release:
       needs: version
+      runs-on: ubuntu-latest
       steps:
 
          -  name: Checkout the repo
