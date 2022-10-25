@@ -40,7 +40,7 @@ jobs:
          -  name: Publish Sonatype
             # unset GITHUB_ACTIONS (else git-versioning-plugin doesn't detect tags)
             # disable parallel (Sonatype doesn't like it)
-            run: |
+            run: >
                unset GITHUB_ACTIONS
 
                ./gradlew publishAllPublicationsToSonatypeReleaseRepository
