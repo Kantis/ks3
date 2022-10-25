@@ -8,7 +8,7 @@ kotest-springExtension = "1.1.2"
 kotest-wiremockExtension = "1.0.3"
 
 gradlePlugin-testlogger = "3.2.0"
-gradlePlugin-gitVersioning = "6.3.4"
+gradlePlugin-gitVersioning = "6.3.5"
 
 
 [libraries]
