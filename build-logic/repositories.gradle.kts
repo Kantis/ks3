@@ -42,6 +42,8 @@ dependencyResolutionManagement {
             ).forEach { os ->
                listOf("dev", "releases").forEach { stage ->
                   artifact("$stage/[revision]/$os/[artifact]-[revision].[ext]")
+                  artifact("$stage/[revision]/$os/[artifact]-[revision].zip")
+                  artifact("$stage/[revision]/$os/[artifact]-[revision].tar.gz")
                }
             }
          }
