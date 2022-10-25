@@ -38,7 +38,17 @@ jobs:
                key: ${{ runner.os }}-kotlin-konan
 
          -  name: Publish Sonatype
-            run: ./gradlew publishAllPublicationsToSonatypeReleaseRepository -Pversion=${{ needs.version.outputs.version }} --stacktrace --info
+            # unset GITHUB_ACTIONS (else git-versioning-plugin doesn't detect tags)
+            # disable parallel (Sonatype doesn't like it)
+            run: |
+               unset GITHUB_ACTIONS
+
+               ./gradlew publishAllPublicationsToSonatypeReleaseRepository
+               -Pversion=${{ needs.version.outputs.version }}
+               --stacktrace
+               --info
+               --no-parallel
+
 
 
 env:
