@@ -44,7 +44,6 @@ jobs:
                unset GITHUB_ACTIONS
 
                ./gradlew publishAllPublicationsToSonatypeReleaseRepository
-               -Pversion=${{ needs.version.outputs.version }}
                --stacktrace
                --info
                --no-parallel
