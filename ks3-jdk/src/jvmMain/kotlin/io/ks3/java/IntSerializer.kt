@@ -6,17 +6,16 @@ import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-// TODO: should probably move to a -core module later.
-internal inline fun <reified T> stringSerializer(
+internal inline fun <reified T> intSerializer(
    name: String,
-   crossinline decode: (String) -> T,
-   crossinline encode: (T) -> String = { it.toString() },
+   crossinline decode: (Int) -> T,
+   crossinline encode: (T) -> Int,
 ): KSerializer<T> = object : KSerializer<T> {
    override val descriptor = PrimitiveSerialDescriptor(name, PrimitiveKind.STRING)
 
    override fun deserialize(decoder: Decoder) =
-      decode(decoder.decodeString())
+      decode(decoder.decodeInt())
 
    override fun serialize(encoder: Encoder, value: T) =
-      encoder.encodeString(encode(value))
+      encoder.encodeInt(encode(value))
 }
