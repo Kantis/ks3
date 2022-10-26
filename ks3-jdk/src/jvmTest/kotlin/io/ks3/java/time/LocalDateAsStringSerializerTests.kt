@@ -3,9 +3,12 @@ package io.ks3.java.time
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.property.Arb
+import io.kotest.property.arbitrary.localDate
 import io.kotest.property.checkAll
 import io.kotest.property.exhaustive.exhaustive
 import io.ks3.test.generateEncoders
+import io.ks3.test.generateSerializerTests
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -16,6 +19,8 @@ class LocalDateAsStringSerializerTests : FunSpec(
    {
       val format = Json
       val (_, decoders) = format.generateEncoders(LocalDateAsStringSerializer)
+
+      include(generateSerializerTests(LocalDateAsStringSerializer, Arb.localDate()))
 
       test("handles timestamps with time included if, and only if, it contains no information") {
          format.decodeFromString<Sample>(

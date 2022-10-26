@@ -7,8 +7,10 @@ kotlin {
    sourceSets {
       val commonMain by getting {
          dependencies {
-            implementation(platform(libs.kotlin.bom))
             implementation(platform(libs.kotlinxSerialization.bom))
+
+            implementation(libs.kotest.property)
+            implementation(libs.kotest.frameworkEngine)
 
             implementation(libs.kotlinxSerialization.core)
             implementation(libs.kotlinxSerialization.json)

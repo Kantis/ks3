@@ -36,8 +36,9 @@ kotest-bom = { module = "io.kotest:kotest-bom", version.ref = "kotest" }
 kotest-assertionsCore = { module = "io.kotest:kotest-assertions-core" }
 kotest-assertionsJson = { module = "io.kotest:kotest-assertions-json" }
 kotest-datatest = { module = "io.kotest:kotest-framework-datatest" }
-kotest-property = { module = "io.kotest:kotest-property" }
-kotest-frameworkEngine = { module = "io.kotest:kotest-framework-engine" }
+kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
+kotest-frameworkApi = { module = "io.kotest:kotest-framework-api" }
+kotest-frameworkEngine = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" } # Not included in the BOM
 kotest-frameworkDatatest = { module = "io.kotest:kotest-framework-datatest" }
 kotest-runnerJunit5 = { module = "io.kotest:kotest-runner-junit5" }
 
