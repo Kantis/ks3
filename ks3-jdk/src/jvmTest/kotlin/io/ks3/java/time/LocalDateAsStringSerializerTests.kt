@@ -22,6 +22,11 @@ class LocalDateAsStringSerializerTests : FunSpec(
 
       include(generateSerializerTests(LocalDateAsStringSerializer, Arb.localDate()))
 
+      test("sample") {
+         format.encodeToString(LocalDateAsStringSerializer, LocalDate.of(2022, 10, 25)) shouldBe
+            "\"2022-10-25\""
+      }
+
       test("handles timestamps with time included if, and only if, it contains no information") {
          format.decodeFromString<Sample>(
             """
