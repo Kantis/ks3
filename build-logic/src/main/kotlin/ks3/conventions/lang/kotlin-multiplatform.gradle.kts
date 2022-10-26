@@ -86,7 +86,7 @@ if (ks3BuildLogicSettings.enableKotlinMultiplatformNative.get()) {
 
          iosX64()
          iosArm64()
-         iosArm32()
+//         iosArm32() https://github.com/Kantis/ks3/issues/24
          iosSimulatorArm64()
       }
 
