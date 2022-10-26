@@ -1,5 +1,6 @@
-package io.ks3.java
+package io.ks3.java.util
 
+import io.ks3.standard.intSerializer
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor

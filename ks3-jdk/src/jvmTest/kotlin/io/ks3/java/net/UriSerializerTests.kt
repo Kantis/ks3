@@ -1,4 +1,4 @@
-package io.ks3.java
+package io.ks3.java.net
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.property.exhaustive.exhaustive

@@ -1,4 +1,4 @@
-package io.ks3.java
+package io.ks3.java.util
 
 import io.kotest.assertions.json.shouldEqualJson
 import io.kotest.core.spec.style.FunSpec
@@ -21,36 +21,36 @@ import java.util.concurrent.atomic.AtomicLong
 class AtomicSerializersTests : FunSpec(
    {
       include(
-         generateSerializerTests(AtomicBooleanSerializer, Exhaustive.boolean().map(::AtomicBoolean)) { originalValue ->
-            this
-               .shouldBeInstanceOf<AtomicBoolean>()
-               .get() shouldBe originalValue.get()
-         },
+          generateSerializerTests(AtomicBooleanSerializer, Exhaustive.boolean().map(::AtomicBoolean)) { originalValue ->
+              this
+                  .shouldBeInstanceOf<AtomicBoolean>()
+                  .get() shouldBe originalValue.get()
+          },
       )
 
       include(
-         generateSerializerTests(AtomicIntegerSerializer, Arb.int().map(::AtomicInteger)) { originalValue ->
-            this
-               .shouldBeInstanceOf<AtomicInteger>()
-               .get() shouldBe originalValue.get()
-         },
+          generateSerializerTests(AtomicIntegerSerializer, Arb.int().map(::AtomicInteger)) { originalValue ->
+              this
+                  .shouldBeInstanceOf<AtomicInteger>()
+                  .get() shouldBe originalValue.get()
+          },
       )
 
       include(
-         generateSerializerTests(AtomicLongSerializer, Arb.long().map(::AtomicLong)) { originalValue ->
-            this
-               .shouldBeInstanceOf<AtomicLong>()
-               .get() shouldBe originalValue.get()
-         },
+          generateSerializerTests(AtomicLongSerializer, Arb.long().map(::AtomicLong)) { originalValue ->
+              this
+                  .shouldBeInstanceOf<AtomicLong>()
+                  .get() shouldBe originalValue.get()
+          },
       )
 
       @Serializable
       data class Sample(
-         @Serializable(with = AtomicBooleanSerializer::class)
+          @Serializable(with = AtomicBooleanSerializer::class)
          val bool: AtomicBoolean,
-         @Serializable(with = AtomicIntegerSerializer::class)
+          @Serializable(with = AtomicIntegerSerializer::class)
          val int: AtomicInteger,
-         @Serializable(with = AtomicLongSerializer::class)
+          @Serializable(with = AtomicLongSerializer::class)
          val long: AtomicLong,
       )
 

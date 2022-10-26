@@ -30,6 +30,12 @@ kotlin {
          }
       }
 
+      val jvmMain by getting {
+         dependencies {
+            implementation(projects.ks3Standard)
+         }
+      }
+
       val jvmTest by getting {
          dependencies {
             implementation(libs.kotest.runnerJunit5)

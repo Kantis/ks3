@@ -1,7 +1,7 @@
 package io.ks3.java.time
 
-import io.ks3.java.intSerializer
-import io.ks3.java.stringSerializer
+import io.ks3.standard.intSerializer
+import io.ks3.standard.stringSerializer
 import kotlinx.serialization.KSerializer
 import java.time.Year
 

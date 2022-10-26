@@ -1,4 +1,4 @@
-package io.ks3.java
+package io.ks3.standard
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -6,17 +6,16 @@ import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
-// TODO: should probably move to a -core module later.
-internal inline fun <reified T> stringSerializer(
+inline fun <reified T> longSerializer(
    name: String,
-   crossinline decode: (String) -> T,
-   crossinline encode: (T) -> String = { it.toString() },
+   crossinline decode: (Long) -> T,
+   crossinline encode: (T) -> Long,
 ): KSerializer<T> = object : KSerializer<T> {
-   override val descriptor = PrimitiveSerialDescriptor(name, PrimitiveKind.STRING)
+   override val descriptor = PrimitiveSerialDescriptor(name, PrimitiveKind.LONG)
 
    override fun deserialize(decoder: Decoder) =
-      decode(decoder.decodeString())
+      decode(decoder.decodeLong())
 
    override fun serialize(encoder: Encoder, value: T) =
-      encoder.encodeString(encode(value))
+      encoder.encodeLong(encode(value))
 }
