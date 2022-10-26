@@ -13,12 +13,13 @@ import kotlinx.serialization.json.Json
 inline fun <reified T> generateSerializerTests(
    serializer: KSerializer<T>,
    generator: Gen<T>,
+   crossinline nameFn: () -> String = { "Encodes and decodes values back to original form" },
    crossinline assertion: T.(T) -> Unit = { original -> this shouldBe original },
 ) = funSpec {
 
    val (encoders, decoders) = Json.generateEncoders(serializer)
 
-   test("Encodes and decodes values back to original form") {
+   test(nameFn()) {
       checkAll(generator, Exhaustive.cartesianPairs(encoders.exhaustive(), decoders.exhaustive())) { value, (encode, decode) ->
          value.encode().decode().assertion(value)
       }
