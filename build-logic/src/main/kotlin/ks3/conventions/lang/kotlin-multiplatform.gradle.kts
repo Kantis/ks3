@@ -107,7 +107,7 @@ if (ks3BuildLogicSettings.enableKotlinMultiplatformNative.get()) {
 
          val iosX64Main by getting { dependsOn(desktopMain) }
          val iosArm64Main by getting { dependsOn(desktopMain) }
-         val iosArm32Main by getting { dependsOn(desktopMain) }
+//         val iosArm32Main by getting { dependsOn(desktopMain) }
          val iosSimulatorArm64Main by getting { dependsOn(desktopMain) }
 
          val watchosArm32Main by getting { dependsOn(desktopMain) }
@@ -133,7 +133,7 @@ if (ks3BuildLogicSettings.enableKotlinMultiplatformNative.get()) {
 
          val iosX64Test by getting { dependsOn(nativeTest) }
          val iosArm64Test by getting { dependsOn(nativeTest) }
-         val iosArm32Test by getting { dependsOn(nativeTest) }
+//         val iosArm32Test by getting { dependsOn(nativeTest) }
          val iosSimulatorArm64Test by getting { dependsOn(nativeTest) }
 
          val watchosArm32Test by getting { dependsOn(nativeTest) }

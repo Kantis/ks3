@@ -19,8 +19,8 @@ jobs:
          -  name: Checkout the repo
             uses: actions/checkout@v3
             with:
-               # git-versioning plugin requires no history, and HEAD (so it will use tags)
-               fetch-depth: 1
+               # git-versioning plugin requires all history, and HEAD (so it can find and compare tags)
+               fetch-depth: 0
                ref: ${{ github.event.pull_request.head.sha }}
 
          -  name: Setup JDK
