@@ -1,3 +1,3 @@
 Serializers for:
-* [java.time.*](javatime.md)
+* [Java types](jdk.md)
 * [Generic Kotlin stuff](standard.md)
