@@ -14,6 +14,7 @@ includeBuild("build-logic")
 include(
    ":ks3-jdk",
    ":ks3-standard",
+   ":ks3-test",
 )
 
 
