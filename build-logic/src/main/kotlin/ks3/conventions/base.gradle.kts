@@ -17,3 +17,4 @@ extensions.create(Ks3BuildLogicSettings.EXTENSION_NAME, Ks3BuildLogicSettings::c
 testlogger {
    showPassed = false
 }
+

@@ -7,7 +7,7 @@ import java.time.Year
 
 object YearAsStringSerializer : KSerializer<Year> by stringSerializer(
    YearAsStringSerializer::class.qualifiedName!!,
-   Year::parse,
+   { Year.of(it.toInt()) },
 )
 
 object YearAsIntSerializer : KSerializer<Year> by intSerializer(
