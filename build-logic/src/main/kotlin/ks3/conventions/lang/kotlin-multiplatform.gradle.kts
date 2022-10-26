@@ -21,7 +21,7 @@ fun kotlin(configure: KotlinMultiplatformExtension.() -> Unit) = extensions.conf
 
 kotlin {
    jvmToolchain {
-      (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(ks3BuildLogicSettings.jvmTarget.get()))
+      languageVersion.set(JavaLanguageVersion.of(ks3BuildLogicSettings.jvmTarget.get()))
    }
 
    targets.configureEach {
