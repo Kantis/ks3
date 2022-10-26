@@ -29,12 +29,26 @@ val sonatypeReleaseUrl: Provider<String> = isSnapshotVersion.map { isSnapshot ->
 }
 
 signing {
-   useGpgCmd()
    if (signingKey != null && signingPassword != null) {
       useInMemoryPgpKeys(signingKey, signingPassword)
-      // Gradle hasn't updated the signing plugin to be compatible with lazy-configuration,
-      // so it needs weird workarounds: https://github.com/gradle/gradle/issues/19903
-      sign(closureOf<SignOperation> { sign(publishing.publications) })
+   } else {
+      useGpgCmd()
+   }
+}
+
+// Gradle hasn't updated the signing plugin to be compatible with lazy-configuration, so it needs weird workarounds:
+afterEvaluate {
+   // Register signatures afterEvaluate, otherwise the signing plugin creates the signing tasks
+   // too early, before all the publications are added. Use .all { }, not .configureEach { },
+   // otherwise the signing plugin doesn't create the tasks soon enough.
+
+   if (ossrhUsername.isPresent && ossrhPassword.isPresent) {
+
+      publishing.publications.all publication@{
+         logger.lifecycle("configuring signature for publication ${this@publication.name}")
+         // closureOf: https://github.com/gradle/gradle/issues/19903
+         signing.sign(closureOf<SignOperation> { signing.sign(this@publication) })
+      }
    }
 }
 
