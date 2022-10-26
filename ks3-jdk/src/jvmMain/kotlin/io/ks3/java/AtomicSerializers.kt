@@ -12,15 +12,11 @@ import java.util.concurrent.atomic.AtomicLong
 
 // From https://github.com/Kotlin/kotlinx.serialization/blob/15c6b59d2175485f8f5f4563ff17610003459113/runtime/jvm/src/main/kotlin/kotlinx/serialization/java/AtomicSerializers.kt
 
-public object AtomicIntegerSerializer : KSerializer<AtomicInteger> {
-   override fun serialize(encoder: Encoder, value: AtomicInteger) {
-      encoder.encodeInt(value.get())
-   }
-
-   override fun deserialize(decoder: Decoder): AtomicInteger = AtomicInteger(decoder.decodeInt())
-
-   override val descriptor = PrimitiveSerialDescriptor(AtomicIntegerSerializer::class.qualifiedName!!, PrimitiveKind.INT)
-}
+object AtomicIntegerSerializer : KSerializer<AtomicInteger> by intSerializer(
+   AtomicIntegerSerializer::class.qualifiedName!!,
+   ::AtomicInteger,
+   AtomicInteger::get,
+)
 
 public object AtomicLongSerializer : KSerializer<AtomicLong> {
    override fun serialize(encoder: Encoder, value: AtomicLong) {
