@@ -42,13 +42,11 @@ dependencyResolutionManagement {
             ).forEach { os ->
                listOf("dev", "releases").forEach { stage ->
                   artifact("$stage/[revision]/$os/[artifact]-[revision].[ext]")
-                  artifact("$stage/[revision]/$os/[artifact]-[revision].zip")
-                  artifact("$stage/[revision]/$os/[artifact]-[revision].tar.gz")
                }
             }
          }
          metadataSources { artifact() }
-         content { includeModuleByRegex(".*", "kotlin-native-prebuilt") }
+         content { includeModuleByRegex(".*", ".*kotlin-native-prebuilt.*") }
       }
 
       sonatypeSnapshots()
