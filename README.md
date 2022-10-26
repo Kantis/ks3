@@ -6,8 +6,6 @@ This project aims to provide a set of serializers for common types.
 
 ## Getting started
 
-> ⚠️ This library is currently being built and not published anywhere yet.
-
 Add the dependency. With Gradle:
 
 ```kotlin
@@ -22,7 +20,7 @@ Maven:
 <dependency>
   <groupId>io.ks3</groupId>
   <artifactId>ks3-jdk</artifactId>
-  <version>$version</version>
+  <version>0.0.2</version>
 </dependency>
 ```
 
