@@ -4,6 +4,8 @@ run-name: "Gradle Task ${{ inputs.gradle-task }} @ ${{ inputs.runs-on }}"
 # Reusable Workflow for running a Gradle task
 
 on:
+   workflow_dispatch:
+
    workflow_call:
       inputs:
          gradle-task:
