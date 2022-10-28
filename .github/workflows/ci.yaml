@@ -42,4 +42,4 @@ jobs:
       uses: ./.github/workflows/gradle_task.yml
       with:
          runs-on: ${{ matrix.os }}
-         gradle-task: check --stacktrace --info $${{ matrix.args }}
+         gradle-task: check --stacktrace --info ${{ matrix.args }}
