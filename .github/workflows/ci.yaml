@@ -5,19 +5,19 @@ on:
 
    push:
       paths-ignore:
-         - 'doc/**'
-         - 'documentation/**'
-         - '*.md'
-         - '*.yml'
+         - "doc/**"
+         - "documentation/**"
+         - "*.md"
+         - "*.yml"
       branches:
-         - main
-         - release/*
+         - "main"
+         - "release/*"
 
    workflow_dispatch:
 
 
 concurrency:
-   group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+   group: "${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
    cancel-in-progress: true
 
 

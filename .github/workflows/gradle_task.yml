@@ -17,7 +17,7 @@ on:
 
 
 concurrency:
-   group: '${{ github.workflow }} ${{ join(inputs.*) }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+   group: "${{ github.workflow }} ${{ join(inputs.*) }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
    cancel-in-progress: true
 
 
