@@ -29,7 +29,7 @@ jobs:
                - windows-latest
       uses: ./.github/workflows/gradle_task.yml
       with:
-         gradle-task: check publishAllPublicationsToSonatypeReleaseRepository --no-parallel --stacktrace --info
+         gradle-task: publishAllPublicationsToSonatypeReleaseRepository --no-parallel --stacktrace --info
          runs-on: ${{ matrix.os }}
 
 env:
