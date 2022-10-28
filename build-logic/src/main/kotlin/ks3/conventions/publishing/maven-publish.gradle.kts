@@ -30,10 +30,9 @@ val sonatypeReleaseUrl: Provider<String> = isReleaseVersion.map { isRelease ->
 }
 
 signing {
+   useGpgCmd()
    if (signingKey.isPresent && signingPassword.isPresent) {
       useInMemoryPgpKeys(signingKey.get(), signingPassword.get())
-   } else {
-      useGpgCmd()
    }
 }
 
