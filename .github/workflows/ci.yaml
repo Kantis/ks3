@@ -28,9 +28,10 @@ permissions:
 jobs:
 
    linux-tests:
-      name: "./gradlew ${{ matrix.target }} @ ${{ runner.os }}"
+      name: "./gradlew ${{ matrix.target }} @ ${{ matrix.os }}"
       strategy:
          matrix:
+            os: [ ubuntu-latest ]
             target:
                - jvmTest
                - jsIrTest
@@ -42,14 +43,15 @@ jobs:
                # - jsIrNodeTest
       uses: ./.github/workflows/gradle_task.yml
       with:
-         runs-on: ubuntu-latest
+         runs-on: ${{ matrix.os }}
          gradle-task: ${{ matrix.target }} --stacktrace --info
 
 
    macos-tests:
-      name: "./gradlew ${{ matrix.target }} @ ${{ runner.os }}"
+      name: "./gradlew ${{ matrix.target }} @ ${{ matrix.os }}"
       strategy:
          matrix:
+            os: [ macos-11 ]
             target:
                - iosSimulatorArm64Test
                - iosX64Test
@@ -61,19 +63,20 @@ jobs:
                - watchosX64Test
       uses: ./.github/workflows/gradle_task.yml
       with:
-         runs-on: macos-11
+         runs-on: ${{ matrix.os }}
          gradle-task: ${{ matrix.target }} --stacktrace --info
 
 
    windows-tests:
-      name: "./gradlew ${{ matrix.target }} @ ${{ runner.os }}"
+      name: "./gradlew ${{ matrix.target }} @ ${{ matrix.os }}"
       strategy:
          matrix:
+            os: [ windows-latest ]
             target:
                - mingwX64Test
       uses: ./.github/workflows/gradle_task.yml
       with:
-         runs-on: windows-latest
+         runs-on: ${{ matrix.os }}
          gradle-task: ${{ matrix.target }} --stacktrace --info
 
 
