@@ -33,5 +33,12 @@ abstract class Ks3BuildLogicSettings @Inject constructor(
 
    companion object {
       const val EXTENSION_NAME = "ks3BuildLogicSettings"
+
+      /**
+       * Regex for matching the release version.
+       *
+       * If a version does not match this code it should be treated as a SNAPSHOT version.
+       */
+      val releaseVersionRegex = Regex("\\d\\+.\\d\\+.\\d+")
    }
 }
