@@ -7,7 +7,9 @@ kotlin {
    sourceSets {
       val commonMain by getting {
          dependencies {
+            implementation(platform(libs.kotlin.bom))
             implementation(platform(libs.kotlinxSerialization.bom))
+            implementation(platform(libs.okio.bom))
 
             implementation(libs.kotest.property)
             implementation(libs.kotest.frameworkEngine)
@@ -15,7 +17,7 @@ kotlin {
             implementation(libs.kotlinxSerialization.core)
             implementation(libs.kotlinxSerialization.json)
             implementation(libs.kotlinxSerialization.jsonOkio)
-            implementation(libs.okio)
+            implementation(libs.okio.core)
          }
       }
    }

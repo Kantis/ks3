@@ -16,9 +16,9 @@ kotlin {
 
       val commonTest by getting {
          dependencies {
-            implementation(kotlin("test"))
-
             implementation(platform(libs.kotest.bom))
+
+            implementation(kotlin("test"))
 
             implementation(libs.kotest.frameworkEngine)
             implementation(libs.kotest.assertionsCore)

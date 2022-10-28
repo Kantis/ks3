@@ -15,8 +15,6 @@ gradlePlugin-gitVersioning = "6.3.5"
 
 [libraries]
 
-okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
-
 ## Kotlin stdlib ##
 kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
 
@@ -48,6 +46,11 @@ kotest-wiremockExtension = { module = "io.kotest.extensions:kotest-extensions-wi
 
 kotestPlugin-embeddedCompiler = { module = "io.kotest:kotest-framework-multiplatform-plugin-embeddable-compiler" }
 kotestPlugin-multiplatform = { module = "io.kotest:kotest-framework-multiplatform-plugin-gradle" }
+
+
+## Okio ##
+okio-bom = { module = "com.squareup.okio:okio-bom", version.ref = "okio" }
+okio-core = { module = "com.squareup.okio:okio" }
 
 
 ### Gradle plugins ###
