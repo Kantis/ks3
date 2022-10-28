@@ -3,13 +3,15 @@ name: publish
 on:
    push:
       paths-ignore:
-         - 'doc/**'
-         - 'documentation/**'
-         - '*.md'
-         - '*.yml'
+         - "doc/**"
+         - "documentation/**"
+         - "*.md"
+         - "*.yml"
       branches:
-         - main
-         - release/*
+         - "main"
+         - "release/**"
+      tags:
+         - "v**"
 
    workflow_dispatch:
 
