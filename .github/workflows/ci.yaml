@@ -27,19 +27,60 @@ permissions:
 
 jobs:
 
-   tests:
+   check:
+      # Run 'check' task for each OS.
+      # Kotlin/Native is disabled because it's slow - native tests are run individually below.
       strategy:
          matrix:
-            # test Kotlin/Native for each OS
             os: [ ubuntu-latest, macos-11, windows-latest ]
-            args: [ "-Pks3_enableKotlinNative=true -Pks3_enableKotlinJvm=false -Pks3_enableKotlinJs=false" ]
-            include:
-               # only test Kotlin/JVM, Kotlin/JS on Linux
-               -  os: ubuntu-latest
-                  args: "-Pks3_enableKotlinNative=false -Pks3_enableKotlinJvm=true -Pks3_enableKotlinJs=false"
-               -  os: ubuntu-latest
-                  args: "-Pks3_enableKotlinNative=false -Pks3_enableKotlinJvm=false -Pks3_enableKotlinJs=true"
       uses: ./.github/workflows/gradle_task.yml
       with:
          runs-on: ${{ matrix.os }}
-         gradle-task: check --stacktrace --info ${{ matrix.args }}
+         gradle-task: check --stacktrace --info -Pks3_enableKotlinNative=false
+
+   linux-tests:
+      needs: check
+      strategy:
+         matrix:
+            target:
+               - jvmTest
+               - jsIrTest
+               - linuxX64Test
+               # - jsLegacyBrowserTest
+               # - jsLegacyNodeTest
+               # - jsLegacyTest
+               # - jsIrBrowserTest
+               # - jsIrNodeTest
+      uses: ./.github/workflows/gradle_task.yml
+      with:
+         runs-on: ubuntu-latest
+         gradle-task: ${{ matrix.target }} --stacktrace --info
+
+   macos-tests:
+      needs: check
+      strategy:
+         matrix:
+            target:
+               - iosSimulatorArm64Test
+               - iosX64Test
+               - macosArm64Test
+               - macosX64Test
+               - tvosSimulatorArm64Test
+               - tvosX64Test
+               - watchosSimulatorArm64Test
+               - watchosX64Test
+      uses: ./.github/workflows/gradle_task.yml
+      with:
+         runs-on: macos-11
+         gradle-task: ${{ matrix.target }} --stacktrace --info
+
+   windows-tests:
+      needs: check
+      strategy:
+         matrix:
+            target:
+               - mingwX64Test
+      uses: ./.github/workflows/gradle_task.yml
+      with:
+         runs-on: windows-latest
+         gradle-task: ${{ matrix.target }} --stacktrace --info
