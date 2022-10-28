@@ -77,8 +77,6 @@ jobs:
 
    linux-publish:
       needs: linux-tests
-         - macos-tests
-         - windows-tests
       uses: ./.github/workflows/gradle_task.yml
       with:
          gradle-task: publishAllPublicationsToSonatypeReleaseRepository --stacktrace --info
