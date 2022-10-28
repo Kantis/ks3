@@ -1,5 +1,7 @@
 package ks3.conventions.publishing
 
+import ks3.conventions.Ks3BuildLogicSettings
+
 plugins {
    signing
    `maven-publish`
@@ -14,23 +16,22 @@ val javadocJarStub by tasks.registering(Jar::class) {
 // can be set with environment variables: ORG_GRADLE_PROJECT_ossrhUsername and ORG_GRADLE_PROJECT_ossrhPassword
 val ossrhUsername: Provider<String> = providers.gradleProperty("ossrhUsername")
 val ossrhPassword: Provider<String> = providers.gradleProperty("ossrhPassword")
-val signingKey: String? by project
-val signingPassword: String? by project
+val signingKey: Provider<String> = providers.gradleProperty("signingKey")
+val signingPassword: Provider<String> = providers.gradleProperty("signingPassword")
 
+val isReleaseVersion = provider { version.toString().matches(Ks3BuildLogicSettings.releaseVersionRegex) }
 
-val isSnapshotVersion = provider { version.toString().endsWith("SNAPSHOT") }
-
-val sonatypeReleaseUrl: Provider<String> = isSnapshotVersion.map { isSnapshot ->
-   if (isSnapshot) {
-      "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-   } else {
+val sonatypeReleaseUrl: Provider<String> = isReleaseVersion.map { isRelease ->
+   if (isRelease) {
       "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+   } else {
+      "https://s01.oss.sonatype.org/content/repositories/snapshots/"
    }
 }
 
 signing {
-   if (signingKey != null && signingPassword != null) {
-      useInMemoryPgpKeys(signingKey, signingPassword)
+   if (signingKey.isPresent && signingPassword.isPresent) {
+      useInMemoryPgpKeys(signingKey.get(), signingPassword.get())
    } else {
       useGpgCmd()
    }
@@ -42,11 +43,10 @@ afterEvaluate {
    // too early, before all the publications are added. Use .all { }, not .configureEach { },
    // otherwise the signing plugin doesn't create the tasks soon enough.
 
-   if (ossrhUsername.isPresent && ossrhPassword.isPresent) {
-
+   if (signingKey.isPresent && signingPassword.isPresent) {
       publishing.publications.all publication@{
          logger.lifecycle("configuring signature for publication ${this@publication.name}")
-         // closureOf: https://github.com/gradle/gradle/issues/19903
+         // closureOf is a Gradle Kotlin DSL workaround: https://github.com/gradle/gradle/issues/19903
          signing.sign(closureOf<SignOperation> { signing.sign(this@publication) })
       }
    }
@@ -111,7 +111,13 @@ tasks.withType<AbstractPublishToMaven>().configureEach {
    dependsOn(tasks.withType<Sign>())
    mustRunAfter(tasks.withType<Sign>())
 
+   // fix compatibility issues with Gradle Configuration Cache
+   val task = this
+   val publication: MavenPublication? = task.publication
+
    doLast {
-      logger.lifecycle("[task: ${this@configureEach.path}] ${publication.groupId}:${publication.artifactId}:${publication.version}")
+      if (publication != null) {
+         logger.lifecycle("[task: ${task.path}] ${publication.groupId}:${publication.artifactId}:${publication.version}")
+      }
    }
 }

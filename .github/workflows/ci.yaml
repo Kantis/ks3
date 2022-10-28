@@ -2,20 +2,22 @@ name: build
 
 on:
    pull_request:
+
    push:
       paths-ignore:
-         - 'doc/**'
-         - 'documentation/**'
-         - '*.md'
-         - '*.yml'
+         - "doc/**"
+         - "documentation/**"
+         - "*.md"
+         - "*.yml"
       branches:
-         - main
-         - release/*
+         - "main"
+         - "release/*"
+
    workflow_dispatch:
 
 
 concurrency:
-   group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+   group: "${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
    cancel-in-progress: true
 
 
@@ -25,131 +27,66 @@ permissions:
 
 jobs:
 
-   linux:
-      if: github.repository == 'Kantis/ks3'
-      runs-on: ubuntu-latest
+   linux-tests:
+      name: "./gradlew ${{ matrix.target }} @ ${{ runner.os }}"
       strategy:
-         fail-fast: false
          matrix:
             target:
                - jvmTest
                - jsIrTest
                - linuxX64Test
-      steps:
-         -  name: Checkout the repo
-            uses: actions/checkout@v3
-
-         -  name: Setup JDK
-            uses: actions/setup-java@v3
-            with:
-               distribution: 'temurin'
-               java-version: '11'
-
-         -  uses: gradle/gradle-build-action@v2
-
-         -  id: cache-kotlin-konan
-            uses: actions/cache@v3
-            with:
-               path: ~/.konan
-               key: ${{ runner.os }}-kotlin-konan
-
-         -  name: Run tests
-            run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
-
-         -  name: Upload build reports
-            if: failure()
-            uses: actions/upload-artifact@v3
-            with:
-               name: build-report-${{ runner.os }}-${{ matrix.target }}
-               path: "**/build/reports/"
-               if-no-files-found: ignore
+               # - jsLegacyBrowserTest
+               # - jsLegacyNodeTest
+               # - jsLegacyTest
+               # - jsIrBrowserTest
+               # - jsIrNodeTest
+      uses: ./.github/workflows/gradle_task.yml
+      with:
+         runs-on: ubuntu-latest
+         gradle-task: ${{ matrix.target }} --stacktrace --info
 
 
-   macos:
-      if: github.repository == 'Kantis/ks3'
-      runs-on: macos-11
+   macos-tests:
+      name: "./gradlew ${{ matrix.target }} @ ${{ runner.os }}"
       strategy:
          matrix:
             target:
-               - macosX64Test
-               - macosArm64Test
-               - iosX64Test
                - iosSimulatorArm64Test
-               - iosArm64TestKlibrary
-#               - iosArm32TestKlibrary
+               - iosX64Test
+               - macosArm64Test
+               - macosX64Test
+               - tvosSimulatorArm64Test
                - tvosX64Test
-               - tvosArm64TestKlibrary
-               - watchosArm32TestKlibrary
-               - watchosArm64TestKlibrary
-               - watchosX86Test
+               - watchosSimulatorArm64Test
                - watchosX64Test
-      steps:
-         -  name: Checkout the repo
-            uses: actions/checkout@v3
+      uses: ./.github/workflows/gradle_task.yml
+      with:
+         runs-on: macos-11
+         gradle-task: ${{ matrix.target }} --stacktrace --info
 
-         -  name: Setup JDK
-            uses: actions/setup-java@v3
-            with:
-               distribution: 'temurin'
-               java-version: '11'
 
-         -  uses: gradle/gradle-build-action@v2
-
-         -  id: cache-kotlin-konan
-            uses: actions/cache@v3
-            with:
-               path: ~/.konan
-               key: ${{ runner.os }}-kotlin-konan
-
-         -  name: Run tests
-            run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
-
-         -  name: Upload build reports
-            if: failure()
-            uses: actions/upload-artifact@v3
-            with:
-               name: build-report-${{ runner.os }}-${{ matrix.target }}
-               path: "**/build/reports/"
-               if-no-files-found: ignore
-
-   windows:
-      if: github.repository == 'Kantis/ks3'
-      runs-on: windows-latest
+   windows-tests:
+      name: "./gradlew ${{ matrix.target }} @ ${{ runner.os }}"
       strategy:
          matrix:
             target:
                - mingwX64Test
-      steps:
-         -  name: Checkout the repo
-            uses: actions/checkout@v3
-
-         -  name: Setup JDK
-            uses: actions/setup-java@v3
-            with:
-               distribution: 'temurin'
-               java-version: '11'
-
-         -  uses: gradle/gradle-build-action@v2
-
-         -  id: cache-kotlin-konan
-            uses: actions/cache@v3
-            with:
-               path: ~/.konan
-               key: ${{ runner.os }}-kotlin-konan
-
-         -  name: Run tests
-            run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
-
-         -  name: Upload build reports
-            if: failure()
-            uses: actions/upload-artifact@v3
-            with:
-               name: build-report-${{ runner.os }}-${{ matrix.target }}
-               path: "**/build/reports/"
-               if-no-files-found: ignore
+      uses: ./.github/workflows/gradle_task.yml
+      with:
+         runs-on: windows-latest
+         gradle-task: ${{ matrix.target }} --stacktrace --info
 
 
-env:
-   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJvm: true
-   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: true
-   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: true
+   gradle-check:
+      name: "./gradlew check @ ${{ matrix.os }}"
+      needs: [ linux-tests, macos-tests, windows-tests ]
+      # Run 'check' task for each OS.
+      # To improve speed, only enable Kotlin/JVM (Kotlin/Native is particularly slow).
+      # The other targets are tested individually above
+      strategy:
+         matrix:
+            os: [ ubuntu-latest, macos-11, windows-latest ]
+      uses: ./.github/workflows/gradle_task.yml
+      with:
+         runs-on: ${{ matrix.os }}
+         gradle-task: check --stacktrace --info -Pks3_enableKotlinNative=false -Pks3_enableKotlinJs=false

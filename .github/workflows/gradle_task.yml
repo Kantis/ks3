@@ -1,0 +1,68 @@
+name: Gradle Task
+run-name: "Gradle Task ${{ inputs.gradle-task }} @ ${{ inputs.runs-on }}"
+
+# Reusable Workflow for running a Gradle task
+
+on:
+   workflow_call:
+      inputs:
+         gradle-task:
+            description: "The Gradle task to run, including any flags"
+            required: true
+            type: string
+         runs-on:
+            description: "OSes to run the task on"
+            required: true
+            type: string
+
+
+concurrency:
+   group: "${{ github.workflow }} ${{ join(inputs.*) }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}"
+   cancel-in-progress: true
+
+
+permissions:
+   contents: read
+
+
+jobs:
+
+   run-task:
+      runs-on: ${{ inputs.runs-on }}
+      name: "./gradlew ${{ inputs.gradle-task}} @ ${{ inputs.runs-on }}"
+      steps:
+         -  name: Checkout the repo
+            uses: actions/checkout@v3
+
+         -  name: Setup JDK
+            uses: actions/setup-java@v3
+            with:
+               distribution: "temurin"
+               java-version: "11"
+
+         -  uses: gradle/gradle-build-action@v2
+            with:
+               gradle-home-cache-cleanup: true
+
+         -  id: cache-kotlin-konan
+            uses: actions/cache@v3
+            with:
+               path: ~/.konan
+               key: ${{ runner.os }}-kotlin-konan
+
+         -  name: Run ${{ inputs.gradle-task }}
+            run: ./gradlew ${{ inputs.gradle-task }}
+
+         -  name: Upload build reports
+            if: failure()
+            uses: actions/upload-artifact@v3
+            with:
+               name: build-report-${{ runner.os }}-${{ inputs.gradle-task }}
+               path: "**/build/reports/"
+               if-no-files-found: ignore
+
+
+env:
+   ORG_GRADLE_PROJECT_ks3_enableKotlinJvm: true
+   ORG_GRADLE_PROJECT_ks3_enableKotlinJs: true
+   ORG_GRADLE_PROJECT_ks3_enableKotlinNative: true

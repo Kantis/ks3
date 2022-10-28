@@ -16,22 +16,27 @@ kotlin {
 
       val commonTest by getting {
          dependencies {
-            implementation(kotlin("test"))
-
             implementation(platform(libs.kotest.bom))
+            implementation(platform(libs.okio.bom))
+
+            implementation(kotlin("test"))
 
             implementation(libs.kotest.frameworkEngine)
             implementation(libs.kotest.assertionsCore)
             implementation(libs.kotest.assertionsJson)
             implementation(libs.kotest.property)
 
+            implementation(libs.okio.core)
+
             implementation(libs.kotlinxSerialization.json)
          }
       }
 
-      val jvmTest by getting {
-         dependencies {
-            implementation(libs.kotest.runnerJunit5)
+      if (ks3Settings.enableKotlinJvm.get()) {
+         val jvmTest by getting {
+            dependencies {
+               implementation(libs.kotest.runnerJunit5)
+            }
          }
       }
    }
