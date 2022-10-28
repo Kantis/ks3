@@ -28,6 +28,7 @@ permissions:
 jobs:
 
    linux-tests:
+      name: "./gradlew ${{ matrix.target }} @ ${{ runner.os }}"
       strategy:
          matrix:
             target:
@@ -46,6 +47,7 @@ jobs:
 
 
    macos-tests:
+      name: "./gradlew ${{ matrix.target }} @ ${{ runner.os }}"
       strategy:
          matrix:
             target:
@@ -64,6 +66,7 @@ jobs:
 
 
    windows-tests:
+      name: "./gradlew ${{ matrix.target }} @ ${{ runner.os }}"
       strategy:
          matrix:
             target:
@@ -75,7 +78,7 @@ jobs:
 
 
    gradle-check:
-      name: "./gradlew check"
+      name: "./gradlew check @ ${{ matrix.os }}"
       needs: [ linux-tests, macos-tests, windows-tests ]
       # Run 'check' task for each OS.
       # To improve speed, only enable Kotlin/JVM (Kotlin/Native is particularly slow).
