@@ -45,12 +45,7 @@ jobs:
                   args: "-Pks3_enableKotlinJvm=false -Pks3_enableKotlinNative=true  -Pks3_enableKotlinJs=false"
 
       uses: ./.github/workflows/gradle_task.yml
+      secrets: inherit
       with:
          gradle-task: publishAllPublicationsToSonatypeReleaseRepository ${{ matrix.args }} --no-parallel --stacktrace --info
          runs-on: ${{ matrix.os }}
-
-env:
-   ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
-   ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
-   ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
-   ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
