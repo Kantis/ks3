@@ -1,55 +1,50 @@
 name: release
 
-on:
-   workflow_dispatch:
-
-   workflow_run:
-      workflows: [ "build" ]
-      branches: [ main ]
-      types:
-         - completed
-
+#on:
+#   workflow_dispatch:
+#
+#   workflow_run:
+#      workflows: [ "build" ]
+#      branches: [ main ]
+#      types:
+#         - completed
 
 jobs:
 
-   release:
-      runs-on: ubuntu-latest
-      steps:
-
-         -  name: Checkout the repo
-            uses: actions/checkout@v3
-            with:
-               # git-versioning plugin requires all history, and HEAD (so it can find and compare tags)
-               fetch-depth: 0
-               ref: ${{ github.event.pull_request.head.sha }}
-
-         -  name: Setup JDK
-            uses: actions/setup-java@v3
-            with:
-               distribution: 'temurin'
-               java-version: '11'
-
-         -  uses: gradle/gradle-build-action@v2
-            with:
-               gradle-home-cache-cleanup: true
-
-         -  id: cache-kotlin-konan
-            uses: actions/cache@v3
-            with:
-               path: ~/.konan
-               key: ${{ runner.os }}-kotlin-konan
-
-         -  name: Publish Sonatype
-            # unset GITHUB_ACTIONS (else git-versioning-plugin doesn't detect tags)
-            # disable parallel (Sonatype doesn't like it)
-            run: >
-               unset GITHUB_ACTIONS
-
-               ./gradlew publishAllPublicationsToSonatypeReleaseRepository
-               --stacktrace
-               --info
-               --no-parallel
-
+#   release:
+#      if: github.event.workflow_run.conclusion == 'success'
+#      runs-on: ubuntu-latest
+#      steps:
+#
+#         -  name: Checkout the repo
+#            uses: actions/checkout@v3
+#            with:
+#               ref: ${{ github.event.pull_request.head.sha }}
+#
+#         -  name: Setup JDK
+#            uses: actions/setup-java@v3
+#            with:
+#               distribution: 'temurin'
+#               java-version: '11'
+#
+#         -  uses: gradle/gradle-build-action@v2
+#            with:
+#               gradle-home-cache-cleanup: true
+#
+#         -  id: cache-kotlin-konan
+#            uses: actions/cache@v3
+#            with:
+#               path: ~/.konan
+#               key: ${{ runner.os }}-kotlin-konan
+#
+#         -  name: Publish Sonatype
+#            # disable parallel (Sonatype doesn't like it)
+#            run: >
+#               ./gradlew publishAllPublicationsToSonatypeReleaseRepository
+#               --stacktrace
+#               --info
+#               --no-parallel
+#
 
 
 env:

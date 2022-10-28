@@ -25,51 +25,19 @@ permissions:
 
 jobs:
 
-   linux:
-      if: github.repository == 'Kantis/ks3'
-      runs-on: ubuntu-latest
+   linux-tests:
       strategy:
-         fail-fast: false
          matrix:
             target:
                - jvmTest
                - jsIrTest
                - linuxX64Test
-      steps:
-         -  name: Checkout the repo
-            uses: actions/checkout@v3
+      uses: ./.github/workflows/reusable/gradle_task.yml
+      with:
+         runs-on: ubuntu-latest
+         gradle-task: ${{ matrix.target }} --stacktrace --info
 
-         -  name: Setup JDK
-            uses: actions/setup-java@v3
-            with:
-               distribution: 'temurin'
-               java-version: '11'
-
-         -  uses: gradle/gradle-build-action@v2
-            with:
-               gradle-home-cache-cleanup: true
-
-         -  id: cache-kotlin-konan
-            uses: actions/cache@v3
-            with:
-               path: ~/.konan
-               key: ${{ runner.os }}-kotlin-konan
-
-         -  name: Run tests
-            run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
-
-         -  name: Upload build reports
-            if: failure()
-            uses: actions/upload-artifact@v3
-            with:
-               name: build-report-${{ runner.os }}-${{ matrix.target }}
-               path: "**/build/reports/"
-               if-no-files-found: ignore
-
-
-   macos:
-      if: github.repository == 'Kantis/ks3'
-      runs-on: macos-11
+   macos-tests:
       strategy:
          matrix:
             target:
@@ -78,81 +46,50 @@ jobs:
                - iosX64Test
                - iosSimulatorArm64Test
                - iosArm64TestKlibrary
-#               - iosArm32TestKlibrary
+               # - iosArm32TestKlibrary
                - tvosX64Test
                - tvosArm64TestKlibrary
                - watchosArm32TestKlibrary
                - watchosArm64TestKlibrary
                - watchosX86Test
                - watchosX64Test
-      steps:
-         -  name: Checkout the repo
-            uses: actions/checkout@v3
+      uses: ./.github/workflows/reusable/gradle_task.yml
+      with:
+         runs-on: macos-11
+         gradle-task: ${{ matrix.target }} --stacktrace --info
 
-         -  name: Setup JDK
-            uses: actions/setup-java@v3
-            with:
-               distribution: 'temurin'
-               java-version: '11'
-
-         -  uses: gradle/gradle-build-action@v2
-            with:
-               gradle-home-cache-cleanup: true
-
-         -  id: cache-kotlin-konan
-            uses: actions/cache@v3
-            with:
-               path: ~/.konan
-               key: ${{ runner.os }}-kotlin-konan
-
-         -  name: Run tests
-            run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
-
-         -  name: Upload build reports
-            if: failure()
-            uses: actions/upload-artifact@v3
-            with:
-               name: build-report-${{ runner.os }}-${{ matrix.target }}
-               path: "**/build/reports/"
-               if-no-files-found: ignore
-
-   windows:
-      if: github.repository == 'Kantis/ks3'
-      runs-on: windows-latest
+   windows-tests:
       strategy:
          matrix:
             target:
                - mingwX64Test
-      steps:
-         -  name: Checkout the repo
-            uses: actions/checkout@v3
+      uses: ./.github/workflows/reusable/gradle_task.yml
+      with:
+         runs-on: windows-latest
+         gradle-task: ${{ matrix.target }} --stacktrace --info
 
-         -  name: Setup JDK
-            uses: actions/setup-java@v3
-            with:
-               distribution: 'temurin'
-               java-version: '11'
+   linux-publish:
+      needs: linux-tests
+         - macos-tests
+         - windows-tests
+      uses: ./.github/workflows/reusable/gradle_task.yml
+      with:
+         gradle-task: publishAllPublicationsToSonatypeReleaseRepository --stacktrace --info
+         runs-on: ubuntu-latest
 
-         -  uses: gradle/gradle-build-action@v2
-            with:
-               gradle-home-cache-cleanup: true
+   macos-publish:
+      needs: macos-tests
+      uses: ./.github/workflows/reusable/gradle_task.yml
+      with:
+         gradle-task: publishAllPublicationsToSonatypeReleaseRepository --stacktrace --info
+         runs-on: macos-11
 
-         -  id: cache-kotlin-konan
-            uses: actions/cache@v3
-            with:
-               path: ~/.konan
-               key: ${{ runner.os }}-kotlin-konan
-
-         -  name: Run tests
-            run: ./gradlew ${{ matrix.target }} --scan --stacktrace --info
-
-         -  name: Upload build reports
-            if: failure()
-            uses: actions/upload-artifact@v3
-            with:
-               name: build-report-${{ runner.os }}-${{ matrix.target }}
-               path: "**/build/reports/"
-               if-no-files-found: ignore
+   windows-publish:
+      needs: windows-tests
+      uses: ./.github/workflows/reusable/gradle_task.yml
+      with:
+         gradle-task: publishAllPublicationsToSonatypeReleaseRepository --stacktrace --info
+         runs-on: windows-latest
 
 
 env:

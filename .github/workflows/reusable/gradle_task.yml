@@ -1,0 +1,69 @@
+name: Gradle Task
+
+# Reusable Workflow for running a Gradle task
+
+on:
+   workflow_dispatch:
+      inputs:
+         gradle-task:
+            description: "The Gradle task to run, including any flags"
+            required: true
+            type: string
+         runs-on:
+            description: "OSes to run the task on"
+            required: true
+            type: string
+
+
+concurrency:
+   group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+   cancel-in-progress: true
+
+
+permissions:
+   contents: read
+
+
+jobs:
+
+   run-task:
+      strategy:
+         matrix:
+            os: ${{ fromJson(inputs.runs-on) }}
+      runs-on: ${{ matrix.os }}
+      steps:
+         -  name: Checkout the repo
+            uses: actions/checkout@v3
+
+         -  name: Setup JDK
+            uses: actions/setup-java@v3
+            with:
+               distribution: 'temurin'
+               java-version: '11'
+
+         -  uses: gradle/gradle-build-action@v2
+            with:
+               gradle-home-cache-cleanup: true
+
+         -  id: cache-kotlin-konan
+            uses: actions/cache@v3
+            with:
+               path: ~/.konan
+               key: ${{ runner.os }}-kotlin-konan
+
+         -  name: Run ${{ inputs.gradle-task }}
+            run: ./gradlew ${{ inputs.gradle-task }}
+
+         -  name: Upload build reports
+            if: failure()
+            uses: actions/upload-artifact@v3
+            with:
+               name: build-report-${{ runner.os }}-${{ inputs.gradle-task }}
+               path: "**/build/reports/"
+               if-no-files-found: ignore
+
+
+env:
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJvm: true
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: true
+   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: true
