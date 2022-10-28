@@ -17,6 +17,7 @@ kotlin {
       val commonTest by getting {
          dependencies {
             implementation(platform(libs.kotest.bom))
+            implementation(platform(libs.okio.bom))
 
             implementation(kotlin("test"))
 
@@ -24,6 +25,8 @@ kotlin {
             implementation(libs.kotest.assertionsCore)
             implementation(libs.kotest.assertionsJson)
             implementation(libs.kotest.property)
+
+            implementation(libs.okio.core)
 
             implementation(libs.kotlinxSerialization.json)
          }
