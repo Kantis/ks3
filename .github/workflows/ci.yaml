@@ -76,7 +76,7 @@ jobs:
 
    gradle-check:
       needs: [ linux-tests, macos-tests, windows-tests ]
-      name: "./gradlew check"
+      name: "./gradlew check @ ${{ matrix.os }}"
       # Run 'check' task for each OS.
       # To improve speed, only enable Kotlin/JVM (Kotlin/Native is particularly slow).
       # The other targets are tested individually below.
