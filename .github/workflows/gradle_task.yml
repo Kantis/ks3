@@ -3,7 +3,7 @@ name: Gradle Task
 # Reusable Workflow for running a Gradle task
 
 on:
-   workflow_dispatch:
+   workflow_call:
       inputs:
          gradle-task:
             description: "The Gradle task to run, including any flags"
