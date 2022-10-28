@@ -74,6 +74,7 @@ jobs:
          gradle-task: ${{ matrix.target }} --stacktrace --info
 
    linux-publish:
+      if: github.repository == 'Kantis/ks3'
       needs: linux-tests
       uses: ./.github/workflows/gradle_task.yml
       with:
@@ -81,6 +82,7 @@ jobs:
          runs-on: ubuntu-latest
 
    macos-publish:
+      if: github.repository == 'Kantis/ks3'
       needs: macos-tests
       uses: ./.github/workflows/gradle_task.yml
       with:
@@ -88,6 +90,7 @@ jobs:
          runs-on: macos-11
 
    windows-publish:
+      if: github.repository == 'Kantis/ks3'
       needs: windows-tests
       uses: ./.github/workflows/gradle_task.yml
       with:
