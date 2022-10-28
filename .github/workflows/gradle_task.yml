@@ -29,7 +29,7 @@ jobs:
    run-task:
       strategy:
          matrix:
-            os: ${{ fromJson(inputs.runs-on) }}
+            os: ${{ inputs.runs-on }}
       runs-on: ${{ matrix.os }}
       steps:
          -  name: Checkout the repo
