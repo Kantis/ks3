@@ -46,6 +46,8 @@ jobs:
                java-version: '11'
 
          -  uses: gradle/gradle-build-action@v2
+            with:
+               gradle-home-cache-cleanup: true
 
          -  id: cache-kotlin-konan
             uses: actions/cache@v3
@@ -94,6 +96,8 @@ jobs:
                java-version: '11'
 
          -  uses: gradle/gradle-build-action@v2
+            with:
+               gradle-home-cache-cleanup: true
 
          -  id: cache-kotlin-konan
             uses: actions/cache@v3
@@ -130,6 +134,8 @@ jobs:
                java-version: '11'
 
          -  uses: gradle/gradle-build-action@v2
+            with:
+               gradle-home-cache-cleanup: true
 
          -  id: cache-kotlin-konan
             uses: actions/cache@v3
