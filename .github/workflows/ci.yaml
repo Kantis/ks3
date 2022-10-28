@@ -32,7 +32,7 @@ jobs:
          matrix:
             # test Kotlin/Native for each OS
             os: [ ubuntu-latest, macos-11, windows-latest ]
-            args: "-Pks3_enableKotlinNative=true -Pks3_enableKotlinJvm=false -Pks3_enableKotlinJs=false"
+            args: [ "-Pks3_enableKotlinNative=true -Pks3_enableKotlinJvm=false -Pks3_enableKotlinJs=false" ]
             include:
                # only test Kotlin/JVM, Kotlin/JS on Linux
                -  os: ubuntu-latest
