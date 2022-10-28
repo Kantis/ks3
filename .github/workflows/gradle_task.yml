@@ -1,5 +1,5 @@
 name: Gradle Task
-run-name: "${{ inputs.runs-on }} > ./gradlew ${{ inputs.gradle-task }}"
+run-name: "Gradle Task ${{ inputs.gradle-task }} @ ${{ inputs.runs-on }}"
 
 # Reusable Workflow for running a Gradle task
 
@@ -29,6 +29,7 @@ jobs:
 
    run-task:
       runs-on: ${{ inputs.runs-on }}
+      name: "./gradlew ${{ inputs.gradle-task}} @ ${{ inputs.runs-on }}"
       steps:
          -  name: Checkout the repo
             uses: actions/checkout@v3
@@ -36,8 +37,8 @@ jobs:
          -  name: Setup JDK
             uses: actions/setup-java@v3
             with:
-               distribution: 'temurin'
-               java-version: '11'
+               distribution: "temurin"
+               java-version: "11"
 
          -  uses: gradle/gradle-build-action@v2
             with:
