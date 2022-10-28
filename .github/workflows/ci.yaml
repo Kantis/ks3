@@ -27,21 +27,7 @@ permissions:
 
 jobs:
 
-   gradle-check:
-      name: "./gradlew check"
-      # Run 'check' task for each OS.
-      # To improve speed, only enable Kotlin/JVM (Kotlin/Native is particularly slow).
-      # The other targets are tested individually below.
-      strategy:
-         matrix:
-            os: [ ubuntu-latest, macos-11, windows-latest ]
-      uses: ./.github/workflows/gradle_task.yml
-      with:
-         runs-on: ${{ matrix.os }}
-         gradle-task: check --stacktrace --info -Pks3_enableKotlinNative=false -Pks3_enableKotlinJs=false
-
    linux-tests:
-      needs: gradle-check
       strategy:
          matrix:
             target:
@@ -59,7 +45,6 @@ jobs:
          gradle-task: ${{ matrix.target }} --stacktrace --info
 
    macos-tests:
-      needs: gradle-check
       strategy:
          matrix:
             target:
@@ -77,7 +62,6 @@ jobs:
          gradle-task: ${{ matrix.target }} --stacktrace --info
 
    windows-tests:
-      needs: gradle-check
       strategy:
          matrix:
             target:
@@ -86,3 +70,17 @@ jobs:
       with:
          runs-on: windows-latest
          gradle-task: ${{ matrix.target }} --stacktrace --info
+
+   gradle-check:
+      needs: [ linux-tests, macos-tests, windows-tests ]
+      name: "./gradlew check"
+      # Run 'check' task for each OS.
+      # To improve speed, only enable Kotlin/JVM (Kotlin/Native is particularly slow).
+      # The other targets are tested individually below.
+      strategy:
+         matrix:
+            os: [ ubuntu-latest, macos-11, windows-latest ]
+      uses: ./.github/workflows/gradle_task.yml
+      with:
+         runs-on: ${{ matrix.os }}
+         gradle-task: check --stacktrace --info -Pks3_enableKotlinNative=false -Pks3_enableKotlinJs=false
