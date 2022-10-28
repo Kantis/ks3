@@ -32,9 +32,11 @@ kotlin {
          }
       }
 
-      val jvmTest by getting {
-         dependencies {
-            implementation(libs.kotest.runnerJunit5)
+      if (ks3Settings.enableKotlinJvm.get()) {
+         val jvmTest by getting {
+            dependencies {
+               implementation(libs.kotest.runnerJunit5)
+            }
          }
       }
    }

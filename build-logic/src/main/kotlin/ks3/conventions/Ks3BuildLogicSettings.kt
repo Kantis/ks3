@@ -32,7 +32,7 @@ abstract class Ks3BuildLogicSettings @Inject constructor(
       providers.gradleProperty("ks3_$name").map { it.toBoolean() }.orElse(default)
 
    companion object {
-      const val EXTENSION_NAME = "ks3BuildLogicSettings"
+      const val EXTENSION_NAME = "ks3Settings"
 
       /**
        * Regex for matching the release version.
