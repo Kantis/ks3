@@ -51,26 +51,3 @@ jobs:
       with:
          gradle-task: publishAllPublicationsToSonatypeReleaseRepository ${{ matrix.args }} --no-parallel --stacktrace --info
          runs-on: ${{ matrix.os }}
-
-
-   publishKotlinMultiplatformPublicationToSonatypeReleaseRepository
-
-   publishJsPublicationToSonatypeReleaseRepository
-   publishJvmPublicationToSonatypeReleaseRepository
-   publishLinuxX64PublicationToSonatypeReleaseRepository
-
-   publishMingwX64PublicationToSonatypeReleaseRepository
-
-   publishIosArm64PublicationToSonatypeReleaseRepository
-   publishIosSimulatorArm64PublicationToSonatypeReleaseRepository
-   publishIosX64PublicationToSonatypeReleaseRepository
-   publishMacosArm64PublicationToSonatypeReleaseRepository
-   publishMacosX64PublicationToSonatypeReleaseRepository
-   publishTvosArm64PublicationToSonatypeReleaseRepository
-
-   publishTvosSimulatorArm64PublicationToSonatypeReleaseRepository
-   publishTvosX64PublicationToSonatypeReleaseRepository
-   publishWatchosArm32PublicationToSonatypeReleaseRepository
-   publishWatchosArm64PublicationToSonatypeReleaseRepository
-   publishWatchosSimulatorArm64PublicationToSonatypeReleaseRepository
-   publishWatchosX64PublicationToSonatypeReleaseRepository
