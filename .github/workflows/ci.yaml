@@ -27,48 +27,16 @@ permissions:
 
 jobs:
 
-   linux-tests:
-      strategy:
-         matrix:
-            target:
-               - jvmTest
-               - jsIrTest
-               - linuxX64Test
+   tests:
+      matrix:
+         os:
+            - ubuntu-latest
+            - macos-11
+            - windows-latest
       uses: ./.github/workflows/gradle_task.yml
       with:
-         runs-on: ubuntu-latest
-         gradle-task: ${{ matrix.target }} --stacktrace --info
-
-   macos-tests:
-      strategy:
-         matrix:
-            target:
-               - macosX64Test
-               - macosArm64Test
-               - iosX64Test
-               - iosSimulatorArm64Test
-               - iosArm64TestKlibrary
-               # - iosArm32TestKlibrary
-               - tvosX64Test
-               - tvosArm64TestKlibrary
-               - watchosArm32TestKlibrary
-               - watchosArm64TestKlibrary
-               - watchosX86Test
-               - watchosX64Test
-      uses: ./.github/workflows/gradle_task.yml
-      with:
-         runs-on: macos-11
-         gradle-task: ${{ matrix.target }} --stacktrace --info
-
-   windows-tests:
-      strategy:
-         matrix:
-            target:
-               - mingwX64Test
-      uses: ./.github/workflows/gradle_task.yml
-      with:
-         runs-on: windows-latest
-         gradle-task: ${{ matrix.target }} --stacktrace --info
+         runs-on: ${{ matrix.os }}
+         gradle-task: check --stacktrace --info
 
 
 env:
