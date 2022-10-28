@@ -11,15 +11,14 @@ on:
 
 jobs:
 
-#   release:
-#      if: github.event.workflow_run.conclusion == 'success'
-#      runs-on: ubuntu-latest
-#      steps:
-#
-#         -  name: Checkout the repo
-#            uses: actions/checkout@v3
-#            with:
-#               ref: ${{ github.event.pull_request.head.sha }}
+   release:
+      runs-on: ubuntu-latest
+      steps:
+
+         -  name: Checkout the repo
+            uses: actions/checkout@v3
+            with:
+               ref: ${{ github.event.pull_request.head.sha }}
 #
 #         -  name: Setup JDK
 #            uses: actions/setup-java@v3
