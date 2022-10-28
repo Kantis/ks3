@@ -78,7 +78,7 @@ jobs:
       needs: [ linux-tests, macos-tests, windows-tests ]
       # Run 'check' task for each OS.
       # To improve speed, only enable Kotlin/JVM (Kotlin/Native is particularly slow).
-      # The other targets are tested individually below.
+      # The other targets are tested individually above
       strategy:
          matrix:
             os: [ ubuntu-latest, macos-11, windows-latest ]
