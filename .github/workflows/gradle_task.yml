@@ -1,4 +1,5 @@
 name: Gradle Task
+run-name: "${{ inputs.runs-on }} > ./gradlew ${{ inputs.gradle-task }}"
 
 # Reusable Workflow for running a Gradle task
 
@@ -16,7 +17,7 @@ on:
 
 
 concurrency:
-   group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }} ${{ join(inputs.*) }}'
+   group: '${{ github.workflow }} ${{ join(inputs.*) }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
    cancel-in-progress: true
 
 
