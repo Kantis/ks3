@@ -41,7 +41,7 @@ jobs:
          gradle-task: check --stacktrace --info -Pks3_enableKotlinNative=false -Pks3_enableKotlinJs=false
 
    linux-tests:
-      needs: check
+      needs: gradle-check
       strategy:
          matrix:
             target:
@@ -59,7 +59,7 @@ jobs:
          gradle-task: ${{ matrix.target }} --stacktrace --info
 
    macos-tests:
-      needs: check
+      needs: gradle-check
       strategy:
          matrix:
             target:
@@ -77,7 +77,7 @@ jobs:
          gradle-task: ${{ matrix.target }} --stacktrace --info
 
    windows-tests:
-      needs: check
+      needs: gradle-check
       strategy:
          matrix:
             target:
