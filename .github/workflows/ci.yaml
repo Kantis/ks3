@@ -39,7 +39,7 @@ jobs:
                - jvmTest
                - jsIrTest
                - linuxX64Test
-      uses: ./.github/workflows/reusable/gradle_task.yml
+      uses: ./.github/workflows/gradle_task.yml
       with:
          runs-on: ubuntu-latest
          gradle-task: ${{ matrix.target }} --stacktrace --info
@@ -60,7 +60,7 @@ jobs:
                - watchosArm64TestKlibrary
                - watchosX86Test
                - watchosX64Test
-      uses: ./.github/workflows/reusable/gradle_task.yml
+      uses: ./.github/workflows/gradle_task.yml
       with:
          runs-on: macos-11
          gradle-task: ${{ matrix.target }} --stacktrace --info
@@ -70,7 +70,7 @@ jobs:
          matrix:
             target:
                - mingwX64Test
-      uses: ./.github/workflows/reusable/gradle_task.yml
+      uses: ./.github/workflows/gradle_task.yml
       with:
          runs-on: windows-latest
          gradle-task: ${{ matrix.target }} --stacktrace --info
@@ -79,21 +79,21 @@ jobs:
       needs: linux-tests
          - macos-tests
          - windows-tests
-      uses: ./.github/workflows/reusable/gradle_task.yml
+      uses: ./.github/workflows/gradle_task.yml
       with:
          gradle-task: publishAllPublicationsToSonatypeReleaseRepository --stacktrace --info
          runs-on: ubuntu-latest
 
    macos-publish:
       needs: macos-tests
-      uses: ./.github/workflows/reusable/gradle_task.yml
+      uses: ./.github/workflows/gradle_task.yml
       with:
          gradle-task: publishAllPublicationsToSonatypeReleaseRepository --stacktrace --info
          runs-on: macos-11
 
    windows-publish:
       needs: windows-tests
-      uses: ./.github/workflows/reusable/gradle_task.yml
+      uses: ./.github/workflows/gradle_task.yml
       with:
          gradle-task: publishAllPublicationsToSonatypeReleaseRepository --stacktrace --info
          runs-on: windows-latest
