@@ -46,7 +46,7 @@ kotlin {
 }
 
 
-if (ks3BuildLogicSettings.enableKotlinMultiplatformJvm.get()) {
+if (ks3BuildLogicSettings.enableKotlinJvm.get()) {
    kotlin {
       jvm {
          withJava()
@@ -55,7 +55,7 @@ if (ks3BuildLogicSettings.enableKotlinMultiplatformJvm.get()) {
 }
 
 
-if (ks3BuildLogicSettings.enableKotlinMultiplatformJs.get()) {
+if (ks3BuildLogicSettings.enableKotlinJs.get()) {
    kotlin {
       targets {
          js(BOTH) {
@@ -69,7 +69,7 @@ if (ks3BuildLogicSettings.enableKotlinMultiplatformJs.get()) {
 }
 
 
-if (ks3BuildLogicSettings.enableKotlinMultiplatformNative.get()) {
+if (ks3BuildLogicSettings.enableKotlinNative.get()) {
    kotlin {
       targets {
          linuxX64()

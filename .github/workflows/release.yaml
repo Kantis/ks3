@@ -49,9 +49,3 @@ jobs:
       with:
          gradle-task: check publishAllPublicationsToSonatypeReleaseRepository --no-parallel --stacktrace --info
          runs-on: ${{ matrix.os }}
-
-
-env:
-   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJvm: true
-   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformJs: true
-   ORG_GRADLE_PROJECT_ks3_enableKotlinMultiplatformNative: true

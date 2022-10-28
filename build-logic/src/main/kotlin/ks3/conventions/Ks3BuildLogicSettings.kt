@@ -18,11 +18,11 @@ abstract class Ks3BuildLogicSettings @Inject constructor(
    val jvmTarget: Provider<String> = ks3Setting("jvmTarget", "11")
 
    /** Controls whether Kotlin Multiplatform JVM is enabled */
-   val enableKotlinMultiplatformJvm: Provider<Boolean> = ks3Flag("enableKotlinMultiplatformJvm", true)
+   val enableKotlinJvm: Provider<Boolean> = ks3Flag("enableKotlinJvm", true)
    /** Controls whether Kotlin Multiplatform JS is enabled */
-   val enableKotlinMultiplatformJs: Provider<Boolean> = ks3Flag("enableKotlinMultiplatformJs", true)
+   val enableKotlinJs: Provider<Boolean> = ks3Flag("enableKotlinJs", true)
    /** Controls whether Kotlin Multiplatform Native is enabled */
-   val enableKotlinMultiplatformNative: Provider<Boolean> = ks3Flag("enableKotlinMultiplatformNative", false)
+   val enableKotlinNative: Provider<Boolean> = ks3Flag("enableKotlinNative", false)
 
    private fun ks3Setting(name: String, default: String? = null) =
       providers.gradleProperty("ks3_$name")
