@@ -31,7 +31,7 @@ jobs:
       name: "./gradlew check"
       # Run 'check' task for each OS.
       # To improve speed, only enable Kotlin/JVM (Kotlin/Native is particularly slow).
-      # The other target tests are run individually below.
+      # The other targets are tested individually below.
       strategy:
          matrix:
             os: [ ubuntu-latest, macos-11, windows-latest ]
