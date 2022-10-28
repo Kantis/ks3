@@ -1,4 +1,4 @@
-name: build & publish
+name: build
 
 on:
    pull_request:
@@ -14,9 +14,6 @@ on:
          - release/*
 
    workflow_dispatch:
-
-#   release:
-#      types: [ published ]
 
 
 concurrency:
@@ -72,30 +69,6 @@ jobs:
       with:
          runs-on: windows-latest
          gradle-task: ${{ matrix.target }} --stacktrace --info
-
-   linux-publish:
-      if: github.repository == 'Kantis/ks3'
-      needs: linux-tests
-      uses: ./.github/workflows/gradle_task.yml
-      with:
-         gradle-task: publishAllPublicationsToSonatypeReleaseRepository --stacktrace --info
-         runs-on: ubuntu-latest
-
-   macos-publish:
-      if: github.repository == 'Kantis/ks3'
-      needs: macos-tests
-      uses: ./.github/workflows/gradle_task.yml
-      with:
-         gradle-task: publishAllPublicationsToSonatypeReleaseRepository --stacktrace --info
-         runs-on: macos-11
-
-   windows-publish:
-      if: github.repository == 'Kantis/ks3'
-      needs: windows-tests
-      uses: ./.github/workflows/gradle_task.yml
-      with:
-         gradle-task: publishAllPublicationsToSonatypeReleaseRepository --stacktrace --info
-         runs-on: windows-latest
 
 
 env:
