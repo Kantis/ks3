@@ -54,7 +54,17 @@ jobs:
                key: ${{ runner.os }}-kotlin-konan
 
          -  name: Run ${{ inputs.gradle-task }}
+            env:
+               ORG_GRADLE_PROJECT_ks3_enableKotlinJvm: true
+               ORG_GRADLE_PROJECT_ks3_enableKotlinJs: true
+               ORG_GRADLE_PROJECT_ks3_enableKotlinNative: true
+
+               ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
+               ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
+               ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
+               ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
             run: ./gradlew ${{ inputs.gradle-task }}
+
 
          -  name: Upload build reports
             if: failure()
@@ -63,14 +73,3 @@ jobs:
                name: build-report-${{ runner.os }}-${{ inputs.gradle-task }}
                path: "**/build/reports/"
                if-no-files-found: ignore
-
-
-env:
-   ORG_GRADLE_PROJECT_ks3_enableKotlinJvm: true
-   ORG_GRADLE_PROJECT_ks3_enableKotlinJs: true
-   ORG_GRADLE_PROJECT_ks3_enableKotlinNative: true
-
-   ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
-   ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
-   ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
-   ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
