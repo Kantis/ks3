@@ -48,7 +48,7 @@ jobs:
       uses: ./.github/workflows/gradle_task.yml
       with:
          runs-on: ${{ matrix.os }}
-         gradle-task: ${{ matrix.target }} --stacktrace --info
+         gradle-task: ${{ matrix.target }} --stacktrace
 
 
    macos-tests:
@@ -68,7 +68,7 @@ jobs:
       uses: ./.github/workflows/gradle_task.yml
       with:
          runs-on: ${{ matrix.os }}
-         gradle-task: ${{ matrix.target }} --stacktrace --info
+         gradle-task: ${{ matrix.target }} --stacktrace
 
 
    windows-tests:
@@ -81,7 +81,7 @@ jobs:
       uses: ./.github/workflows/gradle_task.yml
       with:
          runs-on: ${{ matrix.os }}
-         gradle-task: ${{ matrix.target }} --stacktrace --info
+         gradle-task: ${{ matrix.target }} --stacktrace
 
 
    gradle-check:
@@ -96,4 +96,4 @@ jobs:
       uses: ./.github/workflows/gradle_task.yml
       with:
          runs-on: ${{ matrix.os }}
-         gradle-task: check --stacktrace --info -Pks3_enableKotlinNative=false -Pks3_enableKotlinJs=false
+         gradle-task: check --stacktrace -Pks3_enableKotlinNative=false -Pks3_enableKotlinJs=false
