@@ -21,7 +21,7 @@ permissions:
 jobs:
 
    publish:
-      if: >
+      if: >-
          github.repository == 'Kantis/ks3'
          &&
          (!github.event.workflow_run || github.event.workflow_run.conclusion == 'success')
@@ -32,19 +32,19 @@ jobs:
             include:
                # JVM, JS, and Linux
                -  os: ubuntu-latest
-                  tasks: >
+                  tasks: >-
                      publishJvmPublicationToSonatypeReleaseRepository
                      publishJsPublicationToSonatypeReleaseRepository
                      publishLinuxX64PublicationToSonatypeReleaseRepository
 
                # Windows - MinGW
                -  os: windows-latest
-                  tasks: >
+                  tasks: >-
                      publishMingwX64PublicationToSonatypeReleaseRepository
 
                # Apple - macOS, iOS, watchOS, tvOS
                -  os: macos-11
-                  tasks: >
+                  tasks: >-
                      publishMacosArm64PublicationToSonatypeReleaseRepository
                      publishMacosX64PublicationToSonatypeReleaseRepository
 
