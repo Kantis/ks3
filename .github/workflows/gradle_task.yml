@@ -32,6 +32,7 @@ jobs:
    run-task:
       runs-on: ${{ inputs.runs-on }}
       name: "./gradlew ${{ inputs.gradle-task}} @ ${{ inputs.runs-on }}"
+      timeout-minutes: 60
       steps:
          -  name: Checkout the repo
             uses: actions/checkout@v3
