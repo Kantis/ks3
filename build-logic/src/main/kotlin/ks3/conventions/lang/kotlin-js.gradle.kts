@@ -25,8 +25,3 @@ tasks.withType<KotlinCompile>().configureEach {
       "-opt-in=kotlin.time.ExperimentalTime",
    )
 }
-
-
-tasks.withType<Test>().configureEach {
-   useJUnitPlatform()
-}
