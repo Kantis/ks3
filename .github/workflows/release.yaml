@@ -28,6 +28,7 @@ jobs:
       strategy:
          max-parallel: 1 # Sonatype doesn't like parallel uploads, so disable it where possible
          matrix:
+            fail-fast: false
             include:
                # JVM, JS, and Linux
                -  os: ubuntu-latest
