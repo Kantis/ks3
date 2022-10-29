@@ -32,48 +32,36 @@ jobs:
             include:
                # JVM, JS, and Linux
                -  os: ubuntu-latest
-                  tasks: publishJvmPublicationToSonatypeReleaseRepository
-               -  os: ubuntu-latest
-                  tasks: publishJsPublicationToSonatypeReleaseRepository
-               -  os: ubuntu-latest
-                  tasks: publishLinuxX64PublicationToSonatypeReleaseRepository
+                  tasks: >
+                     publishJvmPublicationToSonatypeReleaseRepository
+                     publishJsPublicationToSonatypeReleaseRepository
+                     publishLinuxX64PublicationToSonatypeReleaseRepository
 
-               # MinGW
+               # Windows - MinGW
                -  os: windows-latest
-                  tasks: publishMingwX64PublicationToSonatypeReleaseRepository
+                  tasks: >
+                     publishMingwX64PublicationToSonatypeReleaseRepository
 
-               # macOS
+               # Apple - macOS, iOS, watchOS, tvOS
                -  os: macos-11
-                  tasks: publishMacosArm64PublicationToSonatypeReleaseRepository
-               -  os: macos-11
-                  tasks: publishMacosX64PublicationToSonatypeReleaseRepository
+                  tasks: >
+                     publishMacosArm64PublicationToSonatypeReleaseRepository
+                     publishMacosX64PublicationToSonatypeReleaseRepository
 
-               # iOS
-               -  os: macos-11
-                  tasks: publishIosArm64PublicationToSonatypeReleaseRepository
-               -  os: macos-11
-                  tasks: publishIosSimulatorArm64PublicationToSonatypeReleaseRepository
-               -  os: macos-11
-                  tasks: publishIosX64PublicationToSonatypeReleaseRepository
+                     publishIosArm64PublicationToSonatypeReleaseRepository
+                     publishIosSimulatorArm64PublicationToSonatypeReleaseRepository
+                     publishIosX64PublicationToSonatypeReleaseRepository
 
-               # watchOS
-               -  os: macos-11
-                  tasks: publishWatchosArm32PublicationToSonatypeReleaseRepository
-               -  os: macos-11
-                  tasks: publishWatchosArm64PublicationToSonatypeReleaseRepository
-               -  os: macos-11
-                  tasks: publishWatchosSimulatorArm64PublicationToSonatypeReleaseRepository
+                     publishWatchosArm32PublicationToSonatypeReleaseRepository
+                     publishWatchosArm64PublicationToSonatypeReleaseRepository
+                     publishWatchosSimulatorArm64PublicationToSonatypeReleaseRepository
 
-               # tvOS
-               -  os: macos-11
-                  tasks: publishTvosArm64PublicationToSonatypeReleaseRepository
-               -  os: macos-11
-                  tasks: publishTvosSimulatorArm64PublicationToSonatypeReleaseRepository
-               -  os: macos-11
-                  tasks: publishTvosX64PublicationToSonatypeReleaseRepository
+                     publishTvosArm64PublicationToSonatypeReleaseRepository
+                     publishTvosSimulatorArm64PublicationToSonatypeReleaseRepository
+                     publishTvosX64PublicationToSonatypeReleaseRepository
 
       uses: ./.github/workflows/gradle_task.yml
       secrets: inherit
       with:
-         gradle-task: ${{ matrix.tasks }} --no-parallel --stacktrace --info
+         gradle-task: publishAllPublicationsToSonatypeReleaseRepository --no-parallel --stacktrace --info
          runs-on: ${{ matrix.os }}
