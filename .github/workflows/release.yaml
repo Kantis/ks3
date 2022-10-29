@@ -30,35 +30,20 @@ jobs:
          fail-fast: false
          matrix:
             include:
-               # JVM, JS, and Linux
+               # Linux: JVM, JS, and Linux
                -  os: ubuntu-latest
-                  tasks: >-
-                     publishJvmPublicationToSonatypeReleaseRepository
-                     publishJsPublicationToSonatypeReleaseRepository
-                     publishLinuxX64PublicationToSonatypeReleaseRepository
+                  args: >-
+                     -P"ks3_enabledPublicationTaskNames=KotlinMultiplatform,jvm,js,linux"
 
-               # Windows - MinGW
+               # Windows: MinGW
                -  os: windows-latest
-                  tasks: >-
-                     publishMingwX64PublicationToSonatypeReleaseRepository
+                  args: >-
+                     -P"ks3_enabledPublicationTaskNames=MinGW"
 
-               # Apple - macOS, iOS, watchOS, tvOS
+               # Apple: macOS, iOS, tvOS, watchOS
                -  os: macos-11
-                  tasks: >-
-                     publishMacosArm64PublicationToSonatypeReleaseRepository
-                     publishMacosX64PublicationToSonatypeReleaseRepository
-
-                     publishIosArm64PublicationToSonatypeReleaseRepository
-                     publishIosSimulatorArm64PublicationToSonatypeReleaseRepository
-                     publishIosX64PublicationToSonatypeReleaseRepository
-
-                     publishWatchosArm32PublicationToSonatypeReleaseRepository
-                     publishWatchosArm64PublicationToSonatypeReleaseRepository
-                     publishWatchosSimulatorArm64PublicationToSonatypeReleaseRepository
-
-                     publishTvosArm64PublicationToSonatypeReleaseRepository
-                     publishTvosSimulatorArm64PublicationToSonatypeReleaseRepository
-                     publishTvosX64PublicationToSonatypeReleaseRepository
+                  args: >-
+                     -P"ks3_enabledPublicationTaskNames=macOS,iOS,tvOS,watchOS"
 
       uses: ./.github/workflows/gradle_task.yml
       secrets: inherit

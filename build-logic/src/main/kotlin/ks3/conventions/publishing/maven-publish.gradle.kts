@@ -1,11 +1,16 @@
 package ks3.conventions.publishing
 
 import ks3.conventions.Ks3BuildLogicSettings
+import org.jetbrains.kotlin.gradle.plugin.KotlinMultiplatformPluginWrapper
 
 plugins {
    signing
    `maven-publish`
 }
+
+
+val ks3Settings = extensions.getByType<Ks3BuildLogicSettings>()
+
 
 val javadocJarStub by tasks.registering(Jar::class) {
    group = JavaBasePlugin.DOCUMENTATION_GROUP
@@ -111,13 +116,38 @@ tasks.withType<AbstractPublishToMaven>().configureEach {
    dependsOn(tasks.withType<Sign>())
    mustRunAfter(tasks.withType<Sign>())
 
-   // fix compatibility issues with Gradle Configuration Cache
-   val task = this
-   val publication: MavenPublication? = task.publication
+   // use a val for the GAV to avoid Gradle Configuration Cache issues
+   val publicationGAV = publication?.run { "$group:$artifactId:$version" }
 
    doLast {
-      if (publication != null) {
-         logger.lifecycle("[task: ${task.path}] ${publication.groupId}:${publication.artifactId}:${publication.version}")
+      if (publicationGAV != null) {
+         logger.lifecycle("[task: ${path}] $publicationGAV")
+      }
+   }
+}
+
+
+// Kotlin Multiplatform specific publishing configuration
+plugins.withType<KotlinMultiplatformPluginWrapper>().configureEach {
+
+   tasks.withType<AbstractPublishToMaven>().configureEach {
+      // use vals - improves Gradle Config Cache compatibility
+      val publicationName = publication.name
+      val enabledPublicationTaskNames = ks3Settings.enabledPublicationNames
+
+      val kotlinPublicationEnabled = enabledPublicationTaskNames.map { names ->
+         names.any { it.startsWith(publicationName, ignoreCase = true) }
+      }
+
+      // register an input so Gradle can do up-to-date checks
+      inputs.property("kotlinPublicationEnabled", kotlinPublicationEnabled)
+
+      onlyIf {
+         val enabled = kotlinPublicationEnabled.get()
+         if (!enabled) {
+            logger.lifecycle("[task: $path] publishing for $publicationName is disabled")
+         }
+         enabled
       }
    }
 }
