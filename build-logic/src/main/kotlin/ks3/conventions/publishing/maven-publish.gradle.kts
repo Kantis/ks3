@@ -32,6 +32,7 @@ val sonatypeReleaseUrl: Provider<String> = isReleaseVersion.map { isRelease ->
 signing {
    useGpgCmd()
    if (signingKey.isPresent && signingPassword.isPresent) {
+      logger.lifecycle("[maven-publish convention] signing is enabled for ${project.path}")
       useInMemoryPgpKeys(signingKey.get(), signingPassword.get())
    }
 }
@@ -44,7 +45,7 @@ afterEvaluate {
 
    if (signingKey.isPresent && signingPassword.isPresent) {
       publishing.publications.all publication@{
-         logger.lifecycle("configuring signature for publication ${this@publication.name}")
+         logger.lifecycle("[maven-publish convention] configuring signature for publication ${this@publication.name} in ${project.path}")
          // closureOf is a Gradle Kotlin DSL workaround: https://github.com/gradle/gradle/issues/19903
          signing.sign(closureOf<SignOperation> { signing.sign(this@publication) })
       }
