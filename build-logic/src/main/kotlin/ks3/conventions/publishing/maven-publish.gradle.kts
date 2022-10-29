@@ -133,9 +133,9 @@ plugins.withType<KotlinMultiplatformPluginWrapper>().configureEach {
    tasks.withType<AbstractPublishToMaven>().configureEach {
       // use vals - improves Gradle Config Cache compatibility
       val publicationName = publication.name
-      val enabledPublicationTaskNames = ks3Settings.enabledPublicationNames
+      val enabledPublicationNamePrefixes = ks3Settings.enabledPublicationNamePrefixes
 
-      val kotlinPublicationEnabled = enabledPublicationTaskNames.map { names ->
+      val kotlinPublicationEnabled = enabledPublicationNamePrefixes.map { names ->
          names.any { it.startsWith(publicationName, ignoreCase = true) }
       }
 

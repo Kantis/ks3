@@ -35,8 +35,8 @@ abstract class Ks3BuildLogicSettings @Inject constructor(
     * For example, by including `jvm` in the values when publishing on Linux, but omitting `jvm` on
     * Windows and macOS, this results in any Kotlin/JVM publications only being published once.
     */
-   val enabledPublicationNames: Provider<Set<String>> =
-      ks3Setting("enabledPublicationTaskNames", "KotlinMultiplatform,Jvm,Js,iOS,macOS,watchOS,tvOS,mingw")
+   val enabledPublicationNamePrefixes: Provider<Set<String>> =
+      ks3Setting("enabledPublicationNamePrefixes", "KotlinMultiplatform,Jvm,Js,iOS,macOS,watchOS,tvOS,mingw")
          .map { enabledPlatforms ->
             enabledPlatforms
                .split(",")

@@ -33,17 +33,17 @@ jobs:
                # Linux: JVM, JS, and Linux
                -  os: ubuntu-latest
                   args: >-
-                     -P"ks3_enabledPublicationTaskNames=KotlinMultiplatform,jvm,js,linux"
+                     -P"ks3_enabledPublicationNamePrefixes=KotlinMultiplatform,jvm,js,linux"
 
                # Windows: MinGW
                -  os: windows-latest
                   args: >-
-                     -P"ks3_enabledPublicationTaskNames=MinGW"
+                     -P"ks3_enabledPublicationNamePrefixes=MinGW"
 
                # Apple: macOS, iOS, tvOS, watchOS
                -  os: macos-11
                   args: >-
-                     -P"ks3_enabledPublicationTaskNames=macOS,iOS,tvOS,watchOS"
+                     -P"ks3_enabledPublicationNamePrefixes=macOS,iOS,tvOS,watchOS"
 
       uses: ./.github/workflows/gradle_task.yml
       secrets: inherit
