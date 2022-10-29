@@ -21,7 +21,7 @@ permissions:
 jobs:
 
    publish:
-      if: github.repository == 'Kantis/ks3' && github.event.workflow_run.conclusion == 'success'
+      if: github.repository == 'Kantis/ks3' && (!github.event.workflow_run || github.event.workflow_run.conclusion == 'success')
       strategy:
          max-parallel: 1 # Sonatype doesn't like parallel uploads, so disable it where possible
          matrix:
