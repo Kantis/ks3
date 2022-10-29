@@ -48,6 +48,7 @@ jobs:
 
       uses: ./.github/workflows/gradle_task.yml
       secrets: inherit
+      timeout-minutes: 60
       with:
          gradle-task: publishAllPublicationsToSonatypeReleaseRepository ${{ matrix.args }} --no-parallel --stacktrace --info
          runs-on: ${{ matrix.os }}
