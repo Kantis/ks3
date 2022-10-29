@@ -27,8 +27,8 @@ jobs:
          (!github.event.workflow_run || github.event.workflow_run.conclusion == 'success')
       strategy:
          max-parallel: 1 # Sonatype doesn't like parallel uploads, so disable it where possible
+         fail-fast: false
          matrix:
-            fail-fast: false
             include:
                # JVM, JS, and Linux
                -  os: ubuntu-latest
