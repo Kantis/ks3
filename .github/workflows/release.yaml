@@ -29,28 +29,47 @@ jobs:
          max-parallel: 1 # Sonatype doesn't like parallel uploads, so disable it where possible
          matrix:
             include:
-               # Linux - Kotlin/JVM
+               # JVM, JS, and Linux
                -  os: ubuntu-latest
-                  args: "-Pks3_enableKotlinJvm=true  -Pks3_enableKotlinNative=false -Pks3_enableKotlinJs=false"
+                  tasks: >
+                     publishJsPublicationToSonatypeReleaseRepository
+                     publishJvmPublicationToSonatypeReleaseRepository
+                     publishLinuxX64PublicationToSonatypeReleaseRepository
 
-               # Linux - Kotlin/JS
-               -  os: ubuntu-latest
-                  args: "-Pks3_enableKotlinJvm=false -Pks3_enableKotlinNative=false -Pks3_enableKotlinJs=true"
-
-               # Linux - Kotlin/Native
-               -  os: ubuntu-latest
-                  args: "-Pks3_enableKotlinJvm=true  -Pks3_enableKotlinNative=true  -Pks3_enableKotlinJs=false"
-
-               # macOS - Kotlin/Native
-               -  os: macos-11
-                  args: "-Pks3_enableKotlinJvm=true  -Pks3_enableKotlinNative=true  -Pks3_enableKotlinJs=false"
-
-               # Windows - Kotlin/Native
+               # MinGW
                -  os: windows-latest
-                  args: "-Pks3_enableKotlinJvm=true  -Pks3_enableKotlinNative=true  -Pks3_enableKotlinJs=false"
+                  tasks: >
+                     publishMingwX64PublicationToSonatypeReleaseRepository
+
+               # macOS
+               -  os: macos-11
+                  tasks: >
+                     publishMacosArm64PublicationToSonatypeReleaseRepository
+                     publishMacosX64PublicationToSonatypeReleaseRepository
+
+               # iOS
+               -  os: macos-11
+                  tasks: >
+                     publishIosArm64PublicationToSonatypeReleaseRepository
+                     publishIosSimulatorArm64PublicationToSonatypeReleaseRepository
+                     publishIosX64PublicationToSonatypeReleaseRepository
+
+               # watchOS
+               -  os: macos-11
+                  tasks: >
+                     publishWatchosArm32PublicationToSonatypeReleaseRepository
+                     publishWatchosArm64PublicationToSonatypeReleaseRepository
+                     publishWatchosSimulatorArm64PublicationToSonatypeReleaseRepository
+
+               # tvOS
+               -  os: macos-11
+                  tasks: >
+                     publishTvosArm64PublicationToSonatypeReleaseRepository
+                     publishTvosSimulatorArm64PublicationToSonatypeReleaseRepository
+                     publishTvosX64PublicationToSonatypeReleaseRepository
 
       uses: ./.github/workflows/gradle_task.yml
       secrets: inherit
       with:
-         gradle-task: publishAllPublicationsToSonatypeReleaseRepository ${{ matrix.args }} --no-parallel --stacktrace --info
+         gradle-task: ${{ matrix.tasks }} --no-parallel --stacktrace --info
          runs-on: ${{ matrix.os }}
