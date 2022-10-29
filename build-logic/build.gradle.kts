@@ -14,13 +14,12 @@ dependencies {
    implementation(libs.gradlePlugin.kotest)
 }
 
-val buildLogicJvmVersion = "11"
-val buildLogicJvmTarget = "1.8"
+val buildLogicJvmTarget = "11"
 
 
 kotlin {
    jvmToolchain {
-      (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(buildLogicJvmVersion))
+      (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(buildLogicJvmTarget))
    }
 }
 
