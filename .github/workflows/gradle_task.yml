@@ -40,8 +40,8 @@ jobs:
          -  name: Setup JDK
             uses: actions/setup-java@v3
             with:
-               distribution: "temurin"
-               java-version: "11"
+               distribution: temurin
+               java-version: 11
 
          -  uses: gradle/gradle-build-action@v2
             with:
