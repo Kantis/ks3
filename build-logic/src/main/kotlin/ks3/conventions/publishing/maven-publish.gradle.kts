@@ -126,28 +126,28 @@ tasks.withType<AbstractPublishToMaven>().configureEach {
    }
 }
 
+tasks.withType<AbstractPublishToMaven>().configureEach {
+   // use vals - improves Gradle Config Cache compatibility
+   val publicationName = publication.name
+   val enabledPublicationNamePrefixes = ks3Settings.enabledPublicationNamePrefixes
+
+   val isPublicationEnabled = enabledPublicationNamePrefixes.map { names ->
+      names.any { it.startsWith(publicationName, ignoreCase = true) }
+   }
+
+   // register an input so Gradle can do up-to-date checks
+   inputs.property("publicationEnabled", isPublicationEnabled)
+
+   onlyIf {
+      val enabled = isPublicationEnabled.get()
+      if (!enabled) {
+         logger.lifecycle("[task: $path] publishing for $publicationName is disabled")
+      }
+      enabled
+   }
+}
 
 // Kotlin Multiplatform specific publishing configuration
 plugins.withType<KotlinMultiplatformPluginWrapper>().configureEach {
-
-   tasks.withType<AbstractPublishToMaven>().configureEach {
-      // use vals - improves Gradle Config Cache compatibility
-      val publicationName = publication.name
-      val enabledPublicationNamePrefixes = ks3Settings.enabledPublicationNamePrefixes
-
-      val kotlinPublicationEnabled = enabledPublicationNamePrefixes.map { names ->
-         names.any { it.startsWith(publicationName, ignoreCase = true) }
-      }
-
-      // register an input so Gradle can do up-to-date checks
-      inputs.property("kotlinPublicationEnabled", kotlinPublicationEnabled)
-
-      onlyIf {
-         val enabled = kotlinPublicationEnabled.get()
-         if (!enabled) {
-            logger.lifecycle("[task: $path] publishing for $publicationName is disabled")
-         }
-         enabled
-      }
-   }
+   // nothing yet!
 }
