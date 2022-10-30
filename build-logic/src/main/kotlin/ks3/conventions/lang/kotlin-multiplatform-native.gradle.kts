@@ -13,7 +13,7 @@ val ks3Settings = extensions.getByType<Ks3BuildLogicSettings>()
 if (ks3Settings.enableKotlinNative.get()) {
    kotlin {
 
-      // Native targets all extend commonMain and commonTest
+      // Native targets all extend commonMain and commonTest.
       //
       // Some targets (ios, tvos, watchos) are shortcuts provided by the Kotlin DSL, that
       // provide additional targets, except for 'simulators' which must be defined manually.
