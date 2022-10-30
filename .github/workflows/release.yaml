@@ -1,27 +1,12 @@
 name: publish
 
 on:
-   push:
-      paths-ignore:
-         - "doc/**"
-         - "documentation/**"
-         - "*.md"
-         - "*.yml"
-      branches:
-         - "main"
-         - "release/**"
-      tags:
-         - "v**"
-
    workflow_dispatch:
 
    workflow_run:
       workflows: [ "build" ]
       types:
          - completed
-
-   release:
-      types: [ published ]
 
 
 concurrency:
@@ -36,21 +21,32 @@ permissions:
 jobs:
 
    publish:
-      if: github.repository == 'Kantis/ks3' && github.event.workflow_run.conclusion == 'success'
+      # only publish when
+      # * on the main repo,
+      # * if triggered by a workflow, the workflow was successful
+      if: >-
+         github.repository == 'Kantis/ks3'
+         &&
+         (!github.event.workflow_run || github.event.workflow_run.conclusion == 'success')
       strategy:
          max-parallel: 1 # Sonatype doesn't like parallel uploads, so disable it where possible
+         fail-fast: false
          matrix:
-            os:
-               - ubuntu-latest
-               - macos-11
-               - windows-latest
-      uses: ./.github/workflows/gradle_task.yml
-      with:
-         gradle-task: check publishAllPublicationsToSonatypeReleaseRepository --no-parallel --stacktrace --info
-         runs-on: ${{ matrix.os }}
+            include:
+               # Publish 'common' components (KotlinMultiplatform,jvm,js) only on Linux, to avoid duplicate publications
+               -  os: ubuntu-latest
+                  args: -P"ks3_enabledPublicationNamePrefixes=KotlinMultiplatform,jvm,js,linux"
 
-env:
-   ORG_GRADLE_PROJECT_signingKey: ${{ secrets.SIGNING_KEY }}
-   ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
-   ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
-   ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
+               # Windows: MinGW
+               -  os: windows-latest
+                  args: -P"ks3_enabledPublicationNamePrefixes=MinGW"
+
+               # Apple: macOS, iOS, tvOS, watchOS
+               -  os: macos-11
+                  args: -P"ks3_enabledPublicationNamePrefixes=macOS,iOS,tvOS,watchOS"
+
+      uses: ./.github/workflows/gradle_task.yml
+      secrets: inherit
+      with:
+         gradle-task: publishAllPublicationsToSonatypeReleaseRepository ${{ matrix.args }} --no-parallel --stacktrace
+         runs-on: ${{ matrix.os }}

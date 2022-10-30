@@ -1,11 +1,16 @@
 package ks3.conventions.publishing
 
 import ks3.conventions.Ks3BuildLogicSettings
+import org.jetbrains.kotlin.gradle.plugin.KotlinMultiplatformPluginWrapper
 
 plugins {
    signing
    `maven-publish`
 }
+
+
+val ks3Settings = extensions.getByType<Ks3BuildLogicSettings>()
+
 
 val javadocJarStub by tasks.registering(Jar::class) {
    group = JavaBasePlugin.DOCUMENTATION_GROUP
@@ -30,22 +35,22 @@ val sonatypeReleaseUrl: Provider<String> = isReleaseVersion.map { isRelease ->
 }
 
 signing {
+   useGpgCmd()
    if (signingKey.isPresent && signingPassword.isPresent) {
+      logger.lifecycle("[maven-publish convention] signing is enabled for ${project.path}")
       useInMemoryPgpKeys(signingKey.get(), signingPassword.get())
-   } else {
-      useGpgCmd()
    }
 }
 
 // Gradle hasn't updated the signing plugin to be compatible with lazy-configuration, so it needs weird workarounds:
 afterEvaluate {
-   // Register signatures afterEvaluate, otherwise the signing plugin creates the signing tasks
+   // Register signatures in afterEvaluate, otherwise the signing plugin creates the signing tasks
    // too early, before all the publications are added. Use .all { }, not .configureEach { },
    // otherwise the signing plugin doesn't create the tasks soon enough.
 
    if (signingKey.isPresent && signingPassword.isPresent) {
       publishing.publications.all publication@{
-         logger.lifecycle("configuring signature for publication ${this@publication.name}")
+         logger.lifecycle("[maven-publish convention] configuring signature for publication ${this@publication.name} in ${project.path}")
          // closureOf is a Gradle Kotlin DSL workaround: https://github.com/gradle/gradle/issues/19903
          signing.sign(closureOf<SignOperation> { signing.sign(this@publication) })
       }
@@ -111,13 +116,38 @@ tasks.withType<AbstractPublishToMaven>().configureEach {
    dependsOn(tasks.withType<Sign>())
    mustRunAfter(tasks.withType<Sign>())
 
-   // fix compatibility issues with Gradle Configuration Cache
-   val task = this
-   val publication: MavenPublication? = task.publication
+   // use a val for the GAV to avoid Gradle Configuration Cache issues
+   val publicationGAV = publication?.run { "$group:$artifactId:$version" }
 
    doLast {
-      if (publication != null) {
-         logger.lifecycle("[task: ${task.path}] ${publication.groupId}:${publication.artifactId}:${publication.version}")
+      if (publicationGAV != null) {
+         logger.lifecycle("[task: ${path}] $publicationGAV")
       }
    }
+}
+
+tasks.withType<AbstractPublishToMaven>().configureEach {
+   // use vals - improves Gradle Config Cache compatibility
+   val publicationName = publication.name
+   val enabledPublicationNamePrefixes = ks3Settings.enabledPublicationNamePrefixes
+
+   val isPublicationEnabled = enabledPublicationNamePrefixes.map { names ->
+      names.any { it.startsWith(publicationName, ignoreCase = true) }
+   }
+
+   // register an input so Gradle can do up-to-date checks
+   inputs.property("publicationEnabled", isPublicationEnabled)
+
+   onlyIf {
+      val enabled = isPublicationEnabled.get()
+      if (!enabled) {
+         logger.lifecycle("[task: $path] publishing for $publicationName is disabled")
+      }
+      enabled
+   }
+}
+
+// Kotlin Multiplatform specific publishing configuration
+plugins.withType<KotlinMultiplatformPluginWrapper>().configureEach {
+   // nothing yet!
 }

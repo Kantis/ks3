@@ -1,5 +1,5 @@
 plugins {
-   id("ks3.conventions.lang.kotlin-multiplatform")
+   id("ks3.conventions.lang.kotlin-multiplatform-jvm") // Kotlin/JVM only
    id("ks3.conventions.publishing.maven-publish")
 }
 
