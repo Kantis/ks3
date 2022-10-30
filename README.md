@@ -19,10 +19,12 @@ Maven:
 ```xml
 <dependency>
   <groupId>io.ks3</groupId>
-  <artifactId>ks3-jdk</artifactId>
+  <artifactId>ks3-jdk-jvm</artifactId>
   <version>0.0.2</version>
 </dependency>
 ```
+
+> Note that when using Maven dependencies must specify the multiplatform variant. For example, append `-jvm` to specify the JVM variant of `ks3-jdk`.
 
 Now you can start using the provided serializers. There's several possible ways to do this.
 
