@@ -1,87 +1,19 @@
 package ks3.conventions.lang
 
 import ks3.conventions.Ks3BuildLogicSettings
-import org.gradle.configurationcache.extensions.capitalized
-import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
-import org.jetbrains.kotlin.gradle.plugin.KotlinPlatformType
-import org.jetbrains.kotlin.gradle.targets.jvm.KotlinJvmTarget
-import org.jetbrains.kotlin.gradle.testing.KotlinTaskTestRun
+
+// conventions for a Kotlin/Native subproject
 
 plugins {
-   id("ks3.conventions.base")
-   kotlin("multiplatform")
-   kotlin("plugin.serialization")
-   id("io.kotest.multiplatform")
+   id("ks3.conventions.lang.kotlin-multiplatform-base")
 }
-
 
 val ks3Settings = extensions.getByType<Ks3BuildLogicSettings>()
-
-
-// quick hacks because IntelliJ is refusing to index generated accessors
-val kotlin: KotlinMultiplatformExtension get() = extensions.getByType()
-fun kotlin(configure: KotlinMultiplatformExtension.() -> Unit) = extensions.configure(configure)
-
-
-kotlin {
-   jvmToolchain {
-      languageVersion.set(JavaLanguageVersion.of(ks3Settings.jvmTarget.get()))
-   }
-
-   targets.configureEach {
-      compilations.configureEach {
-         kotlinOptions {
-            apiVersion = ks3Settings.kotlinTarget.get()
-            languageVersion = ks3Settings.kotlinTarget.get()
-         }
-      }
-   }
-
-   // configure all Kotlin/JVM Tests to use JUnit
-   targets.withType<KotlinJvmTarget>().configureEach {
-      testRuns.configureEach {
-         executionTask.configure {
-            useJUnitPlatform()
-         }
-      }
-   }
-
-   sourceSets.configureEach {
-      languageSettings {
-         languageVersion = ks3Settings.kotlinTarget.get()
-         apiVersion = ks3Settings.kotlinTarget.get()
-      }
-   }
-}
-
-
-if (ks3Settings.enableKotlinJvm.get()) {
-   kotlin {
-      jvm {
-         withJava()
-      }
-   }
-}
-
-
-if (ks3Settings.enableKotlinJs.get()) {
-   kotlin {
-      targets {
-         js(BOTH) {
-            browser()
-            nodejs()
-         }
-      }
-   }
-
-   relocateKotlinJsStore()
-}
-
 
 if (ks3Settings.enableKotlinNative.get()) {
    kotlin {
 
-      // Native targets all extend commonMain and commonTest.
+      // Native targets all extend commonMain and commonTest
       //
       // Some targets (ios, tvos, watchos) are shortcuts provided by the Kotlin DSL, that
       // provide additional targets, except for 'simulators' which must be defined manually.
@@ -171,27 +103,6 @@ if (ks3Settings.enableKotlinNative.get()) {
 
          // val iosArm32Main by getting { dependsOn(desktopMain) }
          // val iosArm32Test by getting { dependsOn(nativeTest) }
-      }
-   }
-}
-
-
-// create lifecycle task for each Kotlin Platform, that will run all tests
-KotlinPlatformType.values().forEach { kotlinPlatform ->
-   val kotlinPlatformName = kotlinPlatform.name.capitalized()
-
-   val testKotlinTargetLifecycleTask = tasks.create("allKotlin${kotlinPlatformName}Tests") {
-      group = LifecycleBasePlugin.VERIFICATION_GROUP
-      description = "Run all Kotlin/${kotlinPlatformName} tests"
-   }
-
-   kotlin.testableTargets.matching {
-      it.platformType == kotlinPlatform
-   }.configureEach {
-      testRuns.configureEach {
-         if (this is KotlinTaskTestRun<*, *>) {
-            testKotlinTargetLifecycleTask.dependsOn(executionTask)
-         }
       }
    }
 }
