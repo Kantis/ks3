@@ -44,7 +44,7 @@ signing {
 
 // Gradle hasn't updated the signing plugin to be compatible with lazy-configuration, so it needs weird workarounds:
 afterEvaluate {
-   // Register signatures afterEvaluate, otherwise the signing plugin creates the signing tasks
+   // Register signatures in afterEvaluate, otherwise the signing plugin creates the signing tasks
    // too early, before all the publications are added. Use .all { }, not .configureEach { },
    // otherwise the signing plugin doesn't create the tasks soon enough.
 
