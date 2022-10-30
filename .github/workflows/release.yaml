@@ -3,10 +3,10 @@ name: publish
 on:
    workflow_dispatch:
 
-#   workflow_run:
-#      workflows: [ "build" ]
-#      types:
-#         - completed
+   workflow_run:
+      workflows: [ "build" ]
+      types:
+         - completed
 
 
 concurrency:
@@ -21,7 +21,13 @@ permissions:
 jobs:
 
    publish:
-      if: github.repository == 'Kantis/ks3'
+      # only publish when
+      # * on the main repo,
+      # * if triggered by a workflow, the workflow was successful
+      if: >-
+         github.repository == 'Kantis/ks3'
+         &&
+         (!github.event.workflow_run || github.event.workflow_run.conclusion == 'success')
       strategy:
          max-parallel: 1 # Sonatype doesn't like parallel uploads, so disable it where possible
          fail-fast: false
