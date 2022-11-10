@@ -48,6 +48,7 @@ kotlin {
       languageSettings {
          languageVersion = ks3Settings.kotlinTarget.get()
          apiVersion = ks3Settings.kotlinTarget.get()
+         optIn("kotlin.RequiresOptIn")
       }
    }
 }

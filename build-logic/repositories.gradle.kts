@@ -67,6 +67,16 @@ dependencyResolutionManagement {
       sonatypeSnapshots()
       google()
       gradlePluginPortal() // tvOS builds need to be able to fetch a Kotlin Gradle plugin
+
+      // I hacked together a deploy script for the latest KxS version - this should be removed ASAP
+      // 1.5.0 is required for BigDecimal JSON encoding support
+      // ks3 probably shouldn't be published while this dependency exists
+      maven("https://raw.githubusercontent.com/aSemy/kotlinx.serialization/artifacts/m2/") {
+         mavenContent {
+            includeGroup("org.jetbrains.kotlinx")
+            snapshotsOnly()
+         }
+      }
    }
 
    pluginManagement {
