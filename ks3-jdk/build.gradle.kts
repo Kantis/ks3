@@ -13,6 +13,7 @@ kotlin {
             implementation(projects.ks3Standard)
 
             implementation(libs.kotlinxSerialization.core)
+            implementation(libs.kotlinxSerialization.json)
          }
       }
 
