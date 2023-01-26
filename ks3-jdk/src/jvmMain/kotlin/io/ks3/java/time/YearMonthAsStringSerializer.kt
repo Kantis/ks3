@@ -7,8 +7,4 @@ import java.time.YearMonth
 
 typealias YearMonthAsString = @Serializable(with = YearMonthAsStringSerializer::class) YearMonth
 
-object YearMonthAsStringSerializer : KSerializer<YearMonth> by stringSerializer(
-   YearMonthAsStringSerializer::class.qualifiedName!!,
-   YearMonth::parse,
-   YearMonth::toString,
-)
+object YearMonthAsStringSerializer : KSerializer<YearMonth> by stringSerializer(YearMonth::parse)

@@ -13,7 +13,6 @@ import java.util.concurrent.atomic.AtomicLong
 // From https://github.com/Kotlin/kotlinx.serialization/blob/15c6b59d2175485f8f5f4563ff17610003459113/runtime/jvm/src/main/kotlin/kotlinx/serialization/java/AtomicSerializers.kt
 
 object AtomicIntegerSerializer : KSerializer<AtomicInteger> by intSerializer(
-   AtomicIntegerSerializer::class.qualifiedName!!,
    ::AtomicInteger,
    AtomicInteger::get,
 )
