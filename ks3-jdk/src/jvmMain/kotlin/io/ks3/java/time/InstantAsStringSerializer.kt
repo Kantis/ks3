@@ -6,11 +6,13 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import java.time.Instant
 
+@Suppress("unused") // Part of the public API.
 typealias InstantAsString = @Serializable(with = InstantAsStringSerializer::class) Instant
+
+@Suppress("unused") // Part of the public API.
 typealias InstantAsLong = @Serializable(with = InstantAsLongSerializer::class) Instant
 
 object InstantAsStringSerializer : KSerializer<Instant> by stringSerializer(
-   InstantAsStringSerializer::class.qualifiedName!!,
    Instant::parse,
    Instant::toString,
 )
@@ -20,7 +22,6 @@ object InstantAsStringSerializer : KSerializer<Instant> by stringSerializer(
  * ⚠️ Nanosecond precision is lost when encoding/decoding [Instant]s with this serializer
  */
 object InstantAsLongSerializer : KSerializer<Instant> by longSerializer(
-   InstantAsLongSerializer::class.qualifiedName!!,
    Instant::ofEpochMilli,
    Instant::toEpochMilli,
 )

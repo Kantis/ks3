@@ -4,8 +4,4 @@ import io.ks3.standard.stringSerializer
 import kotlinx.serialization.KSerializer
 import java.net.URI
 
-object UriSerializer : KSerializer<URI> by stringSerializer(
-   UriSerializer::class.qualifiedName!!,
-   ::URI,
-   URI::toASCIIString,
-)
+object UriSerializer : KSerializer<URI> by stringSerializer(::URI, URI::toASCIIString)

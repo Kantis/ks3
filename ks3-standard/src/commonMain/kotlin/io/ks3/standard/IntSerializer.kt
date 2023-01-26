@@ -7,11 +7,11 @@ import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
 
 inline fun <reified T> longSerializer(
-   name: String,
    crossinline decode: (Long) -> T,
    crossinline encode: (T) -> Long,
+   serialName: String? = null,
 ): KSerializer<T> = object : KSerializer<T> {
-   override val descriptor = PrimitiveSerialDescriptor(name, PrimitiveKind.LONG)
+   override val descriptor = PrimitiveSerialDescriptor(serialName ?: T::class.simpleName!!, PrimitiveKind.LONG)
 
    override fun deserialize(decoder: Decoder) =
       decode(decoder.decodeLong())
