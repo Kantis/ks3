@@ -1,6 +1,6 @@
-| Type    | Serializer                  | Example |
-|---------|-----------------------------|---------|
-| Enum<*> | EnumAsOrdinalSerializer     | `0`       |
+| Type    | Serializer              | Example |
+|---------|-------------------------|---------|
+| Enum<*> | EnumAsOrdinalSerializer | `0`     |
 
 ### EnumAsOrdinalSerializer
 

@@ -1,6 +1,6 @@
 # KotlinX Serialization Standard Serializers (KS3)
 
-This project aims to provide a set of serializers for common types.
+This project aims to provide a set of serializers for common types, as well as provide [utilities](/doc/builders.md) to make it more convenient to build custom serializers for your needs.
 
 > ⚠️ Consider this project to be [Alpha](https://kotlinlang.org/docs/components-stability.html) for the time being. We would be happy for you to use it, and appreciate your feedback, but things may be re-written. We hope to reach [Beta](https://kotlinlang.org/docs/components-stability.html) relatively quick.
 
@@ -10,7 +10,7 @@ Add the dependency. With Gradle:
 
 ```kotlin
 dependencies {
-    implementation("io.ks3:ks3-jdk:<version>")
+    implementation("io.ks3:ks3-jdk:0.0.2")
 }
 ```
 
@@ -20,7 +20,7 @@ Maven:
 <dependency>
   <groupId>io.ks3</groupId>
   <artifactId>ks3-jdk-jvm</artifactId>
-  <version>0.0.2</version>
+  <version>$version</version>
 </dependency>
 ```
 
