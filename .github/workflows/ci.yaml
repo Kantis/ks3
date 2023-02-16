@@ -7,7 +7,6 @@ on:
       paths-ignore:
          - "doc/**"
          - "documentation/**"
-         - "*.md"
          - "*.yml"
       branches:
          - "main"
@@ -98,3 +97,31 @@ jobs:
       with:
          runs-on: ${{ matrix.os }}
          gradle-task: check --stacktrace -Pks3_enableKotlinNative=false -Pks3_enableKotlinJs=false
+
+
+   docs:
+      runs-on: ubuntu-latest
+      steps:
+         -  name: "Checkout code"
+            uses: actions/checkout@v3
+            with:
+               fetch-depth: 1 # Checkout the code. No need of tags and whole history.
+
+         -  name: Setup JDK
+            uses: actions/setup-java@v3
+            with:
+            distribution: 'temurin'
+            java-version: '11'
+
+         -  name: Setup Gradle
+            uses: gradle/gradle-build-action@v2
+
+         -  name: Build docs
+            run: ./gradlew dokkaHtmlMultiModule
+
+         -  name: Deploy docs
+            uses: peaceiris/actions-gh-pages@v3
+            if: github.ref == 'refs/heads/main'
+            with:
+               github_token: ${{ secrets.GITHUB_TOKEN }}
+               publish_dir: ./build/dokka/htmlMultiModule/

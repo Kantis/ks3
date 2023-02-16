@@ -4,6 +4,7 @@ import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.yearMonth
+import io.ks3.java.`typealias`.YearMonthAsString
 import io.ks3.test.generateSerializerTests
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString

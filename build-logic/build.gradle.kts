@@ -12,6 +12,7 @@ dependencies {
    implementation(libs.gradlePlugin.testlogger)
    implementation(libs.gradlePlugin.gitVersioning)
    implementation(libs.gradlePlugin.kotest)
+   implementation(libs.gradlePlugin.dokka)
 }
 
 val buildLogicJvmTarget = "11"
@@ -19,7 +20,7 @@ val buildLogicJvmTarget = "11"
 
 kotlin {
    jvmToolchain {
-      (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(buildLogicJvmTarget))
+      languageVersion.set(JavaLanguageVersion.of(buildLogicJvmTarget))
    }
 }
 

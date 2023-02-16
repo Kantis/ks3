@@ -17,7 +17,7 @@ object AtomicIntegerSerializer : KSerializer<AtomicInteger> by intSerializer(
    AtomicInteger::get,
 )
 
-public object AtomicLongSerializer : KSerializer<AtomicLong> {
+object AtomicLongSerializer : KSerializer<AtomicLong> {
    override fun serialize(encoder: Encoder, value: AtomicLong) {
       encoder.encodeLong(value.get())
    }
@@ -27,7 +27,7 @@ public object AtomicLongSerializer : KSerializer<AtomicLong> {
    override val descriptor = PrimitiveSerialDescriptor(AtomicLongSerializer::class.qualifiedName!!, PrimitiveKind.LONG)
 }
 
-public object AtomicBooleanSerializer : KSerializer<AtomicBoolean> {
+object AtomicBooleanSerializer : KSerializer<AtomicBoolean> {
    override fun serialize(encoder: Encoder, value: AtomicBoolean) {
       encoder.encodeBoolean(value.get())
    }
