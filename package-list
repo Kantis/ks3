@@ -1,0 +1,13 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:io.ks3.java.typealias////PointingToDeclaration/ks3-jdk/io.ks3.java.typealias.html
+module:ks3-jdk
+io.ks3.java.net
+io.ks3.java.time
+io.ks3.java.typealias
+io.ks3.java.util
+module:ks3-standard
+io.ks3.standard
+io.ks3.standard.base64
+module:ks3-test
+io.ks3.test
