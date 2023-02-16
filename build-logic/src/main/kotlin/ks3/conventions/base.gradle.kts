@@ -40,7 +40,7 @@ tasks.withType<DokkaTaskPartial>().configureEach {
 
       sourceLink {
          localDirectory.set(projectDir.resolve("src"))
-         remoteUrl.set(java.net.URL("https://github.com/Kantis/ks3"))
+         remoteUrl.set(java.net.URL("https://github.com/Kantis/ks3/tree/main/${project.name}/src"))
          remoteLineSuffix.set("#L")
       }
    }
