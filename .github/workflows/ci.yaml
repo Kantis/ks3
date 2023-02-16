@@ -25,10 +25,6 @@ concurrency:
    cancel-in-progress: true
 
 
-permissions:
-   contents: read
-
-
 jobs:
 
    linux-tests:
