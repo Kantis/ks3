@@ -1,0 +1,13 @@
+public final class io/ks3/test/Encoders {
+	public fun <init> (Ljava/util/List;Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;Ljava/util/List;)Lio/ks3/test/Encoders;
+	public static synthetic fun copy$default (Lio/ks3/test/Encoders;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lio/ks3/test/Encoders;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDecoders ()Ljava/util/List;
+	public final fun getEncoders ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

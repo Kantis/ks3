@@ -1,0 +1,135 @@
+public final class io/ks3/java/net/UriSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/net/UriSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/net/URI;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/net/URI;)V
+}
+
+public final class io/ks3/java/net/UrlSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/net/UrlSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/net/URL;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/net/URL;)V
+}
+
+public final class io/ks3/java/time/InstantAsLongSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/time/InstantAsLongSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/time/Instant;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/time/Instant;)V
+}
+
+public final class io/ks3/java/time/InstantAsStringSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/time/InstantAsStringSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/time/Instant;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/time/Instant;)V
+}
+
+public final class io/ks3/java/time/LocalDateAsStringSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/time/LocalDateAsStringSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/time/LocalDate;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/time/LocalDate;)V
+}
+
+public final class io/ks3/java/time/LocalDateTimeAsStringSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/time/LocalDateTimeAsStringSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/time/LocalDateTime;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/time/LocalDateTime;)V
+}
+
+public final class io/ks3/java/time/LocalTimeAsStringSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/time/LocalTimeAsStringSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/time/LocalTime;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/time/LocalTime;)V
+}
+
+public final class io/ks3/java/time/OffsetDateTimeAsStringSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/time/OffsetDateTimeAsStringSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/time/OffsetDateTime;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/time/OffsetDateTime;)V
+}
+
+public final class io/ks3/java/time/YearAsIntSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/time/YearAsIntSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/time/Year;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/time/Year;)V
+}
+
+public final class io/ks3/java/time/YearAsStringSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/time/YearAsStringSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/time/Year;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/time/Year;)V
+}
+
+public final class io/ks3/java/time/YearMonthAsStringSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/time/YearMonthAsStringSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/time/YearMonth;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/time/YearMonth;)V
+}
+
+public final class io/ks3/java/util/AtomicBooleanSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/util/AtomicBooleanSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/util/concurrent/atomic/AtomicBoolean;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/util/concurrent/atomic/AtomicBoolean;)V
+}
+
+public final class io/ks3/java/util/AtomicIntegerSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/util/AtomicIntegerSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/util/concurrent/atomic/AtomicInteger;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/util/concurrent/atomic/AtomicInteger;)V
+}
+
+public final class io/ks3/java/util/AtomicLongSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/util/AtomicLongSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/util/concurrent/atomic/AtomicLong;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/util/concurrent/atomic/AtomicLong;)V
+}
+
+public final class io/ks3/java/util/UuidSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/util/UuidSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/util/UUID;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/util/UUID;)V
+}
+

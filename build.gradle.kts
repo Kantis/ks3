@@ -1,7 +1,9 @@
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
    id("ks3.conventions.base")
    id("ks3.conventions.git-versioning")
    idea
+   alias(libs.plugins.kotlinBinaryCompatibilityValidator)
 }
 
 group = "io.ks3"

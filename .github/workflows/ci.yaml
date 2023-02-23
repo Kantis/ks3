@@ -33,6 +33,7 @@ jobs:
          matrix:
             os: [ ubuntu-latest ]
             target:
+               - apiCheck
                - jvmTest
                - jsIrTest
                - linuxX64Test
