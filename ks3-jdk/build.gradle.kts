@@ -7,19 +7,13 @@ kotlin {
    sourceSets {
       val commonMain by getting {
          dependencies {
-            implementation(platform(libs.kotlin.bom))
-            implementation(platform(libs.kotlinxSerialization.bom))
-
             implementation(projects.ks3Standard)
-
             implementation(libs.kotlinxSerialization.core)
          }
       }
 
       val commonTest by getting {
          dependencies {
-            implementation(platform(libs.kotest.bom))
-
             implementation(kotlin("test"))
 
             implementation(projects.ks3Test)
