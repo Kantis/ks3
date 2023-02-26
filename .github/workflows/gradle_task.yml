@@ -8,6 +8,10 @@ on:
 
    workflow_call:
       inputs:
+         ref:
+            description: "The git branch, tag or SHA to checkout"
+            required: false
+            type: string
          gradle-task:
             description: "The Gradle task to run, including any flags"
             required: true
@@ -37,6 +41,8 @@ jobs:
       steps:
          -  name: Checkout the repo
             uses: actions/checkout@v3
+            with:
+               ref: ${{ inputs.ref }}
 
          -  name: Setup JDK
             uses: actions/setup-java@v3

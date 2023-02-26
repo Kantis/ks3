@@ -2,6 +2,12 @@ name: publish
 
 on:
    workflow_dispatch:
+      inputs:
+         ref:
+            description: "The git branch, tag or SHA to checkout"
+            required: false
+            default: ''
+            type: string
 
    workflow_run:
       workflows: [ "build" ]
@@ -48,5 +54,6 @@ jobs:
       uses: ./.github/workflows/gradle_task.yml
       secrets: inherit
       with:
+         ref: ${{ inputs.ref }}
          gradle-task: publishAllPublicationsToSonatypeReleaseRepository ${{ matrix.args }} --no-parallel --stacktrace
          runs-on: ${{ matrix.os }}
