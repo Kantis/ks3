@@ -10,11 +10,9 @@ group = "io.ks3"
 version = "0.0.0-SNAPSHOT"
 gitVersioning.apply {
    refs {
-      // if git HEAD is attached:
-      branch(".+") { version = "\${ref}-SNAPSHOT" }
-
-      // if HEAD is detached:
+      // Prefer tag over branch/ref
       tag("v(?<version>.*)") { version = "\${ref.version}" }
+      branch(".+") { version = "\${ref}-SNAPSHOT" }
    }
 
    // optional fallback configuration in case of no matching ref configuration
