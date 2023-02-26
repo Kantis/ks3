@@ -13,6 +13,9 @@ dependencies {
    implementation(libs.gradlePlugin.gitVersioning)
    implementation(libs.gradlePlugin.kotest)
    implementation(libs.gradlePlugin.dokka)
+
+   testImplementation(platform(libs.kotest.bom))
+   testImplementation(libs.kotest.runnerJunit5)
 }
 
 val buildLogicJvmTarget = "11"
@@ -28,6 +31,10 @@ tasks.withType<KotlinCompile>().configureEach {
    kotlinOptions {
       jvmTarget = buildLogicJvmTarget
    }
+}
+
+tasks.withType<Test>().configureEach {
+   useJUnitPlatform()
 }
 
 kotlinDslPluginOptions {

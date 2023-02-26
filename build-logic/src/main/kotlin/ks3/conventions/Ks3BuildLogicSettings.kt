@@ -60,6 +60,6 @@ abstract class Ks3BuildLogicSettings @Inject constructor(
        *
        * If a version does not match this code it should be treated as a SNAPSHOT version.
        */
-      val releaseVersionRegex = Regex("\\d\\+.\\d\\+.\\d+")
+      val releaseVersionRegex = Regex("\\d+.\\d+.\\d+")
    }
 }
