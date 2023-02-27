@@ -40,6 +40,9 @@ signing {
       logger.lifecycle("[maven-publish convention] signing is enabled for ${project.path}")
       useInMemoryPgpKeys(signingKey.get(), signingPassword.get())
    }
+   publishing.publications.configureEach {
+      sign(this)
+   }
 }
 
 // Gradle hasn't updated the signing plugin to be compatible with lazy-configuration, so it needs weird workarounds:
