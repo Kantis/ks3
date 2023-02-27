@@ -45,7 +45,7 @@ jobs:
 
                # Windows: MinGW
                -  os: windows-latest
-                  args: -P"ks3_enabledPublicationNamePrefixes=MinGW"
+                  args: -P"ks3_enabledPublicationNamePrefixes=mingw"
 
                # Apple: macOS, iOS, tvOS, watchOS
                -  os: macos-11
