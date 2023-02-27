@@ -40,9 +40,6 @@ signing {
       logger.lifecycle("[maven-publish convention] signing is enabled for ${project.path}")
       useInMemoryPgpKeys(signingKey.get(), signingPassword.get())
    }
-   publishing.publications.configureEach {
-      sign(this)
-   }
 }
 
 // Gradle hasn't updated the signing plugin to be compatible with lazy-configuration, so it needs weird workarounds:
@@ -57,6 +54,8 @@ afterEvaluate {
          // closureOf is a Gradle Kotlin DSL workaround: https://github.com/gradle/gradle/issues/19903
          signing.sign(closureOf<SignOperation> { signing.sign(this@publication) })
       }
+   } else {
+      logger.lifecycle("[maven-publish convention] No signing key or password found, skipping signing for ${project.path}")
    }
 }
 
