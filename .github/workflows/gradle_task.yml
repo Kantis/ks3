@@ -47,7 +47,7 @@ jobs:
 
          -  name: Calculate version
             id: version
-            uses: paulhatch/semantic-version@v5.0.2
+            uses: Kantis/semantic-version@master
             with:
                version_format: "${major}.${minor}.${patch}.${increment}-SNAPSHOT"
 
@@ -68,7 +68,7 @@ jobs:
                key: ${{ runner.os }}-kotlin-konan
 
          -  id: stable-version
-            if: ${{ steps.version.outputs.increment == 0 }}
+            if: ${{ steps.version.outputs.release }}
             run: >
                echo "version=${{ steps.version.outputs.major }}.${{steps.version.outputs.minor }}.${{steps.version.outputs.patch }}" >> $GITHUB_OUTPUT
 
