@@ -1,23 +1,11 @@
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
    id("ks3.conventions.base")
-   id("ks3.conventions.git-versioning")
    idea
    alias(libs.plugins.kotlinBinaryCompatibilityValidator)
 }
 
 group = "io.ks3"
-version = "0.0.0-SNAPSHOT"
-gitVersioning.apply {
-   refs {
-      // Prefer tag over branch/ref
-      tag("v(?<version>.*)") { version = "\${ref.version}" }
-      branch(".+") { version = "\${ref}-SNAPSHOT" }
-   }
-
-   // optional fallback configuration in case of no matching ref configuration
-   rev { version = "\${commit}" }
-}
 
 idea {
    module {

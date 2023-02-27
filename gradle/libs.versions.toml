@@ -12,7 +12,6 @@ kotest-wiremockExtension = "1.0.3"
 okio = "3.2.0"
 
 gradlePlugin-testlogger = "3.2.0"
-gradlePlugin-gitVersioning = "6.4.2"
 
 
 [libraries]
@@ -60,7 +59,6 @@ gradlePlugin-testlogger = { module = "com.adarshr:gradle-test-logger-plugin", ve
 
 gradlePlugin-kotest = { module = "io.kotest:kotest-framework-multiplatform-plugin-gradle", version.ref = "kotest" }
 
-gradlePlugin-gitVersioning = { module = "me.qoomon:gradle-git-versioning-plugin", version.ref = "gradlePlugin-gitVersioning" }
 gradlePlugin-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
 
 [bundles]
