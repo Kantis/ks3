@@ -45,11 +45,11 @@ jobs:
                ref: ${{inputs.ref }}
                fetch-depth: 0
 
-         - name: Calculate version
-           id: version
-           uses: paulhatch/semantic-version@v5.0.2
-           with:
-              version_format: "${major}.${minor}.${patch}.${increment}-SNAPSHOT"
+         -  name: Calculate version
+            id: version
+            uses: paulhatch/semantic-version@v5.0.2
+            with:
+               version_format: "${major}.${minor}.${patch}.${increment}-SNAPSHOT"
 
          -  name: Setup JDK
             uses: actions/setup-java@v3
@@ -67,6 +67,11 @@ jobs:
                path: ~/.konan
                key: ${{ runner.os }}-kotlin-konan
 
+         -  id: stable-version
+            if: ${{ steps.version.outputs.increment == 0 }}
+            run: >
+               echo "version=${{ steps.version.outputs.major }}.${{steps.version.outputs.minor }}.${{steps.version.outputs.patch }}" >> $GITHUB_OUTPUT
+
          -  name: Run ${{ inputs.gradle-task }}
             env:
                ORG_GRADLE_PROJECT_ks3_enableKotlinJvm: true
@@ -78,7 +83,7 @@ jobs:
                ORG_GRADLE_PROJECT_ossrhUsername: ${{ secrets.OSSRH_USERNAME }}
                ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.OSSRH_PASSWORD }}
             run: >-
-               ./gradlew ${{ inputs.gradle-task }} -Pversion="${{ steps.version.outputs.version }}"
+               ./gradlew ${{ inputs.gradle-task }} -Pversion="${{ steps.stable-version.outputs.version || steps.version.outputs.version }}"
 
 
          -  name: Upload build reports
