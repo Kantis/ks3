@@ -68,7 +68,7 @@ jobs:
                key: ${{ runner.os }}-kotlin-konan
 
          -  id: stable-version
-            if: ${{ steps.version.outputs.release }}
+            if: steps.version.outputs.release == 'true'
             run: >
                echo "version=${{ steps.version.outputs.major }}.${{steps.version.outputs.minor }}.${{steps.version.outputs.patch }}" >> $GITHUB_OUTPUT
 
