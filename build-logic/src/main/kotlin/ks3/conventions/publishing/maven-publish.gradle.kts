@@ -34,31 +34,6 @@ val sonatypeReleaseUrl: Provider<String> = isReleaseVersion.map { isRelease ->
    }
 }
 
-signing {
-   useGpgCmd()
-   if (signingKey.isPresent && signingPassword.isPresent) {
-      logger.lifecycle("[maven-publish convention] signing is enabled for ${project.path}")
-      useInMemoryPgpKeys(signingKey.get(), signingPassword.get())
-   }
-}
-
-// Gradle hasn't updated the signing plugin to be compatible with lazy-configuration, so it needs weird workarounds:
-afterEvaluate {
-   // Register signatures in afterEvaluate, otherwise the signing plugin creates the signing tasks
-   // too early, before all the publications are added. Use .all { }, not .configureEach { },
-   // otherwise the signing plugin doesn't create the tasks soon enough.
-
-   if (signingKey.isPresent && signingPassword.isPresent) {
-      publishing.publications.all publication@{
-         logger.lifecycle("[maven-publish convention] configuring signature for publication ${this@publication.name} in ${project.path}")
-         // closureOf is a Gradle Kotlin DSL workaround: https://github.com/gradle/gradle/issues/19903
-         signing.sign(closureOf<SignOperation> { signing.sign(this@publication) })
-      }
-   } else {
-      logger.lifecycle("[maven-publish convention] No signing key or password found, skipping signing for ${project.path}")
-   }
-}
-
 publishing {
    repositories {
       if (ossrhUsername.isPresent && ossrhPassword.isPresent) {
@@ -112,11 +87,23 @@ publishing {
    }
 }
 
+signing {
+   useGpgCmd()
+   if (signingKey.isPresent && signingPassword.isPresent) {
+      logger.lifecycle("[maven-publish convention] signing is enabled for ${project.path}")
+      useInMemoryPgpKeys(signingKey.get(), signingPassword.get())
+      sign(publishing.publications)
+   }
+}
+
+// https://youtrack.jetbrains.com/issue/KT-46466
+val signingTasks = tasks.withType<Sign>()
+
 tasks.withType<AbstractPublishToMaven>().configureEach {
    // Gradle warns about some signing tasks using publishing task outputs without explicit dependencies.
    // Here's a quick fix.
-   dependsOn(tasks.withType<Sign>())
-   mustRunAfter(tasks.withType<Sign>())
+   dependsOn(signingTasks)
+   mustRunAfter(signingTasks)
 
    // use a val for the GAV to avoid Gradle Configuration Cache issues
    val publicationGAV = publication?.run { "$group:$artifactId:$version" }
