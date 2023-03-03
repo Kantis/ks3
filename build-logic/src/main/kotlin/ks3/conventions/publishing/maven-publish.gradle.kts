@@ -21,8 +21,6 @@ val javadocJarStub by tasks.registering(Jar::class) {
 // can be set with environment variables: ORG_GRADLE_PROJECT_ossrhUsername and ORG_GRADLE_PROJECT_ossrhPassword
 val ossrhUsername: Provider<String> = providers.gradleProperty("ossrhUsername")
 val ossrhPassword: Provider<String> = providers.gradleProperty("ossrhPassword")
-val signingKey: Provider<String> = providers.gradleProperty("signingKey")
-val signingPassword: Provider<String> = providers.gradleProperty("signingPassword")
 
 val isReleaseVersion = provider { version.toString().matches(Ks3BuildLogicSettings.releaseVersionRegex) }
 
@@ -88,12 +86,12 @@ publishing {
 }
 
 signing {
-   useGpgCmd()
-   if (signingKey.isPresent && signingPassword.isPresent) {
-      logger.lifecycle("[maven-publish convention] signing is enabled for ${project.path}")
-      useInMemoryPgpKeys(signingKey.get(), signingPassword.get())
-      sign(publishing.publications)
-   }
+   val signingKey: String? by project
+   val signingPassword: String? by project
+
+   logger.lifecycle("[maven-publish convention] signing is enabled for ${project.path}")
+   useInMemoryPgpKeys(signingKey, signingPassword)
+   sign(publishing.publications)
 }
 
 // https://youtrack.jetbrains.com/issue/KT-46466
