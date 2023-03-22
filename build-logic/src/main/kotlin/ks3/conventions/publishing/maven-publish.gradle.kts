@@ -121,8 +121,8 @@ tasks.withType<AbstractPublishToMaven>().configureEach {
    val publicationName = publication.name
    val enabledPublicationNamePrefixes = ks3Settings.enabledPublicationNamePrefixes
 
-   val isPublicationEnabled = enabledPublicationNamePrefixes.map { names ->
-      names.any { it.startsWith(publicationName, ignoreCase = true) }
+   val isPublicationEnabled = enabledPublicationNamePrefixes.map { prefixes ->
+      prefixes.any { prefix -> publicationName.startsWith(prefix, ignoreCase = true) }
    }
 
    // register an input so Gradle can do up-to-date checks
