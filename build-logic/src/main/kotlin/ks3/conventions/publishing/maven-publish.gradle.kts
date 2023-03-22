@@ -52,33 +52,35 @@ publishing {
       }
    }
 
-   publications.withType<MavenPublication>().configureEach {
+   publications.withType<MavenPublication>().forEach {
+      it.apply {
 
-      artifact(javadocJarStub)
+         artifact(javadocJarStub)
 
-      pom {
-         name.set("Ks3")
-         description.set("KotlinX Serialization standard serializers")
-         url.set("https://github.com/Kantis/ks3")
-
-         scm {
-            connection.set("scm:git:https://github.com/Kantis/ks3/")
-            developerConnection.set("scm:git:https://github.com/Kantis/")
+         pom {
+            name.set("Ks3")
+            description.set("KotlinX Serialization standard serializers")
             url.set("https://github.com/Kantis/ks3")
-         }
 
-         licenses {
-            license {
-               name.set("Apache-2.0")
-               url.set("https://opensource.org/licenses/Apache-2.0")
+            scm {
+               connection.set("scm:git:https://github.com/Kantis/ks3/")
+               developerConnection.set("scm:git:https://github.com/Kantis/")
+               url.set("https://github.com/Kantis/ks3")
             }
-         }
 
-         developers {
-            developer {
-               id.set("Kantis")
-               name.set("Emil Kantis")
-               email.set("emil.kantis@protonmail.com")
+            licenses {
+               license {
+                  name.set("Apache-2.0")
+                  url.set("https://opensource.org/licenses/Apache-2.0")
+               }
+            }
+
+            developers {
+               developer {
+                  id.set("Kantis")
+                  name.set("Emil Kantis")
+                  email.set("emil.kantis@protonmail.com")
+               }
             }
          }
       }
