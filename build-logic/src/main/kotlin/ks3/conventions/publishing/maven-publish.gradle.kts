@@ -90,6 +90,7 @@ signing {
    val signingPassword: String? by project
 
    logger.lifecycle("[maven-publish convention] signing is enabled for ${project.path}")
+   useGpgCmd()
    useInMemoryPgpKeys(signingKey, signingPassword)
    sign(publishing.publications)
 }
