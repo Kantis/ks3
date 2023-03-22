@@ -7,7 +7,7 @@ kotlinx-serialization = "1.4.1"
 kotest = "5.5.4"
 kotest-propertyArbsExtension = "2.1.2"
 kotest-springExtension = "1.1.2"
-kotest-wiremockExtension = "1.0.3"
+kotest-wiremockExtension = "2.0.0"
 
 okio = "3.2.0"
 
