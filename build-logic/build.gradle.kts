@@ -10,7 +10,7 @@ dependencies {
    implementation(libs.gradlePlugin.kotlinSerialization)
    implementation(libs.gradlePlugin.testlogger)
    implementation(libs.gradlePlugin.kotest)
-   implementation(libs.gradlePlugin.dokka)
+   implementation(libs.gradlePlugin.dokkatoo)
 
    testImplementation(libs.kotest.runnerJunit5)
 }

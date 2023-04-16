@@ -1,5 +1,6 @@
 [versions]
 dokka = "1.8.10"
+dokkatoo = "1.1.1"
 
 kotlin = "1.8.20"
 kotlinx-serialization = "1.5.0"
@@ -60,6 +61,7 @@ gradlePlugin-testlogger = { module = "com.adarshr:gradle-test-logger-plugin", ve
 gradlePlugin-kotest = { module = "io.kotest:kotest-framework-multiplatform-plugin-gradle", version.ref = "kotest" }
 
 gradlePlugin-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
+gradlePlugin-dokkatoo = { module = "dev.adamko.dokkatoo:dokkatoo-plugin", version.ref = "dokkatoo" }
 
 [bundles]
 
