@@ -1,8 +1,8 @@
 [versions]
 dokka = "1.7.20"
 
-kotlin = "1.7.20"
-kotlinx-serialization = "1.4.1"
+kotlin = "1.8.20"
+kotlinx-serialization = "1.5.0"
 
 kotest = "5.5.4"
 kotest-propertyArbsExtension = "2.1.2"
@@ -16,30 +16,25 @@ gradlePlugin-testlogger = "3.2.0"
 
 [libraries]
 
-## Kotlin stdlib ##
-kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
-
 ## KotlinX Serialization ##
-kotlinxSerialization-bom = { module = "org.jetbrains.kotlinx:kotlinx-serialization-bom", version.ref = "kotlinx-serialization" }
-kotlinxSerialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core" }
-kotlinxSerialization-cbor = { module = "org.jetbrains.kotlinx:kotlinx-serialization-cbor" }
-kotlinxSerialization-hocon = { module = "org.jetbrains.kotlinx:kotlinx-serialization-hocon" }
-kotlinxSerialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json" }
-kotlinxSerialization-properties = { module = "org.jetbrains.kotlinx:kotlinx-serialization-properties" }
-kotlinxSerialization-protobuf = { module = "org.jetbrains.kotlinx:kotlinx-serialization-protobuf" }
-kotlinxSerialization-jsonOkio = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json-okio" }
+kotlinxSerialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+kotlinxSerialization-cbor = { module = "org.jetbrains.kotlinx:kotlinx-serialization-cbor", version.ref = "kotlinx-serialization" }
+kotlinxSerialization-hocon = { module = "org.jetbrains.kotlinx:kotlinx-serialization-hocon", version.ref = "kotlinx-serialization" }
+kotlinxSerialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+kotlinxSerialization-properties = { module = "org.jetbrains.kotlinx:kotlinx-serialization-properties", version.ref = "kotlinx-serialization" }
+kotlinxSerialization-protobuf = { module = "org.jetbrains.kotlinx:kotlinx-serialization-protobuf", version.ref = "kotlinx-serialization" }
+kotlinxSerialization-jsonOkio = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json-okio", version.ref = "kotlinx-serialization" }
 
 
 ## Kotest ##
-kotest-bom = { module = "io.kotest:kotest-bom", version.ref = "kotest" }
-kotest-assertionsCore = { module = "io.kotest:kotest-assertions-core" }
-kotest-assertionsJson = { module = "io.kotest:kotest-assertions-json" }
-kotest-datatest = { module = "io.kotest:kotest-framework-datatest" }
+kotest-assertionsCore = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotest-assertionsJson = { module = "io.kotest:kotest-assertions-json", version.ref = "kotest" }
+kotest-datatest = { module = "io.kotest:kotest-framework-datatest", version.ref = "kotest" }
 kotest-property = { module = "io.kotest:kotest-property", version.ref = "kotest" }
-kotest-frameworkApi = { module = "io.kotest:kotest-framework-api" }
+kotest-frameworkApi = { module = "io.kotest:kotest-framework-api", version.ref = "kotest" }
 kotest-frameworkEngine = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" } # Not included in the BOM
-kotest-frameworkDatatest = { module = "io.kotest:kotest-framework-datatest" }
-kotest-runnerJunit5 = { module = "io.kotest:kotest-runner-junit5" }
+kotest-frameworkDatatest = { module = "io.kotest:kotest-framework-datatest", version.ref = "kotest" }
+kotest-runnerJunit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 
 kotest-propertyArbsExtension = { module = "io.kotest.extensions:kotest-property-arbs", version.ref = "kotest-propertyArbsExtension" }
 kotest-springExtension = { module = "io.kotest.extensions:kotest-extensions-spring", version.ref = "kotest-springExtension" }
@@ -50,8 +45,7 @@ kotestPlugin-multiplatform = { module = "io.kotest:kotest-framework-multiplatfor
 
 
 ## Okio ##
-okio-bom = { module = "com.squareup.okio:okio-bom", version.ref = "okio" }
-okio-core = { module = "com.squareup.okio:okio" }
+okio-core = { module = "com.squareup.okio:okio", version.ref = "okio" }
 
 
 ### Gradle plugins ###

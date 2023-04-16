@@ -6,14 +6,12 @@ plugins {
 }
 
 dependencies {
-   implementation(platform(libs.kotlin.bom))
    implementation(libs.gradlePlugin.kotlin)
    implementation(libs.gradlePlugin.kotlinSerialization)
    implementation(libs.gradlePlugin.testlogger)
    implementation(libs.gradlePlugin.kotest)
    implementation(libs.gradlePlugin.dokka)
 
-   testImplementation(platform(libs.kotest.bom))
    testImplementation(libs.kotest.runnerJunit5)
 }
 
