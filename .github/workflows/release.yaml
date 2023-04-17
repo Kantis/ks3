@@ -55,5 +55,5 @@ jobs:
       secrets: inherit
       with:
          ref: ${{ inputs.ref }}
-         gradle-task: publishAllPublicationsToSonatypeReleaseRepository ${{ matrix.args }} --no-parallel --stacktrace
+         gradle-task: publishAllPublicationsToSonatypeReleaseRepository ${{ matrix.args }} --no-parallel --stacktrace --no-configuration-cache
          runs-on: ${{ matrix.os }}
