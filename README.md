@@ -12,7 +12,7 @@ Add the dependency. With Gradle:
 
 ```kotlin
 dependencies {
-    implementation("io.ks3:ks3-jdk:0.0.2")
+    implementation("io.ks3:ks3-jdk:0.2.0")
 }
 ```
 
