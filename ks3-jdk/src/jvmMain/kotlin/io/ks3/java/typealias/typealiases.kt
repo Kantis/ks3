@@ -2,6 +2,7 @@
 
 package io.ks3.java.`typealias`
 
+import io.ks3.java.io.FilePathSerializer
 import io.ks3.java.net.UriSerializer
 import io.ks3.java.net.UrlSerializer
 import io.ks3.java.time.InstantAsLongSerializer
@@ -13,6 +14,7 @@ import io.ks3.java.time.OffsetDateTimeAsStringSerializer
 import io.ks3.java.time.YearMonthAsStringSerializer
 import io.ks3.java.util.UuidSerializer
 import kotlinx.serialization.Serializable
+import java.io.File
 import java.net.URI
 import java.net.URL
 import java.time.Instant
@@ -22,6 +24,9 @@ import java.time.LocalTime
 import java.time.OffsetDateTime
 import java.time.YearMonth
 import java.util.UUID
+
+//-- IO --
+typealias FileAsString = @Serializable(with = FilePathSerializer::class) File
 
 //-- NET --
 typealias UrlAsString = @Serializable(with = UrlSerializer::class) URL
