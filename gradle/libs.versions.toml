@@ -67,7 +67,7 @@ gradlePlugin-dokkatoo = { module = "dev.adamko.dokkatoo:dokkatoo-plugin", versio
 
 
 [plugins]
-kotlinBinaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.13.0" }
+kotlinBinaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.13.1" }
 
 # If plugin will be used by conventions, define plugins in ./build-logic/build.gradle.kts to avoid error:
 # The Kotlin Gradle plugin was loaded multiple times in different subprojects, which is not supported and may break the build.
