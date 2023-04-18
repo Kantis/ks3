@@ -7,13 +7,13 @@ plugins {
 
 kotlin {
    sourceSets {
-      val commonMain by getting {
+      commonMain {
          dependencies {
             implementation(libs.kotlinxSerialization.core)
          }
       }
 
-      val commonTest by getting {
+      commonTest {
          dependencies {
             implementation(kotlin("test"))
 
@@ -29,7 +29,7 @@ kotlin {
       }
 
       if (ks3Settings.enableKotlinJvm.get()) {
-         val jvmTest by getting {
+         jvmTest {
             dependencies {
                implementation(libs.kotest.runnerJunit5)
             }
