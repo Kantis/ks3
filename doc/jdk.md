@@ -8,6 +8,12 @@
 | Year          | YearAsStringSerializer          | `"2022"`                |
 | Year          | YearAsIntSerializer             | `2022`                  |
 
+## `java.io`
+
+| Type | Serializer         | Example                 |
+|------|--------------------|-------------------------|
+| File | FilePathSerializer | `"/home/emil/file.txt"` |
+
 ## `java.net`
 
 | Type | Serializer    | Example                     |
