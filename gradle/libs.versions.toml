@@ -1,6 +1,6 @@
 [versions]
 dokka = "1.8.10"
-dokkatoo = "1.1.1"
+dokkatoo = "1.2.0"
 
 kotlin = "1.8.20"
 kotlinx-serialization = "1.5.0"
