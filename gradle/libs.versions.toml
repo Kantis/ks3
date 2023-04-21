@@ -5,7 +5,7 @@ dokkatoo = "1.2.0"
 kotlin = "1.8.20"
 kotlinx-serialization = "1.5.0"
 
-kotest = "5.5.4"
+kotest = "5.6.1"
 kotest-propertyArbsExtension = "2.1.2"
 kotest-springExtension = "1.1.2"
 kotest-wiremockExtension = "2.0.0"
