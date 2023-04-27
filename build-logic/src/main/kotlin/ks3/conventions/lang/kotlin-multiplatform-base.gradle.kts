@@ -31,6 +31,7 @@ kotlin {
          kotlinOptions {
             apiVersion = ks3Settings.kotlinTarget.get()
             languageVersion = ks3Settings.kotlinTarget.get()
+            freeCompilerArgs += listOf("-opt-in=io.ks3.core.Ks3Internal")
          }
       }
    }

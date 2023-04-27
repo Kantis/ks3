@@ -1,5 +1,6 @@
 package io.ks3.standard
 
+import io.ks3.core.Ks3Internal
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
@@ -49,6 +50,7 @@ inline fun <reified T> tupleSerializer(vararg properties: KProperty1<T, *>): KSe
 }
 
 
+@Ks3Internal
 @ExperimentalSerializationApi
 class ListLikeDescriptor(override val serialName: String, vararg val elementDescriptors: SerialDescriptor) : SerialDescriptor {
    override val kind: SerialKind get() = StructureKind.LIST
@@ -76,8 +78,7 @@ class ListLikeDescriptor(override val serialName: String, vararg val elementDesc
    override fun equals(other: Any?): Boolean {
       if (this === other) return true
       if (other !is ListLikeDescriptor) return false
-      if (elementDescriptors.contentEquals(other.elementDescriptors) && serialName == other.serialName) return true
-      return false
+      return elementDescriptors.contentEquals(other.elementDescriptors) && serialName == other.serialName
    }
 
    override fun hashCode(): Int {

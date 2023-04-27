@@ -32,6 +32,7 @@ kotlin {
          jvmMain {
             dependencies {
                implementation(kotlin("reflect"))
+               implementation(projects.ks3Core)
             }
          }
 
