@@ -1,7 +1,11 @@
 package io.ks3.java.math
 
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.property.exhaustive.exhaustive
+import io.kotest.property.Arb
+import io.kotest.property.arbitrary.bigDecimal
+import io.kotest.property.arbitrary.double
+import io.kotest.property.arbitrary.map
+import io.kotest.property.arbitrary.withEdgecases
 import io.ks3.test.generateSerializerTests
 import kotlinx.serialization.ExperimentalSerializationApi
 import java.math.BigDecimal
@@ -22,15 +26,15 @@ class BigDecimalSerializerTests : FunSpec(
       include(
          generateSerializerTests(
             BigDecimalAsStringSerializer,
-            someNumbers.exhaustive(),
+            Arb.bigDecimal().withEdgecases(someNumbers),
             { "BigDecimalAsStringSerializer performs round-trip serialization" },
          ),
       )
 
       include(
          generateSerializerTests(
-            BigDecimalAsHighPrecisionNumberSerializer,
-            someNumbers.exhaustive(),
+            BigDecimalAsJsonLiteralSerializer,
+            Arb.bigDecimal().withEdgecases(someNumbers),
             { "BigDecimalAsHighPrecisionNumberSerializer performs round-trip serialization" },
          ),
       )
@@ -38,8 +42,10 @@ class BigDecimalSerializerTests : FunSpec(
       include(
          generateSerializerTests(
             BigDecimalAsDoubleSerializer,
-            someNumbers.exhaustive(),
-            { "BigDecimalAsHighPrecisionNumberSerializer performs round-trip serialization" },
+            Arb.double()
+               .withEdgecases(emptyList()) // get rid of NaN and Infinity
+               .map { BigDecimal(it.toString()) },
+            { "BigDecimalAsDoubleSerializer performs round-trip serialization" },
          ),
       )
    },

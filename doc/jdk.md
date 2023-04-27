@@ -14,9 +14,19 @@
 
 ## `java.io`
 
-| Type | Serializer         | Example                 |
-|------|--------------------|-------------------------|
-| File | FilePathSerializer | `"/home/emil/file.txt"` |
+| Type | Serializer         | Typealias    | Example                 |
+|------|--------------------|--------------|-------------------------|
+| File | FilePathSerializer | FileAsString | `"/home/emil/file.txt"` |
+
+## `java.math`
+
+| Type       | Serializer                   | Typealias               | Example                    |
+|------------|------------------------------|-------------------------|----------------------------|
+| BigDecimal | BigDecimalAsStringSerializer | BigDecimalAsString      | `"3.12345678901234567890"` |
+| BigDecimal | BigDecimalAsDouble           | BigDecimalAsDouble      | `3.1234567890123457`       |
+| BigDecimal | BigDecimalAsJsonLiteral      | BigDecimalAsJsonLiteral | `3.12345678901234567890`   |
+| BigInteger | BigIntegerAsString           | BigIntegerAsString      | `"9223372036854775808"`    |
+| BigInteger | BigIntegerAsJsonLiteral      | BigIntegerAsJsonLiteral | `9223372036854775808`      |
 
 ## `java.net`
 
