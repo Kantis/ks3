@@ -1,12 +1,16 @@
 ## `java.time`
 
-| Type          | Serializer                      | Example                 |
-|---------------|---------------------------------|-------------------------|
-| LocalDate     | LocalDateAsStringSerializer     | `"2022-10-23"`          |
-| LocalDateTime | LocalDateTimeAsStringSerializer | `"2022-10-23T21:44:00"` |
-| YearMonth     | YearMonthAsStringSerializer     | `"2022-10"`             |
-| Year          | YearAsStringSerializer          | `"2022"`                |
-| Year          | YearAsIntSerializer             | `2022`                  |
+| Type           | Serializer                      | Typealias              | Example                       |
+|----------------|---------------------------------|------------------------|-------------------------------|
+| Instant        | InstantAsStringSerializer       | InstantAsString        | `2023-04-27T21:24:37.476555Z` |
+| Instant        | InstantAsLongSerializer         | InstantAsLong          | `1682630695852`               |
+| LocalDate      | LocalDateAsStringSerializer     | LocalDateAsString      | `"2022-10-23"`                |
+| LocalDateTime  | LocalDateTimeAsStringSerializer | LocalDateTimeAsString  | `"2022-10-23T21:44:00"`       |
+| LocalTime      | LocalTimeAsStringSerializer     | LocalTimeAsString      | `"21:44:00"`                  |
+| OffsetDateTime | OffsetDateTimeSerializer        | OffsetDateTimeAsString | `2022`                        |
+| YearMonth      | YearMonthAsStringSerializer     | YearMonthAsString      | `"2022-10"`                   |
+| Year           | YearAsStringSerializer          | not defined            | `"2022"`                      |
+| Year           | YearAsIntSerializer             | not defined            | `2022`                        |
 
 ## `java.io`
 
