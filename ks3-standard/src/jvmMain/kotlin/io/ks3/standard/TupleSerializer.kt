@@ -7,7 +7,9 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.encoding.decodeStructure
 import kotlinx.serialization.encoding.encodeStructure
 import kotlinx.serialization.serializer
+import kotlin.reflect.KParameter
 import kotlin.reflect.KProperty1
+import kotlin.reflect.full.isSubtypeOf
 
 @ExperimentalSerializationApi
 inline fun <reified T> tupleSerializer(vararg properties: KProperty1<T, *>): KSerializer<T> = object : KSerializer<T> {
@@ -16,23 +18,33 @@ inline fun <reified T> tupleSerializer(vararg properties: KProperty1<T, *>): KSe
       *properties.map { serializer(it.returnType).descriptor }.toTypedArray(),
    )
 
-   override fun deserialize(decoder: Decoder): T {
-      val matchingConstructor = T::class.constructors.find {
-         it.parameters.size == properties.size && it.parameters.zip(properties).all { (param, prop) -> param.type == prop.returnType }
-      }
-
-      if (matchingConstructor != null) {
-         return decoder.decodeStructure(descriptor) {
-            val args = mutableListOf<Any?>()
-            while (true) {
-               val index = decodeElementIndex(descriptor)
-               if (index == -1) break
-               decodeSerializableElement(descriptor, index, serializer(properties[index].returnType)).let { args.add(it) }
+   private val constructorPropertyMap = T::class.constructors
+      .mapNotNull { constructor ->
+         val mapping = constructor.parameters
+            .filterNot(KParameter::isOptional)
+            .associateWith { param ->
+               properties.singleOrNull { prop ->
+                  prop.returnType.isSubtypeOf(param.type) && prop.name == param.name
+               }
             }
-            matchingConstructor.call(*args.toTypedArray())
+
+         if (mapping.any { (_, key) -> key == null }) null
+         else constructor to mapping
+      }
+      .single()
+
+   override fun deserialize(decoder: Decoder): T {
+      return decoder.decodeStructure(descriptor) {
+         val args = mutableListOf<Any?>()
+         while (true) {
+            val index = decodeElementIndex(descriptor)
+            if (index == -1) break
+            decodeSerializableElement(descriptor, index, serializer(properties[index].returnType)).let { args.add(it) }
          }
-      } else {
-         error("No matching constructor for the parameter list!")
+
+         val mappedArgs = constructorPropertyMap.second.mapValues { (_, prop) -> args[properties.indexOf(prop)] }
+
+         constructorPropertyMap.first.callBy(mappedArgs)
       }
    }
 
