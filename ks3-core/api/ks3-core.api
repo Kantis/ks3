@@ -1,0 +1,3 @@
+public abstract interface annotation class io/ks3/core/Ks3Internal : java/lang/annotation/Annotation {
+}
+
