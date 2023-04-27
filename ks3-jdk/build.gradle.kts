@@ -7,6 +7,7 @@ kotlin {
    sourceSets {
       commonMain {
          dependencies {
+            implementation(projects.ks3Core)
             implementation(projects.ks3Standard)
             implementation(libs.kotlinxSerialization.core)
          }

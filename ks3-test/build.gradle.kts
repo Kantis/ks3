@@ -9,6 +9,8 @@ kotlin {
    sourceSets {
       commonMain {
          dependencies {
+            implementation(projects.ks3Core)
+
             implementation(libs.kotest.property)
             implementation(libs.kotest.frameworkEngine)
 

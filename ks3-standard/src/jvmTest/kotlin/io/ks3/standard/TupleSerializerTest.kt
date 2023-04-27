@@ -3,6 +3,7 @@ package io.ks3.standard
 import io.kotest.assertions.json.shouldEqualJson
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
@@ -11,10 +12,14 @@ import kotlinx.serialization.json.Json
 
 @Serializable(with = PointAsTupleSerializer::class)
 data class Point(val x: Int, val y: Int)
+
+@OptIn(ExperimentalSerializationApi::class)
 object PointAsTupleSerializer : KSerializer<Point> by tupleSerializer(Point::x, Point::y)
 
 @Serializable(with = PersonAsTupleSerializer::class)
 data class Person(val name: String, val age: Int, val origin: Point)
+
+@OptIn(ExperimentalSerializationApi::class)
 object PersonAsTupleSerializer : KSerializer<Person> by tupleSerializer(Person::name, Person::age, Person::origin)
 
 
