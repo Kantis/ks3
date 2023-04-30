@@ -114,7 +114,7 @@ jobs:
             uses: gradle/gradle-build-action@v2
 
          -  name: Build docs
-            run: ./gradlew dokkatooGeneratePublicationHtml
+            run: ./gradlew dokkatooGeneratePublicationHtml --no-configuration-cache
 
          -  name: Deploy docs
             uses: peaceiris/actions-gh-pages@v3
