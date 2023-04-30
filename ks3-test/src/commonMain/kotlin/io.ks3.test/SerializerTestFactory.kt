@@ -10,6 +10,9 @@ import io.kotest.property.exhaustive.exhaustive
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
 
+/**
+ * Creates a test factory for [serializer].
+ */
 inline fun <reified T> generateSerializerTests(
    serializer: KSerializer<T>,
    generator: Gen<T>,

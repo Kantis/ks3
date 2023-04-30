@@ -5,6 +5,19 @@ plugins {
    id("ks3.conventions.publishing.maven-publish")
 }
 
+dokkatoo {
+   dokkatooSourceSets.configureEach {
+      includes.from("Module.md")
+   }
+   modulePath.set("ks3-test") // match the original dokka default
+}
+
+tasks.withType<dev.adamko.dokkatoo.tasks.DokkatooPrepareParametersTask>().configureEach {
+   dokkaSourceSets.configureEach {
+      sourceSetScope.set(":ks3-test:dokkaHtmlPartial")
+   }
+}
+
 kotlin {
    sourceSets {
       commonMain {

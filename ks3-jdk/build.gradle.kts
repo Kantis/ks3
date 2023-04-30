@@ -3,6 +3,28 @@ plugins {
    id("ks3.conventions.publishing.maven-publish")
 }
 
+dokkatoo {
+   dokkatooSourceSets.configureEach {
+      includes.from("Module.md")
+   }
+
+   dokkatooSourceSets.named("jvmMain"){
+      sourceLink {
+         localDirectory.set(file("src/jvmMain/kotlin"))
+         remoteUrl("https://github.com/Kantis/ks3/blob/main/ks3-jdk/src/jvmMain/kotlin")
+         remoteLineSuffix.set("#L")
+      }
+   }
+
+   modulePath.set("ks3-jdk") // match the original dokka default
+}
+
+tasks.withType<dev.adamko.dokkatoo.tasks.DokkatooPrepareParametersTask>().configureEach {
+   dokkaSourceSets.configureEach {
+      sourceSetScope.set(":ks3-jdk:dokkaHtmlPartial")
+   }
+}
+
 kotlin {
    sourceSets {
       commonMain {

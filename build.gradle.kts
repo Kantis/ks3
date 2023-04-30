@@ -7,6 +7,18 @@ plugins {
 
 group = "io.ks3"
 
+dependencies {
+   dokkatoo(projects.ks3Jdk)
+   dokkatoo(projects.ks3Standard)
+   dokkatoo(projects.ks3Test)
+   dokkatooPluginHtml(libs.dokka.templating)
+   dokkatooPluginHtml(libs.dokka.allModulesPage)
+}
+
+dokkatoo {
+   moduleName.set("KS3")
+}
+
 idea {
    module {
       isDownloadSources = true

@@ -5,6 +5,36 @@ plugins {
    id("ks3.conventions.publishing.maven-publish")
 }
 
+dokkatoo {
+   dokkatooSourceSets.configureEach {
+      includes.from("Module.md")
+   }
+
+   dokkatooSourceSets.named("commonMain"){
+      sourceLink {
+         localDirectory.set(file("src/commonMain/kotlin"))
+         remoteUrl("https://github.com/Kantis/ks3/blob/main/ks3-standard/src/commonMain/kotlin")
+         remoteLineSuffix.set("#L")
+      }
+   }
+
+   dokkatooSourceSets.named("jvmMain"){
+      sourceLink {
+         localDirectory.set(file("src/jvmMain/kotlin"))
+         remoteUrl("https://github.com/Kantis/ks3/blob/main/ks3-standard/src/jvmMain/kotlin")
+         remoteLineSuffix.set("#L")
+      }
+   }
+
+   modulePath.set("ks3-standard") // match the original dokka default
+}
+
+tasks.withType<dev.adamko.dokkatoo.tasks.DokkatooPrepareParametersTask>().configureEach {
+   dokkaSourceSets.configureEach {
+      sourceSetScope.set(":ks3-standard:dokkaHtmlPartial")
+   }
+}
+
 kotlin {
    sourceSets {
       commonMain {

@@ -11,6 +11,31 @@ import kotlin.reflect.KParameter
 import kotlin.reflect.KProperty1
 import kotlin.reflect.full.isSubtypeOf
 
+/**
+ * Creates a serializer that encodes select properties of [T] as a tuple.
+ *
+ * For deserialization to work, the following conditions must be fulfilled:
+ * * There must be a constructor where only the serialized properties are required.
+ *    * The constructor _can_ have other parameters, but they must have a default value.
+ * * The properties must match parameters of the constructor by name and type.
+ *
+ *
+ * Example:
+ * ```kotlin
+ *
+ * @Serializable(with = PersonSerializer::class)
+ * data class Person(val name: String, val age: Int, val profession: String)
+ *
+ * object PersonSerializer : KSerializer<Person> by tupleSerializer(
+ *    Person::name,
+ *    Person::age,
+ *    Person::profession
+ * )
+ *
+ * println(Json.encodeToString(PersonSerializer, Person("Kaylee", 21, "Mechanic")))
+ * // > ["Kaylee", 21, "Mechanic"]
+ * ```
+ */
 @ExperimentalSerializationApi
 inline fun <reified T> tupleSerializer(vararg properties: KProperty1<T, *>): KSerializer<T> = object : KSerializer<T> {
    override val descriptor = TupleDescriptor(

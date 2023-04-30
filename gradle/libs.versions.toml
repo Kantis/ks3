@@ -40,6 +40,10 @@ kotest-propertyArbsExtension = { module = "io.kotest.extensions:kotest-property-
 kotestPlugin-embeddedCompiler = { module = "io.kotest:kotest-framework-multiplatform-plugin-embeddable-compiler" }
 kotestPlugin-multiplatform = { module = "io.kotest:kotest-framework-multiplatform-plugin-gradle" }
 
+## Dokka plugins ##
+dokka-allModulesPage = { module = "org.jetbrains.dokka:all-modules-page-plugin", version.ref = "dokka" }
+dokka-templating = { module = "org.jetbrains.dokka:templating-plugin", version.ref = "dokka" }
+
 
 ## Okio ##
 okio-core = { module = "com.squareup.okio:okio", version.ref = "okio" }
