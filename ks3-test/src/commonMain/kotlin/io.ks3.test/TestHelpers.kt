@@ -3,10 +3,12 @@ package io.ks3.test
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.KSerializer
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.internal.decodeStringToJsonTree
 import kotlinx.serialization.json.internal.readJson
 import kotlinx.serialization.json.okio.decodeFromBufferedSource
+import kotlinx.serialization.json.okio.encodeToBufferedSink
 import okio.Buffer
 
 typealias Encoder<T> = T.() -> String
@@ -23,9 +25,16 @@ inline fun <reified T> Json.generateEncoders(serializer: KSerializer<T>) =
       decoders(serializer),
    )
 
+@OptIn(ExperimentalSerializationApi::class)
 inline fun <reified T> Json.encoders(serializer: KSerializer<T>): List<Encoder<T>> =
    listOf(
       { encodeToString(serializer, this) },
+      { encodeToString(encodeToJsonElement(serializer, this)) },
+      {
+         val buffer = Buffer()
+         encodeToBufferedSink(serializer, this, buffer)
+         buffer.readUtf8()
+      },
    )
 
 @OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
