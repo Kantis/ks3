@@ -40,6 +40,7 @@ kotlin {
       commonMain {
          dependencies {
             implementation(libs.kotlinxSerialization.core)
+            implementation(libs.kotlinxSerialization.json)
          }
       }
 
