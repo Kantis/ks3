@@ -4,6 +4,25 @@ public final class io/ks3/standard/EnumDecodingException : kotlinx/serialization
 	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
 }
 
+public final class io/ks3/standard/TupleDescriptor : kotlinx/serialization/descriptors/SerialDescriptor {
+	public fun <init> (Ljava/lang/String;[Lkotlinx/serialization/descriptors/SerialDescriptor;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getAnnotations ()Ljava/util/List;
+	public fun getElementAnnotations (I)Ljava/util/List;
+	public fun getElementDescriptor (I)Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun getElementDescriptors ()[Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun getElementIndex (Ljava/lang/String;)I
+	public fun getElementName (I)Ljava/lang/String;
+	public fun getElementsCount ()I
+	public fun getKind ()Lkotlinx/serialization/descriptors/SerialKind;
+	public fun getSerialName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun isElementOptional (I)Z
+	public fun isInline ()Z
+	public fun isNullable ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
 public final class io/ks3/standard/base64/Base64DecodingException : kotlinx/serialization/SerializationException {
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V

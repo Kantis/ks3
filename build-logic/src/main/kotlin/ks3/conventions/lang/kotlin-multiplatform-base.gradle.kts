@@ -26,6 +26,13 @@ kotlin {
       languageVersion.set(JavaLanguageVersion.of(ks3Settings.jvmTarget.get()))
    }
 
+   sourceSets {
+      all {
+         languageSettings.optIn("io.ks3.core.Ks3Internal")
+         languageSettings.optIn("kotlin.RequiresOptIn")
+      }
+   }
+
    targets.configureEach {
       compilations.configureEach {
          kotlinOptions {
