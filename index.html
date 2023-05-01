@@ -30,6 +30,7 @@
 <script type="text/javascript" src="scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="scripts/prism.js" async="async"></script>
 <script type="text/javascript" src="scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<link href="styles/custom-styles.css" rel="Stylesheet">
 </head>
 <body>
 <div class="navigation-wrapper" id="navigation-wrapper">
@@ -54,6 +55,67 @@
 <div class="main-content" id="content" pageIds="KS3::.ext/allModules///PointingToDeclaration//0">
   <div class="breadcrumbs"></div>
   <div class="cover ">
+    <div class="cover ">
+      <h1 class="">KotlinX Serialization Standard Serializers (KS3)</h1>
+      <p class="paragraph"> </p>
+      <p class="paragraph">This project aims to provide a set of serializers for common types, as well as provide /doc/builders.md to make it more convenient to build custom serializers for your needs.</p>
+      <blockquote class="quotation">
+        <p class="paragraph">⚠️ Consider this project to be <a href="https://kotlinlang.org/docs/components-stability.html">Alpha</a> for the time being. We would be happy for you to use it, and appreciate your feedback, but things may be re-written. We hope to reach <a href="https://kotlinlang.org/docs/components-stability.html">Beta</a> relatively quick.</p>
+      </blockquote>
+      <h2 class=""> Getting started</h2>
+      <p class="paragraph">Add the dependency. With Gradle:</p>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">dependencies {<br>    implementation(&quot;io.ks3:ks3-jdk:0.2.0&quot;)<br>}</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <p class="paragraph">Maven:</p>
+      <div class="sample-container">
+        <pre><code class="block lang-xml" theme="idea">&lt;dependency&gt;<br>  &lt;groupId&gt;io.ks3&lt;/groupId&gt;<br>  &lt;artifactId&gt;ks3-jdk-jvm&lt;/artifactId&gt;<br>  &lt;version&gt;$version&lt;/version&gt;<br>&lt;/dependency&gt;</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <blockquote class="quotation">
+        <p class="paragraph">Note that when using Maven dependencies must specify the multiplatform variant. For example, append <code class="lang-kotlin">-jvm</code> to specify the JVM variant of <code class="lang-kotlin">ks3-jdk</code>.</p>
+      </blockquote>
+      <p class="paragraph">Now you can start using the provided serializers. There's several possible ways to do this.</p>
+      <ul>
+        <li>
+          <p class="paragraph">Using <a href="https://github.com/Kotlin/kotlinx.serialization/blob/1.4.1-release/docs/serializers.md#contextual-serialization">contextual serialization</a></p>
+        </li>
+        <li>
+          <p class="paragraph"><a href="https://github.com/Kotlin/kotlinx.serialization/blob/1.4.1-release/docs/serializers.md#passing-a-serializer-manually">Passing a serializer manually</a></p>
+        </li>
+        <li>
+          <p class="paragraph"><a href="https://github.com/Kotlin/kotlinx.serialization/blob/1.4.1-release/docs/serializers.md#specifying-serializer-on-a-property">Specifying serializer on a property</a></p>
+        </li>
+        <li>
+          <p class="paragraph"><a href="https://github.com/Kotlin/kotlinx.serialization/blob/1.4.1-release/docs/serializers.md#specifying-serializers-for-a-file">Specifying serializers for a file</a></p>
+        </li>
+        <li>
+          <p class="paragraph"><a href="https://github.com/Kotlin/kotlinx.serialization/blob/1.4.1-release/docs/serializers.md#specifying-serializer-globally-using-typealias">Specifying serializer using a typealias</a></p>
+        </li>
+      </ul>
+      <h3 class=""> Using <code class="lang-kotlin">typealias</code></h3>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">typealias LocalDateTimeAsString = @Serializable(LocalDateTimeAsStringSerializer::class) LocalDateTime<br><br>data class Appointment(<br>  val datetime: LocalDateTimeAsString<br>)</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+      <blockquote class="quotation">
+        <p class="paragraph">For details, see the <a href="https://github.com/Kotlin/kotlinx.serialization/blob/1.4.1-release/docs/serializers.md#specifying-serializer-globally-using-typealias">kotlinx.serialization guide</a></p>
+      </blockquote>
+      <p class="paragraph">This method is most useful when you want to use different serial formats for the same type, or when you can't configure the serializer itself.</p>
+      <h3 class=""> Using <code class="lang-kotlin">@Contextual</code></h3>
+      <blockquote class="quotation">
+        <p class="paragraph">See the details in <a href="https://github.com/Kotlin/kotlinx.serialization/blob/1.4.1-release/docs/serializers.md#contextual-serialization">kotlinx.serialization guide</a></p>
+      </blockquote>
+      <div class="sample-container">
+        <pre><code class="block lang-kotlin" theme="idea">@Serializable<br>class ProgrammingLanguage(<br>    val name: String,<br>    @Contextual<br>    val stableReleaseDate: Date<br>)<br><br>private val module = SerializersModule {<br>  contextual(DateAsLongSerializer)<br>}<br><br>val format = Json { serializersModule = module }</code></pre>
+<span class="top-right-position"><span class="copy-icon"></span>
+          <div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div>
+        </span></div>
+    </div>
     <h2 class="">All modules:</h2>
     <div class="table"><a data-name="802763518%2FMain%2F0" anchor-label="ks3-jdk" id="802763518%2FMain%2F0" data-filterable-set=""></a>
       <div class="table-row">
