@@ -1,3 +1,5 @@
+import dev.adamko.dokkatoo.dokka.plugins.DokkaHtmlPluginParameters
+
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
    id("ks3.conventions.base")
@@ -17,6 +19,16 @@ dependencies {
 
 dokkatoo {
    moduleName.set("KS3")
+
+   dokkatooPublications.configureEach {
+      includes.from("README.md")
+   }
+
+   pluginsConfiguration.named<DokkaHtmlPluginParameters>("html") {
+      customStyleSheets.from(
+         "./dokka/custom-styles.css",
+      )
+   }
 }
 
 idea {
