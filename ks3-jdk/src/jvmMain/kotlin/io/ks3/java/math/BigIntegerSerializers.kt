@@ -34,7 +34,7 @@ typealias BigIntegerAsJsonLiteral = @Serializable(with = BigIntegerAsJsonLiteral
 object BigIntegerAsStringSerializer : KSerializer<BigInteger> by stringSerializer(::BigInteger, BigInteger::toString)
 
 /**
- * Encodes a [BigInteger] as an unquoted JSON literal, preserving the full precision of the number while being encoded as a number.
+ * Encodes a [BigInteger] as an exact numeric value, preserving the full precision of the number.
  *
  * Note that this serializer is primarily meant for JSON, other formats will have the [BigInteger] encoded as a string.
  */
