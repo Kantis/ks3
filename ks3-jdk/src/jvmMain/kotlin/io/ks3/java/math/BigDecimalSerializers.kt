@@ -39,7 +39,7 @@ object BigDecimalAsStringSerializer : KSerializer<BigDecimal> by stringSerialize
 object BigDecimalAsDoubleSerializer : KSerializer<BigDecimal> by doubleSerializer({ it.toString().toBigDecimal() }, BigDecimal::toDouble)
 
 /**
- * Encodes a [BigDecimal] as an unquoted JSON literal, preserving the full precision of the number while being encoded as a number.
+ * Encodes a [BigDecimal] as an exact numeric value, preserving the full precision of the number.
  *
  * Note that this serializer is primarily meant for JSON, other formats will have the [BigDecimal] encoded as a string.
  */
