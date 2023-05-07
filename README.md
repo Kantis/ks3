@@ -1,4 +1,5 @@
 # KotlinX Serialization Standard Serializers (KS3)
+![Stability Status - Alpha](https://kotl.in/badges/alpha.svg)
 ![GitHub commit checks state](https://img.shields.io/github/checks-status/Kantis/ks3/main?label=build%40main)
 ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/io.ks3/ks3-standard?label=latest%20&server=https%3A%2F%2Fs01.oss.sonatype.org)
 
