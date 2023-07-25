@@ -7,6 +7,51 @@ public final class io/ks3/java/io/FilePathSerializer : kotlinx/serialization/KSe
 	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
 }
 
+public final class io/ks3/java/math/BigDecimalAsDoubleSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/math/BigDecimalAsDoubleSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/math/BigDecimal;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/math/BigDecimal;)V
+}
+
+public final class io/ks3/java/math/BigDecimalAsJsonNumberSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/math/BigDecimalAsJsonNumberSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/math/BigDecimal;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/math/BigDecimal;)V
+}
+
+public final class io/ks3/java/math/BigDecimalAsStringSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/math/BigDecimalAsStringSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/math/BigDecimal;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/math/BigDecimal;)V
+}
+
+public final class io/ks3/java/math/BigIntegerAsJsonLiteralSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/math/BigIntegerAsJsonLiteralSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/math/BigInteger;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/math/BigInteger;)V
+}
+
+public final class io/ks3/java/math/BigIntegerAsStringSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/math/BigIntegerAsStringSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/math/BigInteger;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/math/BigInteger;)V
+}
+
 public final class io/ks3/java/net/UriSerializer : kotlinx/serialization/KSerializer {
 	public static final field INSTANCE Lio/ks3/java/net/UriSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
