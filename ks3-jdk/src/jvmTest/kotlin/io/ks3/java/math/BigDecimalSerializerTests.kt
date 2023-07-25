@@ -33,7 +33,7 @@ class BigDecimalSerializerTests : FunSpec(
 
       include(
          generateSerializerTests(
-            BigDecimalAsJsonLiteralSerializer,
+            BigDecimalAsJsonNumberSerializer,
             Arb.bigDecimal().withEdgecases(someNumbers),
             { "BigDecimalAsHighPrecisionNumberSerializer performs round-trip serialization" },
          ),

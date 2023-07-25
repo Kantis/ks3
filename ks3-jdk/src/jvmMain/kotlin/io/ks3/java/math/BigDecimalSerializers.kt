@@ -32,7 +32,7 @@ typealias BigDecimalAsDouble = @Serializable(with = BigDecimalAsDoubleSerializer
  * Note that this typealias is primarily meant for JSON, other formats will have the [BigDecimal] encoded as a string.
  */
 @ExperimentalSerializationApi
-typealias BigDecimalAsJsonLiteral = @Serializable(with = BigDecimalAsJsonLiteralSerializer::class) BigDecimal
+typealias BigDecimalAsJsonNumber = @Serializable(with = BigDecimalAsJsonNumberSerializer::class) BigDecimal
 
 
 object BigDecimalAsStringSerializer : KSerializer<BigDecimal> by stringSerializer(::BigDecimal, BigDecimal::toPlainString)
@@ -44,8 +44,8 @@ object BigDecimalAsDoubleSerializer : KSerializer<BigDecimal> by doubleSerialize
  * Note that this serializer is primarily meant for JSON, other formats will have the [BigDecimal] encoded as a string.
  */
 @ExperimentalSerializationApi
-object BigDecimalAsJsonLiteralSerializer : KSerializer<BigDecimal> {
-   override val descriptor = PrimitiveSerialDescriptor("java.math.BigDecimal", PrimitiveKind.DOUBLE)
+object BigDecimalAsJsonNumberSerializer : KSerializer<BigDecimal> {
+   override val descriptor = PrimitiveSerialDescriptor("java.math.BigDecimal", PrimitiveKind.STRING)
 
    override fun deserialize(decoder: Decoder): BigDecimal {
       return if (decoder is JsonDecoder) {

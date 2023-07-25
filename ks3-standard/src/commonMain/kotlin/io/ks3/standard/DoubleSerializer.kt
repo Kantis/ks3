@@ -11,7 +11,7 @@ inline fun <reified T> doubleSerializer(
    crossinline encode: (T) -> Double,
    nameOverride: String? = null,
 ): KSerializer<T> = object : KSerializer<T> {
-   override val descriptor = PrimitiveSerialDescriptor(nameOverride ?: T::class.simpleName!!, PrimitiveKind.LONG)
+   override val descriptor = PrimitiveSerialDescriptor(nameOverride ?: T::class.simpleName!!, PrimitiveKind.DOUBLE)
 
    override fun deserialize(decoder: Decoder) =
       decode(decoder.decodeDouble())
