@@ -1,5 +1,5 @@
 [versions]
-dokka = "1.8.20"
+dokka = "1.9.10"
 dokkatoo = "1.6.0"
 
 kotlin = "1.8.21"
