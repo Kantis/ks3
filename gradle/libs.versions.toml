@@ -10,7 +10,7 @@ kotest-propertyArbsExtension = "2.1.2"
 
 okio = "3.4.0"
 
-gradlePlugin-testlogger = "3.2.0"
+gradlePlugin-testlogger = "4.0.0"
 
 
 [libraries]
