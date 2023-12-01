@@ -1,7 +1,7 @@
 rootProject.name = "ks3"
 
 plugins {
-   id("com.gradle.enterprise") version "3.14"
+   id("com.gradle.enterprise") version "3.15.1"
 }
 
 apply(from = "build-logic/repositories.gradle.kts")
