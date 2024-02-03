@@ -10,11 +10,9 @@ val ks3Settings = extensions.getByType<Ks3BuildLogicSettings>()
 
 if (ks3Settings.enableKotlinJs.get()) {
    kotlin {
-      targets {
-         js(IR) {
-            browser()
-            nodejs()
-         }
+      js(IR) {
+         browser()
+         nodejs()
       }
    }
 
