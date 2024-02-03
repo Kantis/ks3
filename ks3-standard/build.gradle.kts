@@ -29,8 +29,8 @@ dokkatoo {
    modulePath.set("ks3-standard") // match the original dokka default
 }
 
-tasks.withType<dev.adamko.dokkatoo.tasks.DokkatooPrepareParametersTask>().configureEach {
-   dokkaSourceSets.configureEach {
+tasks.withType<dev.adamko.dokkatoo.tasks.DokkatooGenerateTask>().configureEach {
+   generator.dokkaSourceSets.configureEach {
       sourceSetScope.set(":ks3-standard:dokkaHtmlPartial")
    }
 }
