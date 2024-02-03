@@ -5,7 +5,9 @@
 
 This project aims to provide a set of serializers for common types, as well as provide [utilities](/doc/builders.md) to make it more convenient to build custom serializers for your needs.
 
-> ⚠️ Consider this project to be [Alpha](https://kotlinlang.org/docs/components-stability.html) for the time being. We would be happy for you to use it, and appreciate your feedback, but things may be re-written. We hope to reach [Beta](https://kotlinlang.org/docs/components-stability.html) relatively quick.
+> ⚠️ Consider this project to be in [Beta](https://kotlinlang.org/docs/components-stability.html) for the time being. The project has had
+> no need to perform any breaking changes so far. We would be happy for you to use it, and appreciate your feedback, but we can't guarantee
+> that APIs won't change.
 
 ## Getting started
 
@@ -13,7 +15,7 @@ Add the dependency. With Gradle:
 
 ```kotlin
 dependencies {
-    implementation("io.ks3:ks3-jdk:0.3.1")
+    implementation("io.ks3:ks3-jdk:0.4.0")
 }
 ```
 
