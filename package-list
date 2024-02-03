@@ -1,6 +1,6 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
-$dokka.location:io.ks3.java.typealias////PointingToDeclaration/ks3-jdk/io.ks3.java.typealias.html
+
 module:ks3-jdk
 io.ks3.java.io
 io.ks3.java.math

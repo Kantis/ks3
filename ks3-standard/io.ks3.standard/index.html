@@ -1,9 +1,11 @@
 <!doctype html>
-<html>
+<html class="no-js">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>io.ks3.standard</title>
-<link href="../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script>    <script>const storage = localStorage.getItem("dokka-dark-mode")
+<link href="../../images/logo-icon.svg" rel="icon" type="image/svg">    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
     if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
@@ -16,12 +18,13 @@
         }
     }
     </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
 <script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
 <link href="../../styles/style.css" rel="Stylesheet">
-<link href="../../styles/jetbrains-mono.css" rel="Stylesheet">
 <link href="../../styles/main.css" rel="Stylesheet">
 <link href="../../styles/prism.css" rel="Stylesheet">
 <link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
 <script type="text/javascript" src="../../scripts/clipboard.js" async></script>
 <script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
 <script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
@@ -29,28 +32,34 @@
 <script type="text/javascript" src="../../scripts/prism.js" async></script>
 <script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script></head>
 <body>
-<div class="navigation-wrapper" id="navigation-wrapper">
-    <div id="leftToggler"><span class="icon-toggler"></span></div>
-    <div class="library-name">
-<a href="../../index.html">
-<span>KS3</span>            </a>    </div>
-    <div>0.1.0-SNAPSHOT
-    </div>
-    <div class="pull-right d-flex">
-        <div class="filter-section" id="filter-section">
-                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":ks3-standard/commonMain">common</button>
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ks3-standard/jvmMain">jvm</button>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+<a class="library-name--link" href="../../index.html">
+                            KS3
+                    </a>            </div>
+            <div class="library-version">0.1.0-SNAPSHOT
+            </div>
         </div>
-        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
-        <div id="searchBar"></div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active="" data-filter=":ks3-standard:dokkaHtmlPartial/commonMain">common</button>
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ks3-standard:dokkaHtmlPartial/jvmMain">jvm</button>
+        </div>
     </div>
-</div>
-<div id="container">
-    <div id="leftColumn">
-        <div id="sideMenu"></div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
     </div>
-    <div id="main">
-<div class="main-content" data-page-type="package" id="content" pageids="ks3-standard::io.ks3.standard////PointingToDeclaration//-1618906642">
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageids="ks3-standard::io.ks3.standard////PointingToDeclaration//-1198337302">
   <div class="breadcrumbs"><a href="../index.html">ks3-standard</a><span class="delimiter">/</span><span class="current">io.ks3.standard</span></div>
   <div class="cover ">
     <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
@@ -60,34 +69,34 @@
     <div class="tabs-section-body">
       <div data-togglable="TYPE">
         <h2 class="">Types</h2>
-        <div class="table"><a data-name="252293365%2FClasslikes%2F102078410" anchor-label="EnumDecodingException" id="252293365%2FClasslikes%2F102078410" data-filterable-set=":ks3-standard/commonMain"></a>
-          <div class="table-row" data-filterable-current=":ks3-standard/commonMain" data-filterable-set=":ks3-standard/commonMain">
+        <div class="table"><a data-name="252293365%2FClasslikes%2F428254388" anchor-label="EnumDecodingException" id="252293365%2FClasslikes%2F428254388" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":ks3-standard:dokkaHtmlPartial/commonMain" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-enum-decoding-exception/index.html"><span>Enum</span><wbr><span>Decoding</span><wbr><span><span>Exception</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="252293365%2FClasslikes%2F102078410"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="252293365%2FClasslikes%2F428254388"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-enum-decoding-exception/index.html">EnumDecodingException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">class </span><a href="-enum-decoding-exception/index.html">EnumDecodingException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <span data-unresolved-link="kotlinx.serialization/SerializationException///PointingToDeclaration/">SerializationException</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1382138305%2FClasslikes%2F347666412" anchor-label="TupleDescriptor" id="1382138305%2FClasslikes%2F347666412" data-filterable-set=":ks3-standard/jvmMain"></a>
-          <div class="table-row" data-filterable-current=":ks3-standard/jvmMain" data-filterable-set=":ks3-standard/jvmMain">
+<a data-name="1382138305%2FClasslikes%2F675011522" anchor-label="TupleDescriptor" id="1382138305%2FClasslikes%2F675011522" data-filterable-set=":ks3-standard:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":ks3-standard:dokkaHtmlPartial/jvmMain" data-filterable-set=":ks3-standard:dokkaHtmlPartial/jvmMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="-tuple-descriptor/index.html"><span>Tuple</span><wbr><span><span>Descriptor</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1382138305%2FClasslikes%2F347666412"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1382138305%2FClasslikes%2F675011522"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":ks3-standard/jvmMain" data-filterable-set=":ks3-standard/jvmMain" data-active="" data-toggle=":ks3-standard/jvmMain">jvm</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard/jvmMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="io.ks3.core/Ks3Internal///PointingToDeclaration/"><span class="token annotation builtin">Ks3Internal</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/ExperimentalSerializationApi///PointingToDeclaration/"><span class="token annotation builtin">ExperimentalSerializationApi</span></span></div></div><span class="token keyword">class </span><a href="-tuple-descriptor/index.html">TupleDescriptor</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>serialName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>elementDescriptors<span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization.descriptors/SerialDescriptor///PointingToDeclaration/">SerialDescriptor</span></span></span><span class="token punctuation">)</span> : <span data-unresolved-link="kotlinx.serialization.descriptors/SerialDescriptor///PointingToDeclaration/">SerialDescriptor</span></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":ks3-standard:dokkaHtmlPartial/jvmMain" data-filterable-set=":ks3-standard:dokkaHtmlPartial/jvmMain" data-active="" data-toggle=":ks3-standard:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="io.ks3.core/Ks3Internal///PointingToDeclaration/"><span class="token annotation builtin">Ks3Internal</span></span></div><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/ExperimentalSerializationApi///PointingToDeclaration/"><span class="token annotation builtin">ExperimentalSerializationApi</span></span></div></div><span class="token keyword">class </span><a href="-tuple-descriptor/index.html">TupleDescriptor</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>serialName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>elementDescriptors<span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization.descriptors/SerialDescriptor///PointingToDeclaration/">SerialDescriptor</span></span></span><span class="token punctuation">)</span> : <span data-unresolved-link="kotlinx.serialization.descriptors/SerialDescriptor///PointingToDeclaration/">SerialDescriptor</span></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -96,109 +105,109 @@
       </div>
       <div data-togglable="FUNCTION">
         <h2 class="">Functions</h2>
-        <div class="table"><a data-name="8103223%2FFunctions%2F102078410" anchor-label="doubleSerializer" id="8103223%2FFunctions%2F102078410" data-filterable-set=":ks3-standard/commonMain"></a>
-          <div class="table-row" data-filterable-current=":ks3-standard/commonMain" data-filterable-set=":ks3-standard/commonMain">
+        <div class="table"><a data-name="8103223%2FFunctions%2F428254388" anchor-label="doubleSerializer" id="8103223%2FFunctions%2F428254388" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":ks3-standard:dokkaHtmlPartial/commonMain" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="double-serializer.html"><span>double</span><wbr><span><span>Serializer</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="8103223%2FFunctions%2F102078410"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="8103223%2FFunctions%2F428254388"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="double-serializer.html">T</a><span class="token operator">&gt; </span><a href="double-serializer.html"><span class="token function">doubleSerializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>decode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="double-serializer.html">T</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>encode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="double-serializer.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">nameOverride<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="double-serializer.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="double-serializer.html">T</a><span class="token operator">&gt; </span><a href="double-serializer.html"><span class="token function">doubleSerializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>decode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="double-serializer.html">T</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>encode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="double-serializer.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token punctuation">, </span></span><span class="parameter ">nameOverride<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/KSerializer///PointingToDeclaration/">KSerializer</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="double-serializer.html">T</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-614338347%2FFunctions%2F102078410" anchor-label="enumAsOrdinalSerializer" id="-614338347%2FFunctions%2F102078410" data-filterable-set=":ks3-standard/commonMain"></a>
-          <div class="table-row" data-filterable-current=":ks3-standard/commonMain" data-filterable-set=":ks3-standard/commonMain">
+<a data-name="-614338347%2FFunctions%2F428254388" anchor-label="enumAsOrdinalSerializer" id="-614338347%2FFunctions%2F428254388" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":ks3-standard:dokkaHtmlPartial/commonMain" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="enum-as-ordinal-serializer.html"><span>enum</span><wbr><span>As</span><wbr><span>Ordinal</span><wbr><span><span>Serializer</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-614338347%2FFunctions%2F102078410"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-614338347%2FFunctions%2F428254388"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="enum-as-ordinal-serializer.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="enum-as-ordinal-serializer.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="enum-as-ordinal-serializer.html"><span class="token function">enumAsOrdinalSerializer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="enum-as-ordinal-serializer.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="enum-as-ordinal-serializer.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="enum-as-ordinal-serializer.html"><span class="token function">enumAsOrdinalSerializer</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/KSerializer///PointingToDeclaration/">KSerializer</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="enum-as-ordinal-serializer.html">T</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1017589869%2FFunctions%2F102078410" anchor-label="intSerializer" id="-1017589869%2FFunctions%2F102078410" data-filterable-set=":ks3-standard/commonMain"></a>
-          <div class="table-row" data-filterable-current=":ks3-standard/commonMain" data-filterable-set=":ks3-standard/commonMain">
+<a data-name="-1017589869%2FFunctions%2F428254388" anchor-label="intSerializer" id="-1017589869%2FFunctions%2F428254388" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":ks3-standard:dokkaHtmlPartial/commonMain" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="int-serializer.html"><span>int</span><wbr><span><span>Serializer</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1017589869%2FFunctions%2F102078410"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1017589869%2FFunctions%2F428254388"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="int-serializer.html">T</a><span class="token operator">&gt; </span><a href="int-serializer.html"><span class="token function">intSerializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>decode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="int-serializer.html">T</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>encode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="int-serializer.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">nameOverride<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="int-serializer.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="int-serializer.html">T</a><span class="token operator">&gt; </span><a href="int-serializer.html"><span class="token function">intSerializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>decode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="int-serializer.html">T</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>encode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="int-serializer.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter ">nameOverride<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/KSerializer///PointingToDeclaration/">KSerializer</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="int-serializer.html">T</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="784550358%2FFunctions%2F102078410" anchor-label="longSerializer" id="784550358%2FFunctions%2F102078410" data-filterable-set=":ks3-standard/commonMain"></a>
-          <div class="table-row" data-filterable-current=":ks3-standard/commonMain" data-filterable-set=":ks3-standard/commonMain">
+<a data-name="784550358%2FFunctions%2F428254388" anchor-label="longSerializer" id="784550358%2FFunctions%2F428254388" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":ks3-standard:dokkaHtmlPartial/commonMain" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="long-serializer.html"><span>long</span><wbr><span><span>Serializer</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="784550358%2FFunctions%2F102078410"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="784550358%2FFunctions%2F428254388"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="long-serializer.html">T</a><span class="token operator">&gt; </span><a href="long-serializer.html"><span class="token function">longSerializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>decode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="long-serializer.html">T</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>encode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="long-serializer.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">nameOverride<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="long-serializer.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="long-serializer.html">T</a><span class="token operator">&gt; </span><a href="long-serializer.html"><span class="token function">longSerializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>decode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="long-serializer.html">T</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>encode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="long-serializer.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter ">nameOverride<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/KSerializer///PointingToDeclaration/">KSerializer</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="long-serializer.html">T</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1581860572%2FFunctions%2F102078410" anchor-label="objectWrappingSerializer" id="1581860572%2FFunctions%2F102078410" data-filterable-set=":ks3-standard/commonMain"></a>
-          <div class="table-row" data-filterable-current=":ks3-standard/commonMain" data-filterable-set=":ks3-standard/commonMain">
+<a data-name="1581860572%2FFunctions%2F428254388" anchor-label="objectWrappingSerializer" id="1581860572%2FFunctions%2F428254388" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":ks3-standard:dokkaHtmlPartial/commonMain" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="object-wrapping-serializer.html"><span>object</span><wbr><span>Wrapping</span><wbr><span><span>Serializer</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1581860572%2FFunctions%2F102078410"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1581860572%2FFunctions%2F428254388"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="object-wrapping-serializer.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="object-wrapping-serializer.html"><span class="token function">objectWrappingSerializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fieldName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a></div><div class="brief "><p class="paragraph">Wraps the inner serializer by putting the entire structure into a JSON object, keyed by <a href="object-wrapping-serializer.html">fieldName</a>.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="object-wrapping-serializer.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="object-wrapping-serializer.html"><span class="token function">objectWrappingSerializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">fieldName<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization.json/JsonTransformingSerializer///PointingToDeclaration/">JsonTransformingSerializer</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="object-wrapping-serializer.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Wraps the inner serializer by putting the entire structure into a JSON object, keyed by <a href="object-wrapping-serializer.html">fieldName</a>.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-51482505%2FFunctions%2F102078410" anchor-label="stringSerializer" id="-51482505%2FFunctions%2F102078410" data-filterable-set=":ks3-standard/commonMain"></a>
-          <div class="table-row" data-filterable-current=":ks3-standard/commonMain" data-filterable-set=":ks3-standard/commonMain">
+<a data-name="-51482505%2FFunctions%2F428254388" anchor-label="stringSerializer" id="-51482505%2FFunctions%2F428254388" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain"></a>
+          <div class="table-row" data-filterable-current=":ks3-standard:dokkaHtmlPartial/commonMain" data-filterable-set=":ks3-standard:dokkaHtmlPartial/commonMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="string-serializer.html"><span>string</span><wbr><span><span>Serializer</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-51482505%2FFunctions%2F102078410"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-51482505%2FFunctions%2F428254388"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="string-serializer.html">T</a><span class="token operator">&gt; </span><a href="string-serializer.html"><span class="token function">stringSerializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>decode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="string-serializer.html">T</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>encode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="string-serializer.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>{ it.toString() }<span class="token punctuation">, </span></span><span class="parameter ">nameOverride<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="/<Error class: unknown class>///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="string-serializer.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard:dokkaHtmlPartial/commonMain"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="string-serializer.html">T</a><span class="token operator">&gt; </span><a href="string-serializer.html"><span class="token function">stringSerializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">crossinline </span>decode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="string-serializer.html">T</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">crossinline </span>encode<span class="token operator">: </span><span class="token punctuation">(</span><span class="token keyword"></span><a href="string-serializer.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><span class="token keyword"></span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>{ it.toString() }<span class="token punctuation">, </span></span><span class="parameter ">nameOverride<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/KSerializer///PointingToDeclaration/">KSerializer</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="string-serializer.html">T</a><span class="token operator">&gt;</span></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-989471164%2FFunctions%2F347666412" anchor-label="tupleSerializer" id="-989471164%2FFunctions%2F347666412" data-filterable-set=":ks3-standard/jvmMain"></a>
-          <div class="table-row" data-filterable-current=":ks3-standard/jvmMain" data-filterable-set=":ks3-standard/jvmMain">
+<a data-name="-989471164%2FFunctions%2F675011522" anchor-label="tupleSerializer" id="-989471164%2FFunctions%2F675011522" data-filterable-set=":ks3-standard:dokkaHtmlPartial/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":ks3-standard:dokkaHtmlPartial/jvmMain" data-filterable-set=":ks3-standard:dokkaHtmlPartial/jvmMain">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="tuple-serializer.html"><span>tuple</span><wbr><span><span>Serializer</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-989471164%2FFunctions%2F347666412"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-989471164%2FFunctions%2F675011522"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
                   <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
-                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":ks3-standard/jvmMain" data-filterable-set=":ks3-standard/jvmMain" data-active="" data-toggle=":ks3-standard/jvmMain">jvm</button></div>
-<div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard/jvmMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/ExperimentalSerializationApi///PointingToDeclaration/"><span class="token annotation builtin">ExperimentalSerializationApi</span></span></div></div><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="tuple-serializer.html">T</a><span class="token operator">&gt; </span><a href="tuple-serializer.html"><span class="token function">tupleSerializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>properties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-property1/index.html">KProperty1</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="tuple-serializer.html">T</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/KSerializer///PointingToDeclaration/">KSerializer</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="tuple-serializer.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates a serializer that encodes select properties of <a href="tuple-serializer.html">T</a> as a tuple.</p></div></div>                  </div>
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":ks3-standard:dokkaHtmlPartial/jvmMain" data-filterable-set=":ks3-standard:dokkaHtmlPartial/jvmMain" data-active="" data-toggle=":ks3-standard:dokkaHtmlPartial/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":ks3-standard:dokkaHtmlPartial/jvmMain"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/ExperimentalSerializationApi///PointingToDeclaration/"><span class="token annotation builtin">ExperimentalSerializationApi</span></span></div></div><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="tuple-serializer.html">T</a><span class="token operator">&gt; </span><a href="tuple-serializer.html"><span class="token function">tupleSerializer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>properties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-property1/index.html">KProperty1</a><span class="token operator">&lt;</span><span class="token keyword"></span><a href="tuple-serializer.html">T</a><span class="token punctuation">, </span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.serialization/KSerializer///PointingToDeclaration/">KSerializer</span><span class="token operator">&lt;</span><span class="token keyword"></span><a href="tuple-serializer.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Creates a serializer that encodes select properties of <a href="tuple-serializer.html">T</a> as a tuple.</p></div></div>                  </div>
                 </div>
               </div>
             </div>
@@ -211,8 +220,9 @@
       <div class="footer">
         <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
       </div>
+            </div>
+        </div>
     </div>
-</div>
 </body>
 </html>
 
