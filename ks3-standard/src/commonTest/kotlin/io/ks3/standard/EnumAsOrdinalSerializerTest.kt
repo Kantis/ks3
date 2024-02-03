@@ -24,30 +24,28 @@ class EnumAsOrdinalSerializerTest : FreeSpec(
          val shape: Shape?,
       )
 
-      "With wrapped, nullable enum property" - {
-         "Encodes null" {
-            format.encodeToString(EnumWrapper(null)) shouldEqualJson """
+      "Given a nullable enum property, Then null should be encoded" {
+         format.encodeToString(EnumWrapper(null)) shouldEqualJson """
                {
                   "shape": null
                }
             """.trimIndent()
-         }
+      }
 
-         "Encodes non-null" {
-            format.encodeToString(EnumWrapper(Shape.SQUARE)) shouldEqualJson """
+      "Given a nullable enum property, Then non-null should be encoded" {
+         format.encodeToString(EnumWrapper(Shape.SQUARE)) shouldEqualJson """
                {
                   "shape": 1
                }
             """.trimIndent()
-         }
+      }
 
-         "Decodes null" {
-            format.decodeFromString<EnumWrapper>("{ \"shape\": null }") shouldBe EnumWrapper(null)
-         }
+      "Given a nullable enum property, Then null should be decoded" {
+         format.decodeFromString<EnumWrapper>("{ \"shape\": null }") shouldBe EnumWrapper(null)
+      }
 
-         "Decodes non-null" {
-            format.decodeFromString<EnumWrapper>("{ \"shape\": 1 }") shouldBe EnumWrapper(Shape.SQUARE)
-         }
+      "Given a nullable enum property, Then non-null value should be decoded" {
+         format.decodeFromString<EnumWrapper>("{ \"shape\": 1 }") shouldBe EnumWrapper(Shape.SQUARE)
       }
 
       "Encodes to ordinal value" {
