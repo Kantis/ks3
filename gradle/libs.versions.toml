@@ -8,7 +8,7 @@ kotlinx-serialization = "1.5.0"
 kotest = "5.8.0"
 kotest-propertyArbsExtension = "2.1.2"
 
-okio = "3.4.0"
+okio = "3.7.0"
 
 gradlePlugin-testlogger = "4.0.0"
 
