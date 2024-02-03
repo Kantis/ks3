@@ -3,7 +3,7 @@ dokka = "1.9.10"
 dokkatoo = "2.0.0"
 
 kotlin = "1.9.22"
-kotlinx-serialization = "1.5.0"
+kotlinx-serialization = "1.6.2"
 
 kotest = "5.8.0"
 kotest-propertyArbsExtension = "2.1.2"
