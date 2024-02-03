@@ -37,13 +37,13 @@ inline fun <reified T> Json.encoders(serializer: KSerializer<T>): List<Encoder<T
       },
    )
 
-@OptIn(InternalSerializationApi::class, ExperimentalSerializationApi::class)
+@OptIn(ExperimentalSerializationApi::class, InternalSerializationApi::class)
 inline fun <reified T> Json.decoders(serializer: KSerializer<T>): List<Decoder<T>> =
    listOf(
       { decodeFromString(serializer, this) },
       {
-         val tree = decodeStringToJsonTree(serializer, this)
-         readJson(tree, serializer)
+         val tree = decodeStringToJsonTree(this@decoders, serializer, this)
+         readJson(this@decoders, tree, serializer)
       },
       {
          val buffer = Buffer()

@@ -19,6 +19,14 @@ tasks.withType<dev.adamko.dokkatoo.tasks.DokkatooGenerateTask>().configureEach {
 }
 
 kotlin {
+   targets.configureEach {
+      compilations.all {
+         kotlinOptions {
+            freeCompilerArgs += listOf("-opt-in=kotlinx.serialization.json.internal.JsonFriendModuleApi")
+         }
+      }
+   }
+
    sourceSets {
       commonMain {
          dependencies {
