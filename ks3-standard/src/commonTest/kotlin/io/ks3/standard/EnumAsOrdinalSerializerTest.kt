@@ -25,18 +25,20 @@ class EnumAsOrdinalSerializerTest : FreeSpec(
       )
 
       "Given a nullable enum property, Then null should be encoded" {
-         format.encodeToString(EnumWrapper(null)) shouldEqualJson """
-               {
-                  "shape": null
-               }
+         format.encodeToString(EnumWrapper(null)) shouldEqualJson
+            """
+            {
+               "shape": null
+            }
             """.trimIndent()
       }
 
       "Given a nullable enum property, Then non-null should be encoded" {
-         format.encodeToString(EnumWrapper(Shape.SQUARE)) shouldEqualJson """
-               {
-                  "shape": 1
-               }
+         format.encodeToString(EnumWrapper(Shape.SQUARE)) shouldEqualJson
+            """
+            {
+               "shape": 1
+            }
             """.trimIndent()
       }
 
@@ -75,5 +77,6 @@ class EnumAsOrdinalSerializerTest : FreeSpec(
 )
 
 private enum class Shape {
-   CIRCLE, SQUARE
+   CIRCLE,
+   SQUARE,
 }

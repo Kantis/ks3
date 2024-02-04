@@ -10,10 +10,11 @@ class UuidSerializerTests : FunSpec(
    {
       UUIDVersion.values().forEach { uuidVersion ->
          include(
-             generateSerializerTests(
-                 UuidSerializer,
-                 Arb.uuid(uuidVersion),
-                 nameFn = { "Encode and decode UUID${uuidVersion.name}" })
+            generateSerializerTests(
+               UuidSerializer,
+               Arb.uuid(uuidVersion),
+               nameFn = { "Encode and decode UUID${uuidVersion.name}" },
+            ),
          )
       }
    },

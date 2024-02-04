@@ -19,7 +19,6 @@ inline fun <reified T> generateSerializerTests(
    crossinline nameFn: () -> String = { "Encodes and decodes values back to original form" },
    crossinline assertion: T.(T) -> Unit = { original -> this shouldBe original },
 ) = funSpec {
-
    val (encoders, decoders) = Json.generateEncoders(serializer)
 
    test(nameFn()) {

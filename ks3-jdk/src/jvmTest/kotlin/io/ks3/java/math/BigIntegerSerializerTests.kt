@@ -25,6 +25,5 @@ class BigIntegerSerializerTests : FunSpec(
             { "BigIntegerAsJsonLiteralSerializer performs round-trip serialization" },
          ),
       )
-
    },
 )

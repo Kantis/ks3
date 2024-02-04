@@ -11,15 +11,14 @@ plugins {
    kotlin("multiplatform")
    kotlin("plugin.serialization")
    id("io.kotest.multiplatform")
+   id("org.jlleitschuh.gradle.ktlint")
 }
 
 // Base configuration for all Kotlin/Multiplatform conventions.
 // This plugin does not enable any Kotlin target. To enable a target in a subproject, prefer
 // applying specific Kotlin target convention plugins.
 
-
 val ks3Settings = extensions.getByType<Ks3BuildLogicSettings>()
-
 
 kotlin {
    jvmToolchain {
@@ -64,10 +63,11 @@ kotlin {
 KotlinPlatformType.values().forEach { kotlinPlatform ->
    val kotlinPlatformName = kotlinPlatform.name.capitalized()
 
-   val testKotlinTargetLifecycleTask = tasks.create("allKotlin${kotlinPlatformName}Tests") {
-      group = LifecycleBasePlugin.VERIFICATION_GROUP
-      description = "Run all Kotlin/${kotlinPlatformName} tests"
-   }
+   val testKotlinTargetLifecycleTask =
+      tasks.create("allKotlin${kotlinPlatformName}Tests") {
+         group = LifecycleBasePlugin.VERIFICATION_GROUP
+         description = "Run all Kotlin/$kotlinPlatformName tests"
+      }
 
    kotlin.testableTargets.matching {
       it.platformType == kotlinPlatform

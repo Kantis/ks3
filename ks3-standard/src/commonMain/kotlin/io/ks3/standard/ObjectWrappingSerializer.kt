@@ -20,14 +20,15 @@ import kotlinx.serialization.serializer
  *
  * Can be used to wrap a value class in a JSON object, for instance if an API requires you to send ` { "id": 42 } ` instead of just `42`.
  */
-inline fun <reified T : Any> objectWrappingSerializer(fieldName: String) = object : JsonTransformingSerializer<T>(serializer()) {
-   override fun transformSerialize(element: JsonElement): JsonElement {
-      return buildJsonObject {
-         put(fieldName, element)
+inline fun <reified T : Any> objectWrappingSerializer(fieldName: String) =
+   object : JsonTransformingSerializer<T>(serializer()) {
+      override fun transformSerialize(element: JsonElement): JsonElement {
+         return buildJsonObject {
+            put(fieldName, element)
+         }
+      }
+
+      override fun transformDeserialize(element: JsonElement): JsonElement {
+         return element.jsonObject[fieldName]!!
       }
    }
-
-   override fun transformDeserialize(element: JsonElement): JsonElement {
-      return element.jsonObject[fieldName]!!
-   }
-}

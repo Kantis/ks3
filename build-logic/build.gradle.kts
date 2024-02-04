@@ -11,12 +11,12 @@ dependencies {
    implementation(libs.gradlePlugin.testlogger)
    implementation(libs.gradlePlugin.kotest)
    implementation(libs.gradlePlugin.dokkatoo)
+   implementation(libs.gradlePlugin.ktlint)
 
    testImplementation(libs.kotest.runnerJunit5)
 }
 
 val buildLogicJvmTarget = "11"
-
 
 kotlin {
    jvmToolchain {

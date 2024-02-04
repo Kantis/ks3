@@ -15,7 +15,8 @@ class InstantSerializersTests : FreeSpec(
       include(
          generateSerializerTests(
             InstantAsLongSerializer,
-            Arb.instant(ofEpochMilli(Long.MIN_VALUE)..ofEpochMilli(Long.MAX_VALUE)), // Only values that can be represented by a Long
+            // Only values that can be represented by a Long
+            Arb.instant(ofEpochMilli(Long.MIN_VALUE)..ofEpochMilli(Long.MAX_VALUE)),
             { "Encodes Instant as epoch millis and back again" },
          ) { originalValue ->
             truncatedTo(MILLIS) shouldBe originalValue.truncatedTo(MILLIS) // We lose nanosecond parts when encoding to epoch millis

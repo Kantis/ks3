@@ -10,7 +10,7 @@ dokkatoo {
       includes.from("Module.md")
    }
 
-   dokkatooSourceSets.named("commonMain"){
+   dokkatooSourceSets.named("commonMain") {
       sourceLink {
          localDirectory.set(file("src/commonMain/kotlin"))
          remoteUrl("https://github.com/Kantis/ks3/blob/main/ks3-standard/src/commonMain/kotlin")
@@ -18,7 +18,7 @@ dokkatoo {
       }
    }
 
-   dokkatooSourceSets.named("jvmMain"){
+   dokkatooSourceSets.named("jvmMain") {
       sourceLink {
          localDirectory.set(file("src/jvmMain/kotlin"))
          remoteUrl("https://github.com/Kantis/ks3/blob/main/ks3-standard/src/jvmMain/kotlin")

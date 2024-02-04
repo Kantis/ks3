@@ -37,47 +37,57 @@ import kotlin.reflect.full.isSubtypeOf
  * ```
  */
 @ExperimentalSerializationApi
-inline fun <reified T> tupleSerializer(vararg properties: KProperty1<T, *>): KSerializer<T> = object : KSerializer<T> {
-   override val descriptor = TupleDescriptor(
-      "io.ks3.Tuple(${T::class.qualifiedName})",
-      *properties.map { serializer(it.returnType).descriptor }.toTypedArray(),
-   )
+inline fun <reified T> tupleSerializer(vararg properties: KProperty1<T, *>): KSerializer<T> =
+   object : KSerializer<T> {
+      override val descriptor =
+         TupleDescriptor(
+            "io.ks3.Tuple(${T::class.qualifiedName})",
+            *properties.map { serializer(it.returnType).descriptor }.toTypedArray(),
+         )
 
-   private val constructorPropertyMap = T::class.constructors
-      .mapNotNull { constructor ->
-         val mapping = constructor.parameters
-            .filterNot(KParameter::isOptional)
-            .associateWith { param ->
-               properties.singleOrNull { prop ->
-                  prop.returnType.isSubtypeOf(param.type) && prop.name == param.name
+      private val constructorPropertyMap =
+         T::class.constructors
+            .mapNotNull { constructor ->
+               val mapping =
+                  constructor.parameters
+                     .filterNot(KParameter::isOptional)
+                     .associateWith { param ->
+                        properties.singleOrNull { prop ->
+                           prop.returnType.isSubtypeOf(param.type) && prop.name == param.name
+                        }
+                     }
+
+               if (mapping.any { (_, key) -> key == null }) {
+                  null
+               } else {
+                  constructor to mapping
                }
             }
+            .single()
 
-         if (mapping.any { (_, key) -> key == null }) null
-         else constructor to mapping
-      }
-      .single()
+      override fun deserialize(decoder: Decoder): T {
+         return decoder.decodeStructure(descriptor) {
+            val args = mutableListOf<Any?>()
+            while (true) {
+               val index = decodeElementIndex(descriptor)
+               if (index == -1) break
+               decodeSerializableElement(descriptor, index, serializer(properties[index].returnType)).let { args.add(it) }
+            }
 
-   override fun deserialize(decoder: Decoder): T {
-      return decoder.decodeStructure(descriptor) {
-         val args = mutableListOf<Any?>()
-         while (true) {
-            val index = decodeElementIndex(descriptor)
-            if (index == -1) break
-            decodeSerializableElement(descriptor, index, serializer(properties[index].returnType)).let { args.add(it) }
-         }
+            val mappedArgs = constructorPropertyMap.second.mapValues { (_, prop) -> args[properties.indexOf(prop)] }
 
-         val mappedArgs = constructorPropertyMap.second.mapValues { (_, prop) -> args[properties.indexOf(prop)] }
-
-         constructorPropertyMap.first.callBy(mappedArgs)
-      }
-   }
-
-   override fun serialize(encoder: Encoder, value: T) {
-      encoder.encodeStructure(descriptor) {
-         for (i in properties.indices) {
-            encodeSerializableElement(descriptor, i, serializer(properties[i].returnType), properties[i].get(value))
+            constructorPropertyMap.first.callBy(mappedArgs)
          }
       }
+
+      override fun serialize(
+         encoder: Encoder,
+         value: T,
+      ) {
+         encoder.encodeStructure(descriptor) {
+            for (i in properties.indices) {
+               encodeSerializableElement(descriptor, i, serializer(properties[i].returnType), properties[i].get(value))
+            }
+         }
+      }
    }
-}

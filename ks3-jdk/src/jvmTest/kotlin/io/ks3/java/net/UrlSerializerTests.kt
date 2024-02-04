@@ -7,11 +7,12 @@ import java.net.URL
 
 class UrlSerializerTests : FunSpec(
    {
-      val someUrls = listOf(
-         "http://localhost:1234/path?param=7",
-         "https://www.google.com:1234",
-         "ftp://www.dn.se",
-      ).map(::URL)
+      val someUrls =
+         listOf(
+            "http://localhost:1234/path?param=7",
+            "https://www.google.com:1234",
+            "ftp://www.dn.se",
+         ).map(::URL)
 
       include(generateSerializerTests(UrlSerializer, someUrls.exhaustive()))
    },

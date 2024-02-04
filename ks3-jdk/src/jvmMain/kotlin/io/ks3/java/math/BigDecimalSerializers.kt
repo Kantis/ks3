@@ -18,13 +18,17 @@ import java.math.BigDecimal
 /**
  * Encodes a [BigDecimal] as a string, preserving the full precision of the number. Wraps the number in quotes.
  */
-typealias BigDecimalAsString = @Serializable(with = BigDecimalAsStringSerializer::class) BigDecimal
+typealias BigDecimalAsString =
+   @Serializable(with = BigDecimalAsStringSerializer::class)
+   BigDecimal
 
 /**
  * Encodes a [BigDecimal] to it's double representation. [Double] have limited precision, so the number might not be
  * exactly the same as the original [BigDecimal].
  */
-typealias BigDecimalAsDouble = @Serializable(with = BigDecimalAsDoubleSerializer::class) BigDecimal
+typealias BigDecimalAsDouble =
+   @Serializable(with = BigDecimalAsDoubleSerializer::class)
+   BigDecimal
 
 /**
  * Encodes a [BigDecimal] as an unquoted JSON literal, preserving the full precision of the number while being encoded as a number.
@@ -32,10 +36,12 @@ typealias BigDecimalAsDouble = @Serializable(with = BigDecimalAsDoubleSerializer
  * Note that this typealias is primarily meant for JSON, other formats will have the [BigDecimal] encoded as a string.
  */
 @ExperimentalSerializationApi
-typealias BigDecimalAsJsonNumber = @Serializable(with = BigDecimalAsJsonNumberSerializer::class) BigDecimal
-
+typealias BigDecimalAsJsonNumber =
+   @Serializable(with = BigDecimalAsJsonNumberSerializer::class)
+   BigDecimal
 
 object BigDecimalAsStringSerializer : KSerializer<BigDecimal> by stringSerializer(::BigDecimal, BigDecimal::toPlainString)
+
 object BigDecimalAsDoubleSerializer : KSerializer<BigDecimal> by doubleSerializer({ it.toString().toBigDecimal() }, BigDecimal::toDouble)
 
 /**
@@ -55,7 +61,10 @@ object BigDecimalAsJsonNumberSerializer : KSerializer<BigDecimal> {
       }
    }
 
-   override fun serialize(encoder: Encoder, value: BigDecimal) {
+   override fun serialize(
+      encoder: Encoder,
+      value: BigDecimal,
+   ) {
       val bdString = value.toPlainString()
 
       if (encoder is JsonEncoder) {

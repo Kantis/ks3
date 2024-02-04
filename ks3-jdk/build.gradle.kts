@@ -8,7 +8,7 @@ dokkatoo {
       includes.from("Module.md")
    }
 
-   dokkatooSourceSets.named("jvmMain"){
+   dokkatooSourceSets.named("jvmMain") {
       sourceLink {
          localDirectory.set(file("src/jvmMain/kotlin"))
          remoteUrl("https://github.com/Kantis/ks3/blob/main/ks3-jdk/src/jvmMain/kotlin")
