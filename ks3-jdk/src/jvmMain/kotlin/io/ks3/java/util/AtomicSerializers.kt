@@ -18,9 +18,10 @@ object AtomicIntegerSerializer : KSerializer<AtomicInteger> by intSerializer(
 )
 
 object AtomicLongSerializer : KSerializer<AtomicLong> {
-   override fun serialize(encoder: Encoder, value: AtomicLong) {
-      encoder.encodeLong(value.get())
-   }
+   override fun serialize(
+      encoder: Encoder,
+      value: AtomicLong,
+   ) = encoder.encodeLong(value.get())
 
    override fun deserialize(decoder: Decoder): AtomicLong = AtomicLong(decoder.decodeLong())
 
@@ -28,9 +29,10 @@ object AtomicLongSerializer : KSerializer<AtomicLong> {
 }
 
 object AtomicBooleanSerializer : KSerializer<AtomicBoolean> {
-   override fun serialize(encoder: Encoder, value: AtomicBoolean) {
-      encoder.encodeBoolean(value.get())
-   }
+   override fun serialize(
+      encoder: Encoder,
+      value: AtomicBoolean,
+   ) = encoder.encodeBoolean(value.get())
 
    override fun deserialize(decoder: Decoder): AtomicBoolean = AtomicBoolean(decoder.decodeBoolean())
 

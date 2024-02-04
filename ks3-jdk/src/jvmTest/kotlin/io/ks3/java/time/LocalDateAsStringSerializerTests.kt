@@ -30,9 +30,9 @@ class LocalDateAsStringSerializerTests : FunSpec(
       test("handles timestamps with time included if, and only if, it contains no information") {
          format.decodeFromString<Sample>(
             """
-               {
-                 "date": "2021-01-01T00:00:00"
-               }
+            {
+              "date": "2021-01-01T00:00:00"
+            }
             """.trimIndent(),
          ) shouldBe Sample(LocalDate.of(2021, 1, 1))
       }

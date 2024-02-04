@@ -63,6 +63,8 @@ gradlePlugin-kotest = { module = "io.kotest:kotest-framework-multiplatform-plugi
 gradlePlugin-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
 gradlePlugin-dokkatoo = { module = "dev.adamko.dokkatoo:dokkatoo-plugin", version.ref = "dokkatoo" }
 
+gradlePlugin-ktlint = { module = "org.jlleitschuh.gradle:ktlint-gradle", version = "12.1.0" }
+
 [bundles]
 
 

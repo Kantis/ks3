@@ -7,14 +7,15 @@ import java.io.File
 
 class FileSerializerTests : FunSpec(
    {
-      val someFiles = listOf(
-         "/",
-         "/home/kotlin",
-         "relative/to/linux",
-         "C:",
-         "C:\\Windows\\System32",
-         "relative\\to\\windows"
-      ).map(::File)
+      val someFiles =
+         listOf(
+            "/",
+            "/home/kotlin",
+            "relative/to/linux",
+            "C:",
+            "C:\\Windows\\System32",
+            "relative\\to\\windows",
+         ).map(::File)
 
       include(generateSerializerTests(FilePathSerializer, someFiles.exhaustive()))
    },

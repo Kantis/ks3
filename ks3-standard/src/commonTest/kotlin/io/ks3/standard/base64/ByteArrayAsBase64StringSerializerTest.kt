@@ -11,6 +11,7 @@ class ByteArrayAsBase64StringSerializerTest : FreeSpec(
       val format = Json
 
       fun ByteArray.serializeBase64() = format.encodeToString(ByteArrayAsBase64StringSerializer, this)
+
       fun String.deserializeBase64() = format.decodeFromString(ByteArrayAsBase64StringSerializer, this)
 
       "Encode to base64 string" {

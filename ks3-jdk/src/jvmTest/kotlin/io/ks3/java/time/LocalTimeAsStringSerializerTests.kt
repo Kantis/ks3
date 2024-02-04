@@ -5,8 +5,8 @@ import io.kotest.property.Arb
 import io.kotest.property.arbitrary.localTime
 import io.ks3.test.generateSerializerTests
 
-class LocalTimeAsStringSerializerTests: FreeSpec(
+class LocalTimeAsStringSerializerTests : FreeSpec(
    {
       include(generateSerializerTests(LocalTimeAsStringSerializer, Arb.localTime()))
-   }
+   },
 )

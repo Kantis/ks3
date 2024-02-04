@@ -35,7 +35,6 @@ data class CoordinatesDetails(
 
 object CoordinatesDetailsSerializer : KSerializer<CoordinatesDetails> by tupleSerializer(CoordinatesDetails::x, CoordinatesDetails::y)
 
-
 @Serializable(with = CoordinatesDetailsWithDefaultsSerializer::class)
 data class CoordinatesDetailsWithDefaults(
    val x: Int,
@@ -46,7 +45,6 @@ data class CoordinatesDetailsWithDefaults(
 
 object CoordinatesDetailsWithDefaultsSerializer :
    KSerializer<CoordinatesDetailsWithDefaults> by tupleSerializer(CoordinatesDetailsWithDefaults::x, CoordinatesDetailsWithDefaults::y)
-
 
 class TupleSerializerTest : FreeSpec(
    {
@@ -84,4 +82,3 @@ class TupleSerializerTest : FreeSpec(
       }
    },
 )
-

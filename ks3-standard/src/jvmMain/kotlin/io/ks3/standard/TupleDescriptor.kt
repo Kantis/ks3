@@ -9,13 +9,13 @@ import kotlinx.serialization.descriptors.StructureKind
 @Ks3Internal
 @ExperimentalSerializationApi
 class TupleDescriptor(override val serialName: String, vararg val elementDescriptors: SerialDescriptor) :
-    SerialDescriptor {
+   SerialDescriptor {
    override val kind: SerialKind get() = StructureKind.LIST
    override val elementsCount: Int = elementDescriptors.size
 
    override fun getElementName(index: Int): String = index.toString()
-   override fun getElementIndex(name: String): Int =
-      name.toIntOrNull() ?: throw IllegalArgumentException("$name is not a valid list index")
+
+   override fun getElementIndex(name: String): Int = name.toIntOrNull() ?: throw IllegalArgumentException("$name is not a valid list index")
 
    override fun isElementOptional(index: Int): Boolean {
       require(index >= 0) { "Illegal index $index, $serialName expects only non-negative indices" }
