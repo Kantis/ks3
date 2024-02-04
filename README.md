@@ -9,6 +9,9 @@ This project aims to provide a set of serializers for common types, as well as p
 > no need to perform any breaking changes so far. We would be happy for you to use it, and appreciate your feedback, but we can't guarantee
 > that APIs won't change.
 
+## Contributing
+See the contribution guide [here](CONTRIBUTING.md).
+
 ## Getting started
 
 Add the dependency. With Gradle:
