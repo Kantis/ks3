@@ -6,13 +6,12 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 
-class PolymorphicSerializationWithoutDiscriminatorsTest : StringSpec(
+class TypeOmittingTransformerTests : StringSpec(
    {
       val fooWithoutTypeSerializer = typeOmittingTransformer<Foo>()
-      val json = Json
 
       "should omit type when serializing" {
-         json.encodeToString(
+         Json.encodeToString(
             ListSerializer(fooWithoutTypeSerializer),
             listOf(Foo.Bar("bar"), Foo.Baz(1)),
          ) shouldBe """[{"bar":"bar"},{"baz":1}]"""

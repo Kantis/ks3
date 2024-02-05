@@ -12,16 +12,18 @@ import kotlinx.serialization.serializer
  *
  * This is useful when you want to serialize a sealed class hierarchy to JSON without including the type discriminator.
  *
- * @param classDiscriminatorProperty The name of the property that is used as the type discriminator. Defaults to "type".
+ * ⚠️Warning: Using a custom class discriminator will make this transformer silently fail‼️
+ *
+ * ⚠️Warning: JSON produced by this serializer cannot be deserialized back using the default serializer.
  */
-inline fun <reified T : Any> typeOmittingTransformer(classDiscriminatorProperty: String = "type") =
+inline fun <reified T : Any> typeOmittingTransformer() =
    object : JsonTransformingSerializer<T>(serializer()) {
       override fun transformSerialize(element: JsonElement): JsonElement =
          when (element) {
             is JsonObject ->
                buildJsonObject {
                   element.jsonObject.forEach { (key, value) ->
-                     if (key != classDiscriminatorProperty) put(key, value)
+                     if (key != "type") put(key, value)
                   }
                }
 
