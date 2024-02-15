@@ -11,6 +11,17 @@ import kotlinx.serialization.json.JsonDecoder
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.serializer
 
+/**
+ * Creates a serializer that will parse a JSON array into a list of [T] elements, ignoring any elements that fail to parse.
+ *
+ * Example:
+ * ```
+ * val lenientIntListSerializer = lenientJsonArraySerializer<Int>()
+ * val numbers = Json.decodeFromString(lenientIntListSerializer, "[1,2,3, \"foo\",5]")
+ *
+ * println(numbers) // > [1, 2, 3, 5]
+ * ```
+ */
 inline fun <reified T> lenientJsonArraySerializer(explicitElementSerializer: KSerializer<T>? = null) =
    object : KSerializer<List<T>> {
       private val elementSerializer = explicitElementSerializer ?: serializer<T>()
