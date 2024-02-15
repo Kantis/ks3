@@ -5,23 +5,23 @@ import io.kotest.matchers.shouldBe
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-class ResilientListDeserializationTests : StringSpec(
+class LenientJsonArraySerializerTest : StringSpec(
    {
       val json = Json
 
       "Single bad element is discarded" {
-         json.decodeFromString(resilientListSerializer<Int>(), "[1,2,3, \"foo\",5]") shouldBe listOf(1, 2, 3, 5)
+         json.decodeFromString(lenientJsonArraySerializer<Int>(), "[1,2,3, \"foo\",5]") shouldBe listOf(1, 2, 3, 5)
       }
 
       "Entire list can be discarded" {
-         json.decodeFromString(resilientListSerializer<Int>(), "[\"foo\",\"bar\"]") shouldBe listOf()
+         json.decodeFromString(lenientJsonArraySerializer<Int>(), "[\"foo\",\"bar\"]") shouldBe listOf()
       }
 
       "Should work with nested lists" {
          json.decodeFromString(
             // We need to pass the inner serializer so resilience will be applied within the nested list deserialization
-            resilientListSerializer<List<Int>>(
-               resilientListSerializer<Int>(),
+            lenientJsonArraySerializer<List<Int>>(
+               lenientJsonArraySerializer<Int>(),
             ),
             "[[1,2,3], [4,\"foo\",6], [7,8,9]]",
          ) shouldBe
@@ -40,7 +40,7 @@ class ResilientListDeserializationTests : StringSpec(
          )
 
          json.decodeFromString(
-            resilientListSerializer<Foo>(),
+            lenientJsonArraySerializer<Foo>(),
             """
             [
                {"bar": "bar", "baz":1},

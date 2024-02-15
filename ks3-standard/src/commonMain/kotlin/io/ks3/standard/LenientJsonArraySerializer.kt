@@ -11,7 +11,7 @@ import kotlinx.serialization.json.JsonDecoder
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.serializer
 
-inline fun <reified T> resilientListSerializer(explicitElementSerializer: KSerializer<T>? = null) =
+inline fun <reified T> lenientJsonArraySerializer(explicitElementSerializer: KSerializer<T>? = null) =
    object : KSerializer<List<T>> {
       private val elementSerializer = explicitElementSerializer ?: serializer<T>()
       private val serializer: SerializationStrategy<List<T>> = ListSerializer(elementSerializer)
