@@ -39,6 +39,7 @@ kotlin {
    sourceSets {
       commonMain {
          dependencies {
+            implementation(projects.ks3Core)
             implementation(libs.kotlinxSerialization.core)
             implementation(libs.kotlinxSerialization.json)
          }

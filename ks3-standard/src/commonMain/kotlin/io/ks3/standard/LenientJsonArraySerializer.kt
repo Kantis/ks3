@@ -1,5 +1,6 @@
 package io.ks3.standard
 
+import io.ks3.core.ExperimentalKs3
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.SerializationStrategy
@@ -22,6 +23,7 @@ import kotlinx.serialization.serializer
  * println(numbers) // > [1, 2, 3, 5]
  * ```
  */
+@ExperimentalKs3
 inline fun <reified T> lenientJsonArraySerializer(explicitElementSerializer: KSerializer<T>? = null) =
    object : KSerializer<List<T>> {
       private val elementSerializer = explicitElementSerializer ?: serializer<T>()
