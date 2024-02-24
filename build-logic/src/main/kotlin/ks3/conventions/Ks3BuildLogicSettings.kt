@@ -14,7 +14,7 @@ abstract class Ks3BuildLogicSettings @Inject constructor(
    private val providers: ProviderFactory,
 ) {
 
-   val kotlinTarget: Provider<String> = ks3Setting("kotlinTarget", "1.6")
+   val kotlinTarget: Provider<String> = ks3Setting("kotlinTarget", "1.8")
    val jvmTarget: Provider<String> = ks3Setting("jvmTarget", "11")
 
    /** Controls whether Kotlin Multiplatform JVM is enabled */

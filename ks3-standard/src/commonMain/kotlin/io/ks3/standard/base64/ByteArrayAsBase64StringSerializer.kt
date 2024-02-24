@@ -7,11 +7,14 @@ import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
 
 typealias ByteArrayAsBase64String =
    @Serializable(with = ByteArrayAsBase64StringSerializer::class)
    ByteArray
 
+@OptIn(ExperimentalEncodingApi::class)
 object ByteArrayAsBase64StringSerializer : KSerializer<ByteArray> {
    override val descriptor: SerialDescriptor =
       PrimitiveSerialDescriptor(
@@ -20,13 +23,13 @@ object ByteArrayAsBase64StringSerializer : KSerializer<ByteArray> {
       )
 
    override fun deserialize(decoder: Decoder): ByteArray {
-      return decoder.decodeString().decodeBase64ToArray()
+      return Base64.decode(decoder.decodeString())
    }
 
    override fun serialize(
       encoder: Encoder,
       value: ByteArray,
    ) {
-      encoder.encodeString(value.encodeBase64())
+      encoder.encodeString(Base64.encode(value))
    }
 }
