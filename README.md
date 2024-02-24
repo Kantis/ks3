@@ -18,7 +18,7 @@ Add the dependency. With Gradle:
 
 ```kotlin
 dependencies {
-    implementation("io.ks3:ks3-jdk:0.4.0")
+    implementation("io.ks3:ks3-jdk:0.5.0")
 }
 ```
 
@@ -28,7 +28,7 @@ Maven:
 <dependency>
   <groupId>io.ks3</groupId>
   <artifactId>ks3-jdk-jvm</artifactId>
-  <version>$version</version>
+  <version>0.5.0</version>
 </dependency>
 ```
 
