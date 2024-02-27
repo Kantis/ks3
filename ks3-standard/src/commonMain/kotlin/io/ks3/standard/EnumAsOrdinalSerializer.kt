@@ -11,7 +11,7 @@ inline fun <reified T : Enum<T>> enumAsOrdinalSerializer() =
       val values = enumValues<T>()
       val name = T::class.simpleName
 
-      override val descriptor = PrimitiveSerialDescriptor("EnumAsOrdinal", PrimitiveKind.INT)
+      override val descriptor = PrimitiveSerialDescriptor("io.ks3.standard.EnumAsOrdinal", PrimitiveKind.INT)
 
       override fun deserialize(decoder: Decoder): T {
          val i = decoder.decodeInt()
