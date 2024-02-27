@@ -33,6 +33,7 @@ data class CoordinatesDetails(
    constructor(x: Int, y: Int) : this(x, y, "red", true)
 }
 
+@OptIn(ExperimentalSerializationApi::class)
 object CoordinatesDetailsSerializer : KSerializer<CoordinatesDetails> by tupleSerializer(CoordinatesDetails::x, CoordinatesDetails::y)
 
 @Serializable(with = CoordinatesDetailsWithDefaultsSerializer::class)
@@ -43,6 +44,7 @@ data class CoordinatesDetailsWithDefaults(
    val active: Boolean = true,
 )
 
+@OptIn(ExperimentalSerializationApi::class)
 object CoordinatesDetailsWithDefaultsSerializer :
    KSerializer<CoordinatesDetailsWithDefaults> by tupleSerializer(CoordinatesDetailsWithDefaults::x, CoordinatesDetailsWithDefaults::y)
 
