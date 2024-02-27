@@ -1,3 +1,12 @@
+public final class io/ks3/standard/ByteArrayAsBase64StringSerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/standard/ByteArrayAsBase64StringSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)[B
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;[B)V
+}
+
 public final class io/ks3/standard/EnumDecodingException : kotlinx/serialization/SerializationException {
 	public fun <init> ()V
 	public fun <init> (Ljava/lang/String;Ljava/lang/Throwable;)V
@@ -21,14 +30,5 @@ public final class io/ks3/standard/TupleDescriptor : kotlinx/serialization/descr
 	public fun isInline ()Z
 	public fun isNullable ()Z
 	public fun toString ()Ljava/lang/String;
-}
-
-public final class io/ks3/standard/base64/ByteArrayAsBase64StringSerializer : kotlinx/serialization/KSerializer {
-	public static final field INSTANCE Lio/ks3/standard/base64/ByteArrayAsBase64StringSerializer;
-	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
-	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)[B
-	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
-	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
-	public fun serialize (Lkotlinx/serialization/encoding/Encoder;[B)V
 }
 
