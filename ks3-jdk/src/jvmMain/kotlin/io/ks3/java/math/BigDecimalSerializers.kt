@@ -51,7 +51,7 @@ object BigDecimalAsDoubleSerializer : KSerializer<BigDecimal> by doubleSerialize
  */
 @ExperimentalSerializationApi
 object BigDecimalAsJsonNumberSerializer : KSerializer<BigDecimal> {
-   override val descriptor = PrimitiveSerialDescriptor("java.math.BigDecimal", PrimitiveKind.STRING)
+   override val descriptor = PrimitiveSerialDescriptor(BigDecimal::class.qualifiedName!!, PrimitiveKind.STRING)
 
    override fun deserialize(decoder: Decoder): BigDecimal {
       return if (decoder is JsonDecoder) {

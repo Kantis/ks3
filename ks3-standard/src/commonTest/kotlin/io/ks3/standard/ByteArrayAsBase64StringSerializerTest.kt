@@ -1,6 +1,5 @@
-package io.ks3.standard.base64
+package io.ks3.standard
 
-import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.assertions.throwables.shouldThrowWithMessage
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
@@ -23,13 +22,13 @@ class ByteArrayAsBase64StringSerializerTest : FreeSpec(
       }
 
       "Non-base64 content" {
-         shouldThrow<Base64DecodingException> {
+         shouldThrowWithMessage<IllegalArgumentException>("Invalid symbol '['(133) at index 0") {
             "\"[][]\"".deserializeBase64()
-         }.message shouldBe "Invalid base64 character: '[', must be one of ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+         }
       }
 
       "Invalid base64" {
-         shouldThrowWithMessage<Base64DecodingException>("Invalid Base64 input: A===") {
+         shouldThrowWithMessage<IllegalArgumentException>("The last unit of input does not have enough bits") {
             "\"A===\"".deserializeBase64()
          }
       }
