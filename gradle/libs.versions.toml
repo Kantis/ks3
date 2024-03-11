@@ -5,7 +5,7 @@ dokkatoo = "2.0.0"
 kotlin = "1.9.22"
 kotlinx-serialization = "1.6.3"
 
-kotest = "5.8.0"
+kotest = "5.8.1"
 kotest-propertyArbsExtension = "2.1.2"
 
 okio = "3.8.0"
