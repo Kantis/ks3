@@ -12,6 +12,7 @@ import io.ks3.java.time.LocalDateTimeAsStringSerializer
 import io.ks3.java.time.LocalTimeAsStringSerializer
 import io.ks3.java.time.OffsetDateTimeAsStringSerializer
 import io.ks3.java.time.YearMonthAsStringSerializer
+import io.ks3.java.util.LocaleSerializer
 import io.ks3.java.util.UuidSerializer
 import kotlinx.serialization.Serializable
 import java.io.File
@@ -23,6 +24,7 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.OffsetDateTime
 import java.time.YearMonth
+import java.util.Locale
 import java.util.UUID
 
 // -- IO --
@@ -69,6 +71,10 @@ typealias OffsetDateTimeAsString =
    OffsetDateTime
 
 // -- UTIL --
+typealias LocaleAsString =
+   @Serializable(with = LocaleSerializer::class)
+   Locale
+
 typealias UuidAsString =
    @Serializable(with = UuidSerializer::class)
    UUID
