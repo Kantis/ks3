@@ -43,3 +43,4 @@
 | AtomicInteger | AtomicIntegerSerializer | `5`                                      |
 | AtomicBoolean | AtomicBooleanSerializer | `true`                                   |
 | AtomicLong    | AtomicLongSerializer    | `22`                                     |
+| Locale        | LocaleSerializer        | `"en_US"`                                |
