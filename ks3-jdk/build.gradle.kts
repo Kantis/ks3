@@ -38,8 +38,6 @@ kotlin {
 
       commonTest {
          dependencies {
-            implementation(kotlin("test"))
-
             implementation(projects.ks3Test)
 
             implementation(libs.kotest.frameworkEngine)

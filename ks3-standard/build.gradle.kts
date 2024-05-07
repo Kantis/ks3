@@ -47,8 +47,6 @@ kotlin {
 
       commonTest {
          dependencies {
-            implementation(kotlin("test"))
-
             implementation(libs.kotest.frameworkEngine)
             implementation(libs.kotest.assertionsCore)
             implementation(libs.kotest.assertionsJson)
