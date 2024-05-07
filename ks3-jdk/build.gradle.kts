@@ -52,6 +52,7 @@ kotlin {
       if (ks3Settings.enableKotlinJvm.get()) {
          jvmTest {
             dependencies {
+               implementation(kotlin("reflect"))
                implementation(libs.kotest.runnerJunit5)
             }
          }
