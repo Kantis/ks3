@@ -68,9 +68,9 @@
       <blockquote class="quotation">
         <p class="paragraph">⚠️ Consider this project to be in <a href="https://kotlinlang.org/docs/components-stability.html">Beta</a> for the time being. The project has had no need to perform any breaking changes so far. We would be happy for you to use it, and appreciate your feedback, but we can't guarantee that APIs won't change.</p>
       </blockquote>
-      <h2 class=""> Contributing</h2>
+      <h2 class="">Contributing</h2>
       <p class="paragraph">See the contribution guide CONTRIBUTING.md.</p>
-      <h2 class=""> Getting started</h2>
+      <h2 class="">Getting started</h2>
       <p class="paragraph">Add the dependency. With Gradle:</p>
       <div class="sample-container">
         <pre><code class="block lang-kotlin" theme="idea">dependencies {<br>    implementation(&quot;io.ks3:ks3-jdk:0.6.0&quot;)<br>}</code></pre>
@@ -104,7 +104,7 @@
           <p class="paragraph"><a href="https://github.com/Kotlin/kotlinx.serialization/blob/1.4.1-release/docs/serializers.md#specifying-serializer-globally-using-typealias">Specifying serializer using a typealias</a></p>
         </li>
       </ul>
-      <h3 class=""> Using <code class="lang-kotlin">typealias</code></h3>
+      <h3 class="">Using <code class="lang-kotlin">typealias</code></h3>
       <div class="sample-container">
         <pre><code class="block lang-kotlin" theme="idea">typealias LocalDateTimeAsString = @Serializable(LocalDateTimeAsStringSerializer::class) LocalDateTime<br><br>data class Appointment(<br>  val datetime: LocalDateTimeAsString<br>)</code></pre>
 <span class="top-right-position"><span class="copy-icon"></span>
@@ -114,7 +114,7 @@
         <p class="paragraph">For details, see the <a href="https://github.com/Kotlin/kotlinx.serialization/blob/1.4.1-release/docs/serializers.md#specifying-serializer-globally-using-typealias">kotlinx.serialization guide</a></p>
       </blockquote>
       <p class="paragraph">This method is most useful when you want to use different serial formats for the same type, or when you can't configure the serializer itself.</p>
-      <h3 class=""> Using <code class="lang-kotlin">@Contextual</code></h3>
+      <h3 class="">Using <code class="lang-kotlin">@Contextual</code></h3>
       <blockquote class="quotation">
         <p class="paragraph">See the details in <a href="https://github.com/Kotlin/kotlinx.serialization/blob/1.4.1-release/docs/serializers.md#contextual-serialization">kotlinx.serialization guide</a></p>
       </blockquote>
