@@ -10,8 +10,10 @@ kotest-propertyArbsExtension = "2.1.2"
 
 okio = "3.9.0"
 
+gradlePlugin-ktlint = "12.1.0"
 gradlePlugin-testlogger = "4.0.0"
 
+kotlinBinaryCompatibilityValidator = "0.14.0"
 
 [libraries]
 
@@ -63,13 +65,13 @@ gradlePlugin-kotest = { module = "io.kotest:kotest-framework-multiplatform-plugi
 gradlePlugin-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokka" }
 gradlePlugin-dokkatoo = { module = "dev.adamko.dokkatoo:dokkatoo-plugin", version.ref = "dokkatoo" }
 
-gradlePlugin-ktlint = { module = "org.jlleitschuh.gradle:ktlint-gradle", version = "12.1.0" }
+gradlePlugin-ktlint = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "gradlePlugin-ktlint" }
 
 [bundles]
 
 
 [plugins]
-kotlinBinaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version = "0.14.0" }
+kotlinBinaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "kotlinBinaryCompatibilityValidator" }
 
 # If plugin will be used by conventions, define plugins in ./build-logic/build.gradle.kts to avoid error:
 # The Kotlin Gradle plugin was loaded multiple times in different subprojects, which is not supported and may break the build.
