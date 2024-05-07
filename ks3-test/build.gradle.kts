@@ -30,6 +30,9 @@ kotlin {
    sourceSets {
       commonMain {
          dependencies {
+            api(libs.okio.core)
+            api(libs.kotlinxSerialization.jsonOkio)
+
             implementation(projects.ks3Core)
 
             implementation(libs.kotest.property)
@@ -37,8 +40,6 @@ kotlin {
 
             implementation(libs.kotlinxSerialization.core)
             implementation(libs.kotlinxSerialization.json)
-            implementation(libs.kotlinxSerialization.jsonOkio)
-            implementation(libs.okio.core)
          }
       }
    }
