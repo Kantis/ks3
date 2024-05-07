@@ -1,6 +1,5 @@
 import dev.adamko.dokkatoo.dokka.plugins.DokkaHtmlPluginParameters
 
-@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
    id("ks3.conventions.base")
    idea
