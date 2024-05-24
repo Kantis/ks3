@@ -16,6 +16,13 @@ dependencies {
    dokkatooPluginHtml(libs.dokka.allModulesPage)
 }
 
+apiValidation {
+   @OptIn(kotlinx.validation.ExperimentalBCVApi::class)
+   klib {
+      enabled = true
+   }
+}
+
 dokkatoo {
    moduleName.set("KS3")
 
@@ -34,11 +41,12 @@ idea {
    module {
       isDownloadSources = true
       isDownloadJavadoc = false
-      excludeDirs = excludeDirs + layout.files(
-         ".idea",
-         "gradle/kotlin-js-store", // location of the lock file, overridden by Kotlin/JS convention
-         "gradle/wrapper",
-      )
+      excludeDirs = excludeDirs +
+         layout.files(
+            ".idea",
+            "gradle/kotlin-js-store", // location of the lock file, overridden by Kotlin/JS convention
+            "gradle/wrapper",
+         )
 
       // exclude generated Gradle code, so it doesn't clog up search results
       excludeDirs.addAll(
