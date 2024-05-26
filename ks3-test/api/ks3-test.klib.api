@@ -1,0 +1,25 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, linuxX64, macosArm64, macosX64, mingwX64, tvosArm64, tvosSimulatorArm64, tvosX64, watchosArm32, watchosArm64, watchosSimulatorArm64, watchosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.ks3:ks3-test>
+final class <#A: kotlin/Any?> io.ks3.test/Encoders { // io.ks3.test/Encoders|null[0]
+    constructor <init>(kotlin.collections/List<kotlin/Function1<#A, kotlin/String>>, kotlin.collections/List<kotlin/Function1<kotlin/String, #A>>) // io.ks3.test/Encoders.<init>|<init>(kotlin.collections.List<kotlin.Function1<1:0,kotlin.String>>;kotlin.collections.List<kotlin.Function1<kotlin.String,1:0>>){}[0]
+    final fun component1(): kotlin.collections/List<kotlin/Function1<#A, kotlin/String>> // io.ks3.test/Encoders.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<kotlin/Function1<kotlin/String, #A>> // io.ks3.test/Encoders.component2|component2(){}[0]
+    final fun copy(kotlin.collections/List<kotlin/Function1<#A, kotlin/String>> =..., kotlin.collections/List<kotlin/Function1<kotlin/String, #A>> =...): io.ks3.test/Encoders<#A> // io.ks3.test/Encoders.copy|copy(kotlin.collections.List<kotlin.Function1<1:0,kotlin.String>>;kotlin.collections.List<kotlin.Function1<kotlin.String,1:0>>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // io.ks3.test/Encoders.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // io.ks3.test/Encoders.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // io.ks3.test/Encoders.toString|toString(){}[0]
+    final val decoders // io.ks3.test/Encoders.decoders|{}decoders[0]
+        final fun <get-decoders>(): kotlin.collections/List<kotlin/Function1<kotlin/String, #A>> // io.ks3.test/Encoders.decoders.<get-decoders>|<get-decoders>(){}[0]
+    final val encoders // io.ks3.test/Encoders.encoders|{}encoders[0]
+        final fun <get-encoders>(): kotlin.collections/List<kotlin/Function1<#A, kotlin/String>> // io.ks3.test/Encoders.encoders.<get-encoders>|<get-encoders>(){}[0]
+}
+final inline fun <#A: reified kotlin/Any?> (kotlinx.serialization.json/Json).io.ks3.test/decoders(kotlinx.serialization/KSerializer<#A>): kotlin.collections/List<kotlin/Function1<kotlin/String, #A>> // io.ks3.test/decoders|decoders@kotlinx.serialization.json.Json(kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> (kotlinx.serialization.json/Json).io.ks3.test/encoders(kotlinx.serialization/KSerializer<#A>): kotlin.collections/List<kotlin/Function1<#A, kotlin/String>> // io.ks3.test/encoders|encoders@kotlinx.serialization.json.Json(kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> (kotlinx.serialization.json/Json).io.ks3.test/generateEncoders(kotlinx.serialization/KSerializer<#A>): io.ks3.test/Encoders<#A> // io.ks3.test/generateEncoders|generateEncoders@kotlinx.serialization.json.Json(kotlinx.serialization.KSerializer<0:0>){0§<kotlin.Any?>}[0]
+final inline fun <#A: reified kotlin/Any?> io.ks3.test/generateSerializerTests(kotlinx.serialization/KSerializer<#A>, io.kotest.property/Gen<#A>, crossinline kotlin/Function0<kotlin/String> =..., crossinline kotlin/Function2<#A, #A, kotlin/Unit> =...): io.kotest.core.factory/TestFactory // io.ks3.test/generateSerializerTests|generateSerializerTests(kotlinx.serialization.KSerializer<0:0>;io.kotest.property.Gen<0:0>;kotlin.Function0<kotlin.String>;kotlin.Function2<0:0,0:0,kotlin.Unit>){0§<kotlin.Any?>}[0]

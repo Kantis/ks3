@@ -1,0 +1,14 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, iosX64, js, linuxX64, macosArm64, macosX64, mingwX64, tvosArm64, tvosSimulatorArm64, tvosX64, watchosArm32, watchosArm64, watchosSimulatorArm64, watchosX64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <io.ks3:ks3-core>
+open annotation class io.ks3.core/ExperimentalKs3 : kotlin/Annotation { // io.ks3.core/ExperimentalKs3|null[0]
+    constructor <init>() // io.ks3.core/ExperimentalKs3.<init>|<init>(){}[0]
+}
+open annotation class io.ks3.core/Ks3Internal : kotlin/Annotation { // io.ks3.core/Ks3Internal|null[0]
+    constructor <init>() // io.ks3.core/Ks3Internal.<init>|<init>(){}[0]
+}

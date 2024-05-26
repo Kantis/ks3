@@ -33,7 +33,7 @@ jobs:
          matrix:
             os: [ ubuntu-latest ]
             target:
-               - apiCheck
+               - apiCheck -Pks3_enableKotlinNative=true -Pks3_enableKotlinJs=true
                - jvmTest
                - jsTest
                - linuxX64Test
