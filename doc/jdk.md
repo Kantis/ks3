@@ -44,3 +44,4 @@
 | AtomicBoolean | AtomicBooleanSerializer | `true`                                   |
 | AtomicLong    | AtomicLongSerializer    | `22`                                     |
 | Locale        | LocaleSerializer        | `"en_US"`                                |
+| Currency      | CurrencySerializer      | `"AUD"`                                  |
