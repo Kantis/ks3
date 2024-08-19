@@ -52,7 +52,7 @@ jobs:
       name: "./gradlew ${{ matrix.target }} @ ${{ matrix.os }}"
       strategy:
          matrix:
-            os: [ macos-11 ]
+            os: [ macos-latest ]
             target:
                - iosSimulatorArm64Test
                - iosX64Test
