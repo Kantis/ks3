@@ -178,6 +178,15 @@ public final class io/ks3/java/util/AtomicLongSerializer : kotlinx/serialization
 	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/util/concurrent/atomic/AtomicLong;)V
 }
 
+public final class io/ks3/java/util/CurrencySerializer : kotlinx/serialization/KSerializer {
+	public static final field INSTANCE Lio/ks3/java/util/CurrencySerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/util/Currency;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/util/Currency;)V
+}
+
 public final class io/ks3/java/util/LocaleSerializer : kotlinx/serialization/KSerializer {
 	public static final field INSTANCE Lio/ks3/java/util/LocaleSerializer;
 	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
