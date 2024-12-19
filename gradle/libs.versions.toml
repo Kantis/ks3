@@ -13,7 +13,7 @@ okio = "3.9.1"
 gradlePlugin-ktlint = "12.1.1"
 gradlePlugin-testlogger = "4.0.0"
 
-kotlinBinaryCompatibilityValidator = "0.15.0-Beta.2"
+kotlinBinaryCompatibilityValidator = "0.17.0"
 
 [libraries]
 
