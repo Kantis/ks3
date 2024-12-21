@@ -12,6 +12,12 @@ This project aims to provide a set of serializers for common types, as well as p
 ## Contributing
 See the contribution guide [here](CONTRIBUTING.md).
 
+## Compatibility
+
+| Ks3 | Kotlin | KotlinX serialization |
+|-----|--------|-----------------------|
+| 1.0 | 1.9+   | 1.6+                  |
+
 ## Getting started
 
 Add the dependency. With Gradle:
