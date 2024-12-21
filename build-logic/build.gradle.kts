@@ -12,6 +12,7 @@ dependencies {
    implementation(libs.gradlePlugin.kotest)
    implementation(libs.gradlePlugin.dokkatoo)
    implementation(libs.gradlePlugin.ktlint)
+   implementation(libs.gradlePlugin.kotlinBinaryCompatibilityValidator)
 
    testImplementation(libs.kotest.runnerJunit5)
 }
