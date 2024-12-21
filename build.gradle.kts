@@ -2,8 +2,8 @@ import dev.adamko.dokkatoo.dokka.plugins.DokkaHtmlPluginParameters
 
 plugins {
    id("ks3.conventions.base")
+   id("ks3.conventions.api-validation")
    idea
-   alias(libs.plugins.kotlinBinaryCompatibilityValidator)
 }
 
 group = "io.ks3"
@@ -14,13 +14,6 @@ dependencies {
    dokkatoo(projects.ks3Test)
    dokkatooPluginHtml(libs.dokka.templating)
    dokkatooPluginHtml(libs.dokka.allModulesPage)
-}
-
-apiValidation {
-   @OptIn(kotlinx.validation.ExperimentalBCVApi::class)
-   klib {
-      enabled = true
-   }
 }
 
 dokkatoo {

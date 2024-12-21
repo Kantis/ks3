@@ -9,6 +9,15 @@
 final class io.ks3.standard/EnumDecodingException : kotlinx.serialization/SerializationException { // io.ks3.standard/EnumDecodingException|null[0]
     constructor <init>(kotlin/String? =..., kotlin/Throwable? =...) // io.ks3.standard/EnumDecodingException.<init>|<init>(kotlin.String?;kotlin.Throwable?){}[0]
 }
+
+final object io.ks3.standard/ByteArrayAsBase64StringSerializer : kotlinx.serialization/KSerializer<kotlin/ByteArray> { // io.ks3.standard/ByteArrayAsBase64StringSerializer|null[0]
+    final val descriptor // io.ks3.standard/ByteArrayAsBase64StringSerializer.descriptor|{}descriptor[0]
+        final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.ks3.standard/ByteArrayAsBase64StringSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    final fun deserialize(kotlinx.serialization.encoding/Decoder): kotlin/ByteArray // io.ks3.standard/ByteArrayAsBase64StringSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    final fun serialize(kotlinx.serialization.encoding/Encoder, kotlin/ByteArray) // io.ks3.standard/ByteArrayAsBase64StringSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;kotlin.ByteArray){}[0]
+}
+
 final inline fun <#A: reified kotlin/Any> io.ks3.standard/objectWrappingSerializer(kotlin/String): kotlinx.serialization.json/JsonTransformingSerializer<#A> // io.ks3.standard/objectWrappingSerializer|objectWrappingSerializer(kotlin.String){0§<kotlin.Any>}[0]
 final inline fun <#A: reified kotlin/Any?> io.ks3.standard/doubleSerializer(crossinline kotlin/Function1<kotlin/Double, #A>, crossinline kotlin/Function1<#A, kotlin/Double>, kotlin/String? =...): kotlinx.serialization/KSerializer<#A> // io.ks3.standard/doubleSerializer|doubleSerializer(kotlin.Function1<kotlin.Double,0:0>;kotlin.Function1<0:0,kotlin.Double>;kotlin.String?){0§<kotlin.Any?>}[0]
 final inline fun <#A: reified kotlin/Any?> io.ks3.standard/intSerializer(crossinline kotlin/Function1<kotlin/Int, #A>, crossinline kotlin/Function1<#A, kotlin/Int>, kotlin/String? =...): kotlinx.serialization/KSerializer<#A> // io.ks3.standard/intSerializer|intSerializer(kotlin.Function1<kotlin.Int,0:0>;kotlin.Function1<0:0,kotlin.Int>;kotlin.String?){0§<kotlin.Any?>}[0]
@@ -19,9 +28,3 @@ final inline fun <#A: reified kotlin/Any?> io.ks3.standard/sortedListSerializer(
 final inline fun <#A: reified kotlin/Any?> io.ks3.standard/sortedSetSerializer(kotlin/Comparator<in #A>): kotlinx.serialization/KSerializer<kotlin.collections/Set<#A>> // io.ks3.standard/sortedSetSerializer|sortedSetSerializer(kotlin.Comparator<in|0:0>){0§<kotlin.Any?>}[0]
 final inline fun <#A: reified kotlin/Any?> io.ks3.standard/stringSerializer(crossinline kotlin/Function1<kotlin/String, #A>, crossinline kotlin/Function1<#A, kotlin/String> =..., kotlin/String? =...): kotlinx.serialization/KSerializer<#A> // io.ks3.standard/stringSerializer|stringSerializer(kotlin.Function1<kotlin.String,0:0>;kotlin.Function1<0:0,kotlin.String>;kotlin.String?){0§<kotlin.Any?>}[0]
 final inline fun <#A: reified kotlin/Enum<#A>> io.ks3.standard/enumAsOrdinalSerializer(): kotlinx.serialization/KSerializer<#A> // io.ks3.standard/enumAsOrdinalSerializer|enumAsOrdinalSerializer(){0§<kotlin.Enum<0:0>>}[0]
-final object io.ks3.standard/ByteArrayAsBase64StringSerializer : kotlinx.serialization/KSerializer<kotlin/ByteArray> { // io.ks3.standard/ByteArrayAsBase64StringSerializer|null[0]
-    final fun deserialize(kotlinx.serialization.encoding/Decoder): kotlin/ByteArray // io.ks3.standard/ByteArrayAsBase64StringSerializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
-    final fun serialize(kotlinx.serialization.encoding/Encoder, kotlin/ByteArray) // io.ks3.standard/ByteArrayAsBase64StringSerializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;kotlin.ByteArray){}[0]
-    final val descriptor // io.ks3.standard/ByteArrayAsBase64StringSerializer.descriptor|{}descriptor[0]
-        final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // io.ks3.standard/ByteArrayAsBase64StringSerializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
-}

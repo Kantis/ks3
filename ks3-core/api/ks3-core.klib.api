@@ -9,6 +9,7 @@
 open annotation class io.ks3.core/ExperimentalKs3 : kotlin/Annotation { // io.ks3.core/ExperimentalKs3|null[0]
     constructor <init>() // io.ks3.core/ExperimentalKs3.<init>|<init>(){}[0]
 }
+
 open annotation class io.ks3.core/Ks3Internal : kotlin/Annotation { // io.ks3.core/Ks3Internal|null[0]
     constructor <init>() // io.ks3.core/Ks3Internal.<init>|<init>(){}[0]
 }

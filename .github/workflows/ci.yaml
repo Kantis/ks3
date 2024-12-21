@@ -33,7 +33,6 @@ jobs:
          matrix:
             os: [ ubuntu-latest ]
             target:
-               - apiCheck -Pks3_enableKotlinNative=true -Pks3_enableKotlinJs=true
                - jvmTest
                - jsTest
                - linuxX64Test
@@ -54,6 +53,7 @@ jobs:
          matrix:
             os: [ macos-latest ]
             target:
+               - apiCheck -Pks3_enableKotlinNative=true -Pks3_enableKotlinJs=true -DenableKlibValidation
                - iosSimulatorArm64Test
                - iosX64Test
                - macosArm64Test

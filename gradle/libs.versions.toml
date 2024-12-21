@@ -13,7 +13,7 @@ okio = "3.9.1"
 gradlePlugin-ktlint = "12.1.2"
 gradlePlugin-testlogger = "4.0.0"
 
-kotlinBinaryCompatibilityValidator = "0.15.0-Beta.2"
+kotlinBinaryCompatibilityValidator = "0.17.0"
 
 [libraries]
 
@@ -66,12 +66,11 @@ gradlePlugin-dokka = { module = "org.jetbrains.dokka:dokka-gradle-plugin", versi
 gradlePlugin-dokkatoo = { module = "dev.adamko.dokkatoo:dokkatoo-plugin", version.ref = "dokkatoo" }
 
 gradlePlugin-ktlint = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "gradlePlugin-ktlint" }
-
+gradlePlugin-kotlinBinaryCompatibilityValidator = { module = "org.jetbrains.kotlinx:binary-compatibility-validator", version.ref = "kotlinBinaryCompatibilityValidator" }
 [bundles]
 
 
 [plugins]
-kotlinBinaryCompatibilityValidator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "kotlinBinaryCompatibilityValidator" }
 
 # If plugin will be used by conventions, define plugins in ./build-logic/build.gradle.kts to avoid error:
 # The Kotlin Gradle plugin was loaded multiple times in different subprojects, which is not supported and may break the build.
