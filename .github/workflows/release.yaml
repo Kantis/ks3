@@ -48,7 +48,7 @@ jobs:
                   args: -P"ks3_enabledPublicationNamePrefixes=mingw"
 
                # Apple: macOS, iOS, tvOS, watchOS
-               -  os: macos-11
+               -  os: macos-latest
                   args: -P"ks3_enabledPublicationNamePrefixes=macOS,iOS,tvOS,watchOS"
 
       uses: ./.github/workflows/gradle_task.yml
