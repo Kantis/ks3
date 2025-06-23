@@ -2,7 +2,7 @@
 dokka = "2.0.0"
 dokkatoo = "2.4.0"
 
-kotlin = "1.9.25"
+kotlin = "2.2.0"
 kotlinx-serialization = "1.6.3"
 
 kotest = "5.9.1"
