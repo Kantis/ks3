@@ -4,6 +4,7 @@ plugins {
    base
    id("com.adarshr.test-logger")
    id("dev.adamko.dokkatoo-html")
+   id("com.gradleup.nmcp")
 }
 
 // common config for all subprojects

@@ -2,6 +2,7 @@ rootProject.name = "ks3"
 
 plugins {
    id("com.gradle.enterprise") version "3.19"
+   id("org.gradle.toolchains.foojay-resolver-convention") version("1.0.0")
 }
 
 apply(from = "build-logic/repositories.gradle.kts")
@@ -41,3 +42,4 @@ develocity {
       }
    }
 }
+

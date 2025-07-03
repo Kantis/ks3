@@ -13,11 +13,12 @@ dependencies {
    implementation(libs.gradlePlugin.dokkatoo)
    implementation(libs.gradlePlugin.ktlint)
    implementation(libs.gradlePlugin.kotlinBinaryCompatibilityValidator)
+   implementation(libs.gradlePlugin.nmcp)
 
    testImplementation(libs.kotest.runnerJunit5)
 }
 
-val buildLogicJvmTarget = "11"
+val buildLogicJvmTarget = "17"
 
 kotlin {
    jvmToolchain {

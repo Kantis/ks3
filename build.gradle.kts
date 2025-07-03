@@ -1,9 +1,12 @@
 import dev.adamko.dokkatoo.dokka.plugins.DokkaHtmlPluginParameters
+import ks3.conventions.Ks3BuildLogicSettings
 
 plugins {
    id("ks3.conventions.base")
    id("ks3.conventions.api-validation")
    idea
+   id("com.gradleup.nmcp.aggregation").version("1.0.0-rc.1")
+   `maven-publish`
 }
 
 group = "io.ks3"
@@ -14,6 +17,12 @@ dependencies {
    dokkatoo(projects.ks3Test)
    dokkatooPluginHtml(libs.dokka.templating)
    dokkatooPluginHtml(libs.dokka.allModulesPage)
+
+   // Add all dependencies for publishing here
+   nmcpAggregation(projects.ks3Jdk)
+   nmcpAggregation(projects.ks3Standard)
+   nmcpAggregation(projects.ks3Test)
+   nmcpAggregation(projects.ks3Core)
 }
 
 dokkatoo {
@@ -27,6 +36,28 @@ dokkatoo {
       customStyleSheets.from(
          "./dokka/custom-styles.css",
       )
+   }
+}
+
+val ossrhUsername: Provider<String> = providers.gradleProperty("ossrhUsername")
+val ossrhPassword: Provider<String> = providers.gradleProperty("ossrhPassword")
+
+nmcpAggregation {
+   centralPortal {
+      username = ossrhUsername
+      password = ossrhPassword
+      publishingType = "USER_MANAGED"
+   }
+}
+
+val isReleaseVersion = provider { version.toString().matches(Ks3BuildLogicSettings.releaseVersionRegex) }
+
+val publishToAppropriateCentralRepository by tasks.registering {
+   group = "publishing"
+   if (isReleaseVersion.get()){
+      dependsOn(tasks.named("publishAggregationToCentralPortal"))
+   } else {
+      dependsOn(tasks.named("publishAggregationToCentralPortalSnapshots"))
    }
 }
 
