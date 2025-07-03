@@ -39,13 +39,10 @@ dokkatoo {
    }
 }
 
-val ossrhUsername: Provider<String> = providers.gradleProperty("ossrhUsername")
-val ossrhPassword: Provider<String> = providers.gradleProperty("ossrhPassword")
-
 nmcpAggregation {
    centralPortal {
-      username = ossrhUsername
-      password = ossrhPassword
+      username.set(System.getenv("SONATYPE_USERNAME"))
+      password.set(System.getenv("SONATYPE_PASSWORD"))
       publishingType = "USER_MANAGED"
    }
 }
