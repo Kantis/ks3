@@ -9,6 +9,8 @@ plugins {
 
 // common config for all subprojects
 
+group = "io.ks3"
+
 if (project != rootProject) {
    project.version = rootProject.version
    project.group = rootProject.group
