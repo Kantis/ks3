@@ -49,7 +49,7 @@ jobs:
             id: version
             uses: Kantis/semantic-version@master
             with:
-               version_format: "${major}.${minor}.${patch}.${increment}-SNAPSHOT"
+               version_format: "${major}.${minor}.${patch}-SNAPSHOT"
 
          -  name: Setup JDK
             uses: actions/setup-java@v4

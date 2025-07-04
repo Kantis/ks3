@@ -64,7 +64,6 @@ dependencyResolutionManagement {
          filter { includeModuleByRegex(".*", ".*kotlin-native-prebuilt.*") }
       }
 
-      sonatypeSnapshots()
       google()
       gradlePluginPortal() // tvOS builds need to be able to fetch a Kotlin Gradle plugin
    }
@@ -74,18 +73,6 @@ dependencyResolutionManagement {
          gradlePluginPortal()
          mavenCentral()
          google()
-         sonatypeSnapshots()
       }
-   }
-}
-
-fun RepositoryHandler.sonatypeSnapshots() {
-   maven("https://s01.oss.sonatype.org/content/repositories/snapshots/") {
-      name = "SonatypeSnapshotS01"
-      mavenContent { snapshotsOnly() }
-   }
-   maven("https://oss.sonatype.org/content/repositories/snapshots/") {
-      name = "SonatypeSnapshotsOSS"
-      mavenContent { snapshotsOnly() }
    }
 }
