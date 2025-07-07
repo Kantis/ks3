@@ -10,7 +10,7 @@ kotest-propertyArbsExtension = "2.1.2"
 
 okio = "3.9.1"
 
-gradlePlugin-ktlint = "12.1.2"
+gradlePlugin-ktlint = "13.0.0"
 gradlePlugin-testlogger = "4.0.0"
 
 kotlinBinaryCompatibilityValidator = "0.17.0"
