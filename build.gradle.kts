@@ -5,7 +5,7 @@ plugins {
    id("ks3.conventions.base")
    id("ks3.conventions.api-validation")
    idea
-   id("com.gradleup.nmcp.aggregation").version("1.0.0-rc.1")
+   id("com.gradleup.nmcp.aggregation").version("1.0.1")
    `maven-publish`
 }
 
