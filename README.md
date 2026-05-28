@@ -3,7 +3,7 @@
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/kantis/ks3/ci.yaml?branch=main)
 
 This project solves two things:
-* Provides [out-of-the-box serializers](https://github.com/Kantis/ks3/blob/main/doc/jdk.md) for a lof of commonly used Java types.
+* Provides [out-of-the-box serializers](https://github.com/Kantis/ks3/blob/main/doc/jdk.md) for a lot of commonly used Java types.
 * Provides [utilities](https://github.com/Kantis/ks3/blob/main/doc/builders.md) for more conveniently defining your own serializers by composition.
 
 This is accomplished without any additional footprint (the project only depends on KotlinX serialization itself).
