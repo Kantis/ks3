@@ -14,7 +14,7 @@ gradlePlugin-ktlint = "12.3.0"
 gradlePlugin-testlogger = "4.0.0"
 
 kotlinBinaryCompatibilityValidator = "0.18.1"
-nmcp = "1.0.1"
+nmcp = "1.6.2"
 
 [libraries]
 
